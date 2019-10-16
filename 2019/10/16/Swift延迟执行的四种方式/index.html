@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="// 1.perform(&amp;#x5FC5;&amp;#x987B;&amp;#x5728;&amp;#x4E3B;&amp;#x7EBF;&amp;#x7A0B;&amp;#x4E2D;&amp;#x6267;&amp;#x884C;)self.perform(#selector(delayExecution), with: nil, afterDelay: 3)// &amp;#x53D6;&amp;#x6D88;NSObject.cancelPreviousPerform">
+<meta name="description" content="1.perform(&amp;#x5FC5;&amp;#x987B;&amp;#x5728;&amp;#x4E3B;&amp;#x7EBF;&amp;#x7A0B;&amp;#x4E2D;&amp;#x6267;&amp;#x884C;)1self.perform(#selector(delayExecution), with: nil, afterDelay: 3)  &amp;#x53D6;&amp;#x6D88;1NSObject.cancelPreviousPerformRe">
 <meta name="keywords" content="Swift">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift延迟执行的四种方式">
 <meta property="og:url" content="https://nicebeach.github.io/2019/10/16/Swift延迟执行的四种方式/index.html">
 <meta property="og:site_name" content="Nice Beach">
-<meta property="og:description" content="// 1.perform(&amp;#x5FC5;&amp;#x987B;&amp;#x5728;&amp;#x4E3B;&amp;#x7EBF;&amp;#x7A0B;&amp;#x4E2D;&amp;#x6267;&amp;#x884C;)self.perform(#selector(delayExecution), with: nil, afterDelay: 3)// &amp;#x53D6;&amp;#x6D88;NSObject.cancelPreviousPerform">
+<meta property="og:description" content="1.perform(&amp;#x5FC5;&amp;#x987B;&amp;#x5728;&amp;#x4E3B;&amp;#x7EBF;&amp;#x7A0B;&amp;#x4E2D;&amp;#x6267;&amp;#x884C;)1self.perform(#selector(delayExecution), with: nil, afterDelay: 3)  &amp;#x53D6;&amp;#x6D88;1NSObject.cancelPreviousPerformRe">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-16T01:43:12.859Z">
+<meta property="og:updated_time" content="2019-10-16T01:48:25.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift延迟执行的四种方式">
-<meta name="twitter:description" content="// 1.perform(&amp;#x5FC5;&amp;#x987B;&amp;#x5728;&amp;#x4E3B;&amp;#x7EBF;&amp;#x7A0B;&amp;#x4E2D;&amp;#x6267;&amp;#x884C;)self.perform(#selector(delayExecution), with: nil, afterDelay: 3)// &amp;#x53D6;&amp;#x6D88;NSObject.cancelPreviousPerform">
+<meta name="twitter:description" content="1.perform(&amp;#x5FC5;&amp;#x987B;&amp;#x5728;&amp;#x4E3B;&amp;#x7EBF;&amp;#x7A0B;&amp;#x4E2D;&amp;#x6267;&amp;#x884C;)1self.perform(#selector(delayExecution), with: nil, afterDelay: 3)  &amp;#x53D6;&amp;#x6D88;1NSObject.cancelPreviousPerformRe">
 
 
 
@@ -330,11 +330,18 @@
       
 
       
-        <p>// 1.perform(&#x5FC5;&#x987B;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;)<br>self.perform(#selector(delayExecution), with: nil, afterDelay: 3)<br>// &#x53D6;&#x6D88;<br>NSObject.cancelPreviousPerformRequests(withTarget: self)</p>
-<p>// 2.timer(&#x5FC5;&#x987B;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;)<br>Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(delayExecution), userInfo: nil, repeats: false)</p>
-<p>// 3.Thread (&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4F1A;&#x5361;&#x4E3B;&#x754C;&#x9762;)<br>Thread.sleep(forTimeInterval: 3)<br>self.delayExecution()</p>
-<p>// 4.GCD &#x4E3B;&#x7EBF;&#x7A0B;/&#x5B50;&#x7EBF;&#x7A0B;<br>DispatchQueue.main.asyncAfter(deadline: .now() + 3) {<br>    self.delayExecution()<br>}</p>
-<p>DispatchQueue.global().asyncAfter(deadline: .now() + 3) {<br>    self.delayExecution()<br>}</p>
+        <h4 id="1-perform-&#x5FC5;&#x987B;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;"><a href="#1-perform-&#x5FC5;&#x987B;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;" class="headerlink" title="1.perform(&#x5FC5;&#x987B;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;)"></a>1.perform(&#x5FC5;&#x987B;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.perform(#selector(delayExecution), with: nil, afterDelay: 3)</span><br></pre></td></tr></table></figure>
+
+<h5 id="&#x53D6;&#x6D88;"><a href="#&#x53D6;&#x6D88;" class="headerlink" title="&#x53D6;&#x6D88;"></a>&#x53D6;&#x6D88;</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSObject.cancelPreviousPerformRequests(withTarget: self)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-timer-&#x5FC5;&#x987B;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;"><a href="#2-timer-&#x5FC5;&#x987B;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;" class="headerlink" title="2.timer(&#x5FC5;&#x987B;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;)"></a>2.timer(&#x5FC5;&#x987B;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(delayExecution), userInfo: nil, repeats: false)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-Thread-&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4F1A;&#x5361;&#x4E3B;&#x754C;&#x9762;"><a href="#3-Thread-&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4F1A;&#x5361;&#x4E3B;&#x754C;&#x9762;" class="headerlink" title="3.Thread (&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4F1A;&#x5361;&#x4E3B;&#x754C;&#x9762;)"></a>3.Thread (&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4F1A;&#x5361;&#x4E3B;&#x754C;&#x9762;)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Thread.sleep(forTimeInterval: 3)</span><br><span class="line">self.delayExecution()</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-GCD-&#x4E3B;&#x7EBF;&#x7A0B;-&#x5B50;&#x7EBF;&#x7A0B;"><a href="#4-GCD-&#x4E3B;&#x7EBF;&#x7A0B;-&#x5B50;&#x7EBF;&#x7A0B;" class="headerlink" title="4.GCD &#x4E3B;&#x7EBF;&#x7A0B;/&#x5B50;&#x7EBF;&#x7A0B;"></a>4.GCD &#x4E3B;&#x7EBF;&#x7A0B;/&#x5B50;&#x7EBF;&#x7A0B;</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DispatchQueue.main.asyncAfter(deadline: .now() + 3) {</span><br><span class="line">    self.delayExecution()</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DispatchQueue.global().asyncAfter(deadline: .now() + 3) {</span><br><span class="line">    self.delayExecution()</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -425,8 +432,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -499,6 +515,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-perform-必须在主线程中执行"><span class="nav-number">1.</span> <span class="nav-text">1.perform(必须在主线程中执行)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#取消"><span class="nav-number">1.1.</span> <span class="nav-text">取消</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-timer-必须在主线程中执行"><span class="nav-number">2.</span> <span class="nav-text">2.timer(必须在主线程中执行)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Thread-在主线程会卡主界面"><span class="nav-number">3.</span> <span class="nav-text">3.Thread (在主线程会卡主界面)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-GCD-主线程-子线程"><span class="nav-number">4.</span> <span class="nav-text">4.GCD 主线程/子线程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
