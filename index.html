@@ -332,7 +332,9 @@
           
           Atom&#x7F16;&#x8F91;&#x5668; &#x4F7F;&#x7528;shift+control+m&#x5FEB;&#x6377;&#x952E;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x7F16;&#x8F91;&#x540E;&#x7684;&#x7A97;&#x53E3;
 1. &#x6807;&#x9898;######
-&#x516D;&
+&#x516D;&#x7EA7;&#x6807;&#x9898;#####
+&#x4E94;&#x7EA7;&#x6807;&#x9898;####
+&#x56DB;&#x7EA7;&#x6807;&#x9898;##
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -458,7 +460,7 @@
       
         
           
-          iOS &#x6D45;&#x62F7;&#x8D1D;&#xFF0C;&#x6DF1;&#x62F7;&#x8D1D;&#xFF0C;&#x6570;&#x7EC4;&#x62F7;&#x8D1D;&#x9996;&#x5148;&#x8981;&#x60F3;&#x5BF9;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;copy&#x6216;&#x8005;mutableC
+          iOS &#x6D45;&#x62F7;&#x8D1D;&#xFF0C;&#x6DF1;&#x62F7;&#x8D1D;&#xFF0C;&#x6570;&#x7EC4;&#x62F7;&#x8D1D;&#x9996;&#x5148;&#x8981;&#x60F3;&#x5BF9;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;copy&#x6216;&#x8005;mutableCopy,&#x5BF9;&#x8C61;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;NSCopying&#x6216;&#x8005;NSMutableCopying&#x534F
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -586,7 +588,9 @@
           
           1.perform(&#x5FC5;&#x987B;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;)1self.perform(#selector(delayExecution), with: nil, afterDelay: 3)
 
-&#x53D6;&#x6D88;1NSObject.cancelPreviousPerformRe
+&#x53D6;&#x6D88;1NSObject.cancelPreviousPerformRequests(withTarget: self)
+
+2.timer(&#x5FC5;&#x987B;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -712,7 +716,8 @@
       
         
           
-          &#x81EA;&#x5DF1;&#x5728; ~/.bash_profile &#x4E2D;&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;, &#x53EF;&#x662F;&#x6BCF;&#x6B21;&#x91CD;&#x542F;&#x7EC8;&#x7AEF;&#x540E;&#x914D;&#x7F6E;&#x7684;&#x4E
+          &#x81EA;&#x5DF1;&#x5728; ~/.bash_profile &#x4E2D;&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;, &#x53EF;&#x662F;&#x6BCF;&#x6B21;&#x91CD;&#x542F;&#x7EC8;&#x7AEF;&#x540E;&#x914D;&#x7F6E;&#x7684;&#x4E0D;&#x751F;&#x6548;.&#x9700;&#x8981;&#x91CD;&#x65B0;&#x6267;&#x884C; : $source ~/.bash_profile
+&#x53
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -839,7 +844,7 @@
         
           
           1 &#x628A;&#x4E3B;&#x9875;&#x914D;&#x7F6E;&#x6587;&#x4EF6;_config.yml &#x91CC;&#x7684;post_asset_folder:&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x8BBE;&#x7F6E;&#x4E3A;true
-2 &#x5728;&#x4F60;&#x7684;hexo&#x76
+2 &#x5728;&#x4F60;&#x7684;hexo&#x76EE;&#x5F55;&#x4E0B;&#x6267;&#x884C;&#x8FD9;&#x6837;&#x4E00;&#x53E5;&#x8BDD;npm install hexo-asset-im
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -966,7 +971,9 @@
         
           
           iOS&#x5F00;&#x53D1; - message sent to deallocated instance &#x5D29;&#x6E83; &#x89E3;&#x51B3;&#x65B9;&#x6848;
-&#x4E00;.&#x8BF4;&#x660E;(&#x53EA;&#x9002;&#x7528;&#x4E8E;&#x7535;&#x8111;&#x6A21;&#x62DF;&
+&#x4E00;.&#x8BF4;&#x660E;(&#x53EA;&#x9002;&#x7528;&#x4E8E;&#x7535;&#x8111;&#x6A21;&#x62DF;&#x5668;)
+
+&#x5728;&#x505A;iOS&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6709;&#x65F6;&#x5019
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1095,7 +1102,12 @@
           1.&#x4E0B;&#x8F7D;&#x5B89;&#x88C5;&#x5305;&#xFF0C;&#x5730;&#x5740;&#xFF1A;http://mama.indstate.edu/users/ice/tree/  
 2.&#x89E3;&#x538B;&#x5B89;&#x88C5;
 &#x89E3;&#x538B;&#x6587;&#x4EF6;
-tar -zxvf tree-
+tar -zxvf tree-1.8.0.tgz -C ./
+
+
+
+cd &#x5230;&#x89E3;&#x538B;&#x76EE;&#x5F55; &#x7136;&#x540E;make install
+cd ./tre
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1225,7 +1237,9 @@ tar -zxvf tree-
   nslookup github.com
   
 
-2.&#x5C06;&#x4E0B;&#x9762;&#x5185;&#x5BB9;&#x6DFB;&#x52A0;&#x5230;/etc/hosts&#x6587;
+2.&#x5C06;&#x4E0B;&#x9762;&#x5185;&#x5BB9;&#x6DFB;&#x52A0;&#x5230;/etc/hosts&#x6587;&#x4EF6;  66.220.149.99  http://global-ssl.fastly.net  13.250.177.223 http://github.com
+
+3.&#x6E05;&
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1477,7 +1491,9 @@ tar -zxvf tree-
       
         
           
-          &#x5728;&#x54CD;&#x5E94;&#x4E8B;&#x4EF6;&#x65B9;&#x6CD5;&#x91CC;&#x52A0;&#x4E2A;&#x5224;&#x65AD;123UILongPressGestureRecognizer *longGes = [[UILongPressGestureRecognizer alloc] initWithTarget:self act
+          &#x5728;&#x54CD;&#x5E94;&#x4E8B;&#x4EF6;&#x65B9;&#x6CD5;&#x91CC;&#x52A0;&#x4E2A;&#x5224;&#x65AD;123UILongPressGestureRecognizer *longGes = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longGesAction:)];[self addGestureRecognizer:longGes];
+
+12345- (void)longGesAction:(UIL
           ...
           <!--noindex-->
           <div class="post-button text-center">
