@@ -1,0 +1,985 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="爪子">
+  <meta name="keywords" content="博客,技术,开发,Vue,PHP,Hexo">
+  
+    <meta name="description" content="什么是 Hermes？Hermes 是一个强大的 AI Agent 开发框架，专为构建企业级 AI 助手而设计。它提供了：  🤖 多 Agent 协作能力 🔧 丰富的工具集成 💾 持久化记忆系统 🎯 技能系统（Skills） 📊 任务管理和调度 🔌 多平台适配（CLI、Web、IM）  核心架构1. Agent 架构1234567Hermes Agent├── Core Engine">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hermes Agent 开发指南：构建企业级 AI Agent 平台">
+<meta property="og:url" content="https://my-blog.pages.dev/2026/05/25/hermes-agent-guide/index.html">
+<meta property="og:site_name" content="爪子的个人博客">
+<meta property="og:description" content="什么是 Hermes？Hermes 是一个强大的 AI Agent 开发框架，专为构建企业级 AI 助手而设计。它提供了：  🤖 多 Agent 协作能力 🔧 丰富的工具集成 💾 持久化记忆系统 🎯 技能系统（Skills） 📊 任务管理和调度 🔌 多平台适配（CLI、Web、IM）  核心架构1. Agent 架构1234567Hermes Agent├── Core Engine">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-25T07:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-25T06:34:25.099Z">
+<meta property="article:author" content="爪子">
+<meta property="article:tag" content="Hermes">
+<meta property="article:tag" content="AI Agent">
+<meta property="article:tag" content="企业应用">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Hermes Agent 开发指南：构建企业级 AI Agent 平台 - 爪子的个人博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"my-blog.pages.dev","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Hermes Agent 开发指南：构建企业级 AI Agent 平台"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-05-25 15:00" pubdate>
+          2026年5月25日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          43 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Hermes Agent 开发指南：构建企业级 AI Agent 平台</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="什么是-Hermes？"><a href="#什么是-Hermes？" class="headerlink" title="什么是 Hermes？"></a>什么是 Hermes？</h2><p>Hermes 是一个强大的 AI Agent 开发框架，专为构建企业级 AI 助手而设计。它提供了：</p>
+<ul>
+<li>🤖 多 Agent 协作能力</li>
+<li>🔧 丰富的工具集成</li>
+<li>💾 持久化记忆系统</li>
+<li>🎯 技能系统（Skills）</li>
+<li>📊 任务管理和调度</li>
+<li>🔌 多平台适配（CLI、Web、IM）</li>
+</ul>
+<h2 id="核心架构"><a href="#核心架构" class="headerlink" title="核心架构"></a>核心架构</h2><h3 id="1-Agent-架构"><a href="#1-Agent-架构" class="headerlink" title="1. Agent 架构"></a>1. Agent 架构</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">Hermes</span> <span class="hljs-string">Agent</span><br><span class="hljs-string">├──</span> <span class="hljs-string">Core</span> <span class="hljs-string">Engine</span>        <span class="hljs-comment"># 核心引擎</span><br><span class="hljs-string">├──</span> <span class="hljs-string">Tool</span> <span class="hljs-string">System</span>        <span class="hljs-comment"># 工具系统</span><br><span class="hljs-string">├──</span> <span class="hljs-string">Memory</span> <span class="hljs-string">System</span>      <span class="hljs-comment"># 记忆系统</span><br><span class="hljs-string">├──</span> <span class="hljs-string">Skill</span> <span class="hljs-string">System</span>       <span class="hljs-comment"># 技能系统</span><br><span class="hljs-string">├──</span> <span class="hljs-string">Session</span> <span class="hljs-string">Manager</span>    <span class="hljs-comment"># 会话管理</span><br><span class="hljs-string">└──</span> <span class="hljs-string">Platform</span> <span class="hljs-string">Adapter</span>   <span class="hljs-comment"># 平台适配</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-工具系统"><a href="#2-工具系统" class="headerlink" title="2. 工具系统"></a>2. 工具系统</h3><p>Hermes 提供丰富的内置工具：</p>
+<table>
+<thead>
+<tr>
+<th>工具集</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>browser</strong></td>
+<td>浏览器操作（导航、截图、交互）</td>
+</tr>
+<tr>
+<td><strong>terminal</strong></td>
+<td>命令行执行、脚本运行</td>
+</tr>
+<tr>
+<td><strong>file</strong></td>
+<td>文件读写、搜索、编辑</td>
+</tr>
+<tr>
+<td><strong>web</strong></td>
+<td>网络请求、API 调用</td>
+</tr>
+<tr>
+<td><strong>search</strong></td>
+<td>搜索引擎、信息检索</td>
+</tr>
+<tr>
+<td><strong>vision</strong></td>
+<td>图像识别、视觉理解</td>
+</tr>
+<tr>
+<td><strong>cronjob</strong></td>
+<td>定时任务、调度管理</td>
+</tr>
+</tbody></table>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 克隆项目</span><br>git <span class="hljs-built_in">clone</span> https://github.com/nousresearch/hermes.git<br><span class="hljs-built_in">cd</span> hermes<br><br><span class="hljs-comment"># 安装依赖</span><br>npm install<br><br><span class="hljs-comment"># 配置</span><br><span class="hljs-built_in">cp</span> config.example.yaml config.yaml<br></code></pre></td></tr></table></figure>
+
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># config.yaml</span><br><span class="hljs-attr">model:</span><br>  <span class="hljs-attr">provider:</span> <span class="hljs-string">openrouter</span><br>  <span class="hljs-attr">model:</span> <span class="hljs-string">anthropic/claude-sonnet-4</span><br><br><span class="hljs-attr">providers:</span><br>  <span class="hljs-attr">openrouter:</span><br>    <span class="hljs-attr">api_key:</span> <span class="hljs-string">$&#123;OPENROUTER_API_KEY&#125;</span><br>    <span class="hljs-attr">base_url:</span> <span class="hljs-string">https://openrouter.ai/api/v1</span><br><br><span class="hljs-attr">agents:</span><br>  <span class="hljs-attr">defaults:</span><br>    <span class="hljs-attr">tools:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">browser</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">terminal</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">file</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">web</span><br>    <span class="hljs-attr">max_tokens:</span> <span class="hljs-number">4096</span><br>    <span class="hljs-attr">temperature:</span> <span class="hljs-number">0.7</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="启动-Agent"><a href="#启动-Agent" class="headerlink" title="启动 Agent"></a>启动 Agent</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># CLI 模式</span><br>hermes<br><br><span class="hljs-comment"># 指定配置</span><br>hermes --config config.yaml<br><br><span class="hljs-comment"># Web 模式</span><br>hermes web --port 3000<br></code></pre></td></tr></table></figure>
+
+<h2 id="实战案例"><a href="#实战案例" class="headerlink" title="实战案例"></a>实战案例</h2><h3 id="案例-1：构建开发助手"><a href="#案例-1：构建开发助手" class="headerlink" title="案例 1：构建开发助手"></a>案例 1：构建开发助手</h3><p>创建一个能帮助开发的 Agent：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># skills/dev-assistant/SKILL.md</span><br><br>---<br>name: dev-assistant<br>description: AI 开发助手，帮助代码开发和调试<br>triggers:<br>  - 开发<br>  - 写代码<br>  - debug<br>---<br><br><span class="hljs-comment"># 开发助手</span><br><br><span class="hljs-comment">## 能力</span><br><span class="hljs-number">1.</span> 代码生成和优化<br><span class="hljs-number">2.</span> 代码审查<br><span class="hljs-number">3.</span> Bug 调试<br><span class="hljs-number">4.</span> 测试生成<br><span class="hljs-number">5.</span> 文档编写<br><br><span class="hljs-comment">## 工作流程</span><br><br><span class="hljs-comment">### 代码生成</span><br><span class="hljs-number">1.</span> 理解需求<br><span class="hljs-number">2.</span> 设计方案<br><span class="hljs-number">3.</span> 生成代码<br><span class="hljs-number">4.</span> 运行测试<br><span class="hljs-number">5.</span> 优化改进<br><br><span class="hljs-comment">### Bug 调试</span><br><span class="hljs-number">1.</span> 分析错误信息<br><span class="hljs-number">2.</span> 定位问题代码<br><span class="hljs-number">3.</span> 提出修复方案<br><span class="hljs-number">4.</span> 实施修复<br><span class="hljs-number">5.</span> 验证修复<br></code></pre></td></tr></table></figure>
+
+<p><strong>使用</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 用户：帮我创建一个用户登录 API</span><br>hermes&gt; 帮我创建一个用户登录 API<br><br><span class="hljs-comment"># Agent 会自动：</span><br><span class="hljs-comment"># 1. 创建 API 接口</span><br><span class="hljs-comment"># 2. 添加参数验证</span><br><span class="hljs-comment"># 3. 实现认证逻辑</span><br><span class="hljs-comment"># 4. 生成测试代码</span><br><span class="hljs-comment"># 5. 编写 API 文档</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="案例-2：多-Agent-协作"><a href="#案例-2：多-Agent-协作" class="headerlink" title="案例 2：多 Agent 协作"></a>案例 2：多 Agent 协作</h3><p>使用 <code>delegate_task</code> 创建多 Agent 协作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 代码审查流程</span><br><span class="hljs-keyword">from</span> hermes <span class="hljs-keyword">import</span> Agent, Task<br><br><span class="hljs-comment"># 创建专家 Agent</span><br>architect = Agent(<br>    role=<span class="hljs-string">&quot;架构师&quot;</span>,<br>    goal=<span class="hljs-string">&quot;审查架构设计&quot;</span>,<br>    tools=[<span class="hljs-string">&quot;file&quot;</span>, <span class="hljs-string">&quot;search&quot;</span>]<br>)<br><br>reviewer = Agent(<br>    role=<span class="hljs-string">&quot;代码审查员&quot;</span>,<br>    goal=<span class="hljs-string">&quot;检查代码质量&quot;</span>,<br>    tools=[<span class="hljs-string">&quot;file&quot;</span>, <span class="hljs-string">&quot;search&quot;</span>]<br>)<br><br>tester = Agent(<br>    role=<span class="hljs-string">&quot;测试工程师&quot;</span>,<br>    goal=<span class="hljs-string">&quot;验证测试覆盖&quot;</span>,<br>    tools=[<span class="hljs-string">&quot;terminal&quot;</span>, <span class="hljs-string">&quot;file&quot;</span>]<br>)<br><br><span class="hljs-comment"># 分配任务</span><br>tasks = [<br>    Task(<br>        description=<span class="hljs-string">&quot;审查项目架构&quot;</span>,<br>        agent=architect<br>    ),<br>    Task(<br>        description=<span class="hljs-string">&quot;检查代码质量&quot;</span>,<br>        agent=reviewer<br>    ),<br>    Task(<br>        description=<span class="hljs-string">&quot;验证测试覆盖&quot;</span>,<br>        agent=tester<br>    )<br>]<br><br><span class="hljs-comment"># 执行</span><br>result = delegate_task(tasks=tasks)<br></code></pre></td></tr></table></figure>
+
+<h3 id="案例-3：创建自动化工作流"><a href="#案例-3：创建自动化工作流" class="headerlink" title="案例 3：创建自动化工作流"></a>案例 3：创建自动化工作流</h3><p>使用 Cronjob 创建定时任务：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 创建日报生成任务</span><br>cronjob(<br>    action=<span class="hljs-string">&#x27;create&#x27;</span>,<br>    name=<span class="hljs-string">&#x27;daily-report&#x27;</span>,<br>    schedule=<span class="hljs-string">&#x27;0 9 * * *&#x27;</span>,  <span class="hljs-comment"># 每天早上 9 点</span><br>    prompt=<span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    生成今日工作日报：</span><br><span class="hljs-string">    1. 统计 Git 提交记录</span><br><span class="hljs-string">    2. 分析任务完成情况</span><br><span class="hljs-string">    3. 生成进度报告</span><br><span class="hljs-string">    4. 发送到团队群</span><br><span class="hljs-string">    &quot;&quot;&quot;</span>,<br>    skills=[<span class="hljs-string">&#x27;git-analyzer&#x27;</span>, <span class="hljs-string">&#x27;report-generator&#x27;</span>],<br>    deliver=<span class="hljs-string">&#x27;telegram:team_group&#x27;</span><br>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="技能系统（Skills）"><a href="#技能系统（Skills）" class="headerlink" title="技能系统（Skills）"></a>技能系统（Skills）</h2><h3 id="创建自定义技能"><a href="#创建自定义技能" class="headerlink" title="创建自定义技能"></a>创建自定义技能</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># skills/code-review/SKILL.md</span><br><br>---<br>name: code-review<br>description: 代码审查技能<br>triggers:<br><span class="hljs-bullet">  -</span> 审查代码<br><span class="hljs-section">  - code review</span><br><span class="hljs-section">---</span><br><br><span class="hljs-section"># 代码审查流程</span><br><br><span class="hljs-section">## 触发条件</span><br>用户请求审查代码<br><br><span class="hljs-section">## 执行步骤</span><br><br><span class="hljs-section">### 1. 收集代码</span><br>使用 <span class="hljs-code">`search_files`</span> 搜索需要审查的文件<br><br><span class="hljs-section">### 2. 静态分析</span><br><span class="hljs-bullet">-</span> 检查代码规范<br><span class="hljs-bullet">-</span> 检查潜在 Bug<br><span class="hljs-bullet">-</span> 检查安全问题<br><br><span class="hljs-section">### 3. 生成报告</span><br>输出格式化的审查报告<br><br><span class="hljs-section">## 输出模板</span><br><br><span class="hljs-code">```markdown</span><br><span class="hljs-code"># 代码审查报告</span><br><span class="hljs-code"></span><br><span class="hljs-code">## 概览</span><br><span class="hljs-code">- 文件数：X</span><br><span class="hljs-code">- 问题数：Y</span><br><span class="hljs-code">- 严重程度：高/中/低</span><br><span class="hljs-code"></span><br><span class="hljs-code">## 问题列表</span><br><span class="hljs-code"></span><br><span class="hljs-code">### 文件：src/api/users.js</span><br><span class="hljs-code">- ⚠️ Line 45: 潜在的 SQL 注入风险</span><br><span class="hljs-code">- 💡 Line 78: 建议使用异步方法</span><br><span class="hljs-code">- ✅ Line 92: 良好的错误处理</span><br><span class="hljs-code"></span><br><span class="hljs-code">## 改进建议</span><br><span class="hljs-code">...</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br>### 使用技能<br><br>```bash<br># 方式一：直接调用<br>hermes&gt; 使用 <span class="hljs-keyword">code</span>-review 技能审查 src/api 目录<br><br># 方式二：自动触发<br>hermes&gt; 审查一下最近的代码改动<br># Agent 会自动识别并加载 <span class="hljs-keyword">code</span>-review 技能<br></code></pre></td></tr></table></figure>
+
+<h2 id="记忆系统"><a href="#记忆系统" class="headerlink" title="记忆系统"></a>记忆系统</h2><h3 id="用户记忆（User-Memory）"><a href="#用户记忆（User-Memory）" class="headerlink" title="用户记忆（User Memory）"></a>用户记忆（User Memory）</h3><p>存储用户偏好和习惯：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">memory(<br>    action=<span class="hljs-string">&#x27;add&#x27;</span>,<br>    target=<span class="hljs-string">&#x27;user&#x27;</span>,<br>    content=<span class="hljs-string">&#x27;用户偏好简洁的回复风格&#x27;</span><br>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="会话记忆（Session-Memory）"><a href="#会话记忆（Session-Memory）" class="headerlink" title="会话记忆（Session Memory）"></a>会话记忆（Session Memory）</h3><p>自动保存会话历史：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 搜索历史会话</span><br>session_search(<br>    query=<span class="hljs-string">&quot;讨论过的架构方案&quot;</span>,<br>    limit=<span class="hljs-number">3</span><br>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="持久化技能（Skill-Memory）"><a href="#持久化技能（Skill-Memory）" class="headerlink" title="持久化技能（Skill Memory）"></a>持久化技能（Skill Memory）</h3><p>保存可复用的程序：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 创建技能</span><br>skill_manage(<br>    action=<span class="hljs-string">&#x27;create&#x27;</span>,<br>    name=<span class="hljs-string">&#x27;api-generator&#x27;</span>,<br>    content=<span class="hljs-string">&#x27;快速生成 REST API 的模板&#x27;</span><br>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="平台适配"><a href="#平台适配" class="headerlink" title="平台适配"></a>平台适配</h2><h3 id="Telegram-Bot"><a href="#Telegram-Bot" class="headerlink" title="Telegram Bot"></a>Telegram Bot</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># config.yaml</span><br><span class="hljs-attr">platforms:</span><br>  <span class="hljs-attr">telegram:</span><br>    <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">bot_token:</span> <span class="hljs-string">$&#123;TELEGRAM_BOT_TOKEN&#125;</span><br>    <span class="hljs-attr">allowed_users:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">123456789</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Discord-Bot"><a href="#Discord-Bot" class="headerlink" title="Discord Bot"></a>Discord Bot</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">platforms:</span><br>  <span class="hljs-attr">discord:</span><br>    <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">bot_token:</span> <span class="hljs-string">$&#123;DISCORD_BOT_TOKEN&#125;</span><br>    <span class="hljs-attr">channels:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;engineering&quot;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;general&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Web-Interface"><a href="#Web-Interface" class="headerlink" title="Web Interface"></a>Web Interface</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启动 Web 界面</span><br>hermes web --port 3000<br><br><span class="hljs-comment"># 访问</span><br>open http://localhost:3000<br></code></pre></td></tr></table></figure>
+
+<h2 id="高级功能"><a href="#高级功能" class="headerlink" title="高级功能"></a>高级功能</h2><h3 id="1-子任务委托"><a href="#1-子任务委托" class="headerlink" title="1. 子任务委托"></a>1. 子任务委托</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python">delegate_task(<br>    tasks=[<br>        &#123;<br>            <span class="hljs-string">&quot;goal&quot;</span>: <span class="hljs-string">&quot;分析用户需求&quot;</span>,<br>            <span class="hljs-string">&quot;toolsets&quot;</span>: [<span class="hljs-string">&quot;web&quot;</span>, <span class="hljs-string">&quot;search&quot;</span>]<br>        &#125;,<br>        &#123;<br>            <span class="hljs-string">&quot;goal&quot;</span>: <span class="hljs-string">&quot;设计技术方案&quot;</span>,<br>            <span class="hljs-string">&quot;toolsets&quot;</span>: [<span class="hljs-string">&quot;file&quot;</span>, <span class="hljs-string">&quot;search&quot;</span>]<br>        &#125;,<br>        &#123;<br>            <span class="hljs-string">&quot;goal&quot;</span>: <span class="hljs-string">&quot;实现代码&quot;</span>,<br>            <span class="hljs-string">&quot;toolsets&quot;</span>: [<span class="hljs-string">&quot;terminal&quot;</span>, <span class="hljs-string">&quot;file&quot;</span>]<br>        &#125;<br>    ],<br>    role=<span class="hljs-string">&quot;orchestrator&quot;</span>  <span class="hljs-comment"># 编排者模式</span><br>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-流式执行"><a href="#2-流式执行" class="headerlink" title="2. 流式执行"></a>2. 流式执行</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 实时输出执行过程</span><br>result = agent.run(<br>    prompt=<span class="hljs-string">&quot;重构整个项目&quot;</span>,<br>    stream=<span class="hljs-literal">True</span>,<br>    on_progress=<span class="hljs-keyword">lambda</span> x: <span class="hljs-built_in">print</span>(x)<br>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-上下文压缩"><a href="#3-上下文压缩" class="headerlink" title="3. 上下文压缩"></a>3. 上下文压缩</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">agents:</span><br>  <span class="hljs-attr">defaults:</span><br>    <span class="hljs-attr">compaction:</span><br>      <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>      <span class="hljs-attr">reserveTokensFloor:</span> <span class="hljs-number">20000</span><br>      <span class="hljs-attr">strategy:</span> <span class="hljs-string">summarize</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><h3 id="1-技能设计原则"><a href="#1-技能设计原则" class="headerlink" title="1. 技能设计原则"></a>1. 技能设计原则</h3><ul>
+<li><strong>单一职责</strong>：每个技能专注一件事</li>
+<li><strong>可复用</strong>：设计通用的技能模板</li>
+<li><strong>可测试</strong>：包含验证步骤</li>
+<li><strong>文档化</strong>：清晰的使用说明</li>
+</ul>
+<h3 id="2-工具使用规范"><a href="#2-工具使用规范" class="headerlink" title="2. 工具使用规范"></a>2. 工具使用规范</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># ✅ 好的实践</span><br><span class="hljs-comment"># 明确指定工具</span><br>Agent(<br>    tools=[<span class="hljs-string">&quot;file&quot;</span>, <span class="hljs-string">&quot;search&quot;</span>],  <span class="hljs-comment"># 只启用需要的工具</span><br>    ...<br>)<br><br><span class="hljs-comment"># ❌ 不好的实践</span><br><span class="hljs-comment"># 启用所有工具（性能差、成本高）</span><br>Agent(<br>    tools=<span class="hljs-string">&quot;all&quot;</span>,<br>    ...<br>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-错误处理"><a href="#3-错误处理" class="headerlink" title="3. 错误处理"></a>3. 错误处理</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:<br>    result = agent.run(prompt)<br><span class="hljs-keyword">except</span> TokenLimitExceeded:<br>    <span class="hljs-comment"># 压缩上下文</span><br>    agent.compact()<br>    result = agent.run(prompt)<br><span class="hljs-keyword">except</span> ToolExecutionError <span class="hljs-keyword">as</span> e:<br>    <span class="hljs-comment"># 回退或重试</span><br>    logger.error(<span class="hljs-string">f&quot;Tool error: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><h3 id="1-Token-优化"><a href="#1-Token-优化" class="headerlink" title="1. Token 优化"></a>1. Token 优化</h3><ul>
+<li>使用 <code>reserveTokensFloor</code> 保留缓冲</li>
+<li>定期压缩上下文</li>
+<li>使用 <code>.hermesignore</code> 排除大文件</li>
+</ul>
+<h3 id="2-并发控制"><a href="#2-并发控制" class="headerlink" title="2. 并发控制"></a>2. 并发控制</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">delegation:</span><br>  <span class="hljs-attr">max_concurrent_children:</span> <span class="hljs-number">3</span>  <span class="hljs-comment"># 最多 3 个并发子任务</span><br>  <span class="hljs-attr">max_spawn_depth:</span> <span class="hljs-number">1</span>          <span class="hljs-comment"># 限制嵌套深度</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-缓存策略"><a href="#3-缓存策略" class="headerlink" title="3. 缓存策略"></a>3. 缓存策略</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">cache:</span><br>  <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">ttl:</span> <span class="hljs-number">3600</span>  <span class="hljs-comment"># 1 小时</span><br>  <span class="hljs-attr">maxSize:</span> <span class="hljs-string">100MB</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="与-CrewAI-对比"><a href="#与-CrewAI-对比" class="headerlink" title="与 CrewAI 对比"></a>与 CrewAI 对比</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Hermes</th>
+<th>CrewAI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>企业级</strong></td>
+<td>✅ 完整框架</td>
+<td>⚠️ 需要自己扩展</td>
+</tr>
+<tr>
+<td><strong>记忆系统</strong></td>
+<td>✅ 内置</td>
+<td>⚠️ 需要配置</td>
+</tr>
+<tr>
+<td><strong>技能系统</strong></td>
+<td>✅ 强大</td>
+<td>❌ 无</td>
+</tr>
+<tr>
+<td><strong>多平台</strong></td>
+<td>✅ 支持</td>
+<td>❌ 无</td>
+</tr>
+<tr>
+<td><strong>工具数量</strong></td>
+<td>50+</td>
+<td>20+</td>
+</tr>
+<tr>
+<td><strong>学习曲线</strong></td>
+<td>中等</td>
+<td>简单</td>
+</tr>
+</tbody></table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Hermes 是构建企业级 AI Agent 的最佳选择：</p>
+<ul>
+<li>✅ 开箱即用的完整方案</li>
+<li>✅ 强大的工具和技能系统</li>
+<li>✅ 灵活的多 Agent 协作</li>
+<li>✅ 持久化记忆和会话管理</li>
+<li>✅ 多平台适配</li>
+</ul>
+<h2 id="推荐资源"><a href="#推荐资源" class="headerlink" title="推荐资源"></a>推荐资源</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://hermes-agent.nousresearch.com/docs">Hermes 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nousresearch/hermes">GitHub 仓库</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nousresearch/hermes-examples">示例项目</a></li>
+</ul>
+<hr>
+<p><strong>下一步</strong>：尝试用 Hermes 构建你的第一个 AI Agent！</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5/" class="category-chain-item">技术实践</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Hermes/" class="print-no-link">#Hermes</a>
+      
+        <a href="/tags/AI-Agent/" class="print-no-link">#AI Agent</a>
+      
+        <a href="/tags/%E4%BC%81%E4%B8%9A%E5%BA%94%E7%94%A8/" class="print-no-link">#企业应用</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Hermes Agent 开发指南：构建企业级 AI Agent 平台</div>
+      <div>https://my-blog.pages.dev/2026/05/25/hermes-agent-guide/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>爪子</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年5月25日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/07/08/php-learning-journey/" title="前端工程师学 PHP：从零到 RESTful API + MVC 分层">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">前端工程师学 PHP：从零到 RESTful API + MVC 分层</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/05/25/claude-code-practice/" title="Claude Code 实战指南：AI 驱动的开发新范式">
+                        <span class="hidden-mobile">Claude Code 实战指南：AI 驱动的开发新范式</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
