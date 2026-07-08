@@ -1,24 +1,25 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
-  
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="爪子">
-  <meta name="keywords" content="博客,技术,开发,Vue,PHP,Hexo">
-  
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"my-blog.pages.dev","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
     <meta name="description" content="一个关于技术、生活和成长的个人博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="爪子的个人博客">
@@ -28,691 +29,1129 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="爪子">
 <meta property="article:tag" content="博客,技术,开发,Vue,PHP,Hexo">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>爪子的个人博客</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+<meta name="twitter:card" content="summary">
 
 
+<link rel="canonical" href="https://my-blog.pages.dev/">
 
 
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
 
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>爪子的个人博客</title>
   
 
 
 
 
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"my-blog.pages.dev","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
-    }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
-
-
-  
-<meta name="generator" content="Hexo 7.3.0"></head>
-
-
-<body>
-  
-
-  <header>
-    
-
-<div class="header-inner" style="height: 100vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content (desktop) -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<!-- Mobile grid menu overlay -->
-<div id="mobile-grid-menu" class="d-lg-none">
-  <div class="mobile-grid-menu-inner">
-    <div class="container">
-      <div class="row">
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-home-fill"></i>
-                  <span>首页</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/archives/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-archive-fill"></i>
-                  <span>归档</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/categories/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-category-fill"></i>
-                  <span>分类</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/tags/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-tags-fill"></i>
-                  <span>标签</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/about/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-user-fill"></i>
-                  <span>关于</span>
-                </div>
-              </a>
-            </div>
-          
-        
-        
-          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
-            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <div class="mobile-grid-item">
-                <i class="iconfont icon-search"></i>
-                <span>搜索</span>
-              </div>
-            </a>
-          </div>
-        
-        
-          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
-               data-label-light="开灯"
-               data-label-dark="关灯">
-            <a href="javascript:;" aria-label="Color Toggle">
-              <div class="mobile-grid-item">
-                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
-                <span id="mobile-color-toggle-label">关灯</span>
-              </div>
-            </a>
-          </div>
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="An elegant Material-Design theme for Hexo"></span>
-          
-        </div>
-
-        
-      </div>
-
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
-      
-    </div>
-  </div>
-</div>
-
-
-
-</div>
-
-  </header>
-
-  <main>
-    
-      <div class="container nopadding-x-md">
-        <div id="board"
-          style="margin-top: 0">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<h1 style="display: none">爪子的个人博客</h1>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/07/08/php-learning-journey/" target="_self">
-          前端工程师学 PHP：从零到 RESTful API + MVC 分层
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/07/08/php-learning-journey/" target="_self">
-        <div>
-          背景作为前端工程师，我一直想拓展后端能力。PHP 是最容易入门的服务端语言之一，语法和 JavaScript 相似，学习曲线平缓。用一个下午的时间，我从零学完了 PHP 基础，并进阶到前后端分离 API。 学习路径1PHP 基础语法 → 表单处理 → PDO + MySQL → RESTful API → CORS → Token 认证 → MVC 分层  PHP 基础：和 JavaScript
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-07-08 18:00" pubdate>
-              2026-07-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/" class="category-chain-item">后端学习</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/PHP/">#PHP</a>
-            
-              <a href="/tags/%E5%90%8E%E7%AB%AF/">#后端</a>
-            
-              <a href="/tags/RESTful-API/">#RESTful API</a>
-            
-              <a href="/tags/MVC/">#MVC</a>
-            
-              <a href="/tags/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/">#前端进阶</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/07/08/laravel-api-learning/" target="_self">
-          Laravel API 开发学习笔记
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/07/08/laravel-api-learning/" target="_self">
-        <div>
-          本文记录 Laravel API 开发的核心知识点，涵盖认证、数据库关系、中间件、API 资源、分页、表单验证、异常处理等模块。 一、Sanctum 认证系统1.1 Token 格式理解Token 格式为 1|abc123...：  1 &#x3D; personal_access_tokens 表的 ID abc123... &#x3D; 明文 token（客户端保存） 数据库只存哈希值 has
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-07-08 15:00" pubdate>
-              2026-07-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" class="category-chain-item">技术学习</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/PHP/">#PHP</a>
-            
-              <a href="/tags/Laravel/">#Laravel</a>
-            
-              <a href="/tags/API/">#API</a>
-            
-              <a href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">#后端开发</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/05/25/hermes-agent-guide/" target="_self">
-          Hermes Agent 开发指南：构建企业级 AI Agent 平台
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/25/hermes-agent-guide/" target="_self">
-        <div>
-          什么是 Hermes？Hermes 是一个强大的 AI Agent 开发框架，专为构建企业级 AI 助手而设计。它提供了：  🤖 多 Agent 协作能力 🔧 丰富的工具集成 💾 持久化记忆系统 🎯 技能系统（Skills） 📊 任务管理和调度 🔌 多平台适配（CLI、Web、IM）  核心架构1. Agent 架构1234567Hermes Agent├── Core Engine
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-05-25 15:00" pubdate>
-              2026-05-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5/" class="category-chain-item">技术实践</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Hermes/">#Hermes</a>
-            
-              <a href="/tags/AI-Agent/">#AI Agent</a>
-            
-              <a href="/tags/%E4%BC%81%E4%B8%9A%E5%BA%94%E7%94%A8/">#企业应用</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2026/05/25/claude-code-practice/" target="_self">
-          Claude Code 实战指南：AI 驱动的开发新范式
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2026/05/25/claude-code-practice/" target="_self">
-        <div>
-          前言在 AI 辅助开发的时代，Claude Code 正在重新定义我们写代码的方式。作为一个强大的 AI 编程助手，它不仅能生成代码，更能理解上下文、重构项目、甚至完成复杂的开发任务。 什么是 Claude Code？Claude Code 是 Anthropic 推出的命令行 AI 编程助手，基于 Claude 模型。它能够：  ✅ 理解整个项目结构 ✅ 生成高质量代码 ✅ 重构和优化代码 ✅
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-05-25 14:30" pubdate>
-              2026-05-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5/" class="category-chain-item">技术实践</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Claude-Code/">#Claude Code</a>
-            
-              <a href="/tags/AI%E5%BC%80%E5%8F%91/">#AI开发</a>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7%E5%AE%9E%E8%B7%B5/">#工具实践</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-
-
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
-  
-  
-  
-</div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
 
 
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
   
 
 
 
 
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
 
   <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+    <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">爪子的个人博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活，分享技术</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="爪子"
+      src="/img/fluid.png">
+  <p class="site-author-name" itemprop="name">爪子</p>
+  <div class="site-description" itemprop="description">一个关于技术、生活和成长的个人博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/NiceBeach" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;NiceBeach" rel="noopener me" target="_blank"><i class="fa fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://my-blog.pages.dev/2026/07/08/php-learning-journey/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/fluid.png">
+      <meta itemprop="name" content="爪子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="爪子的个人博客">
+      <meta itemprop="description" content="一个关于技术、生活和成长的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 爪子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/07/08/php-learning-journey/" class="post-title-link" itemprop="url">前端工程师学 PHP：从零到 RESTful API + MVC 分层</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-07-08 18:00:00 / 修改时间：14:32:39" itemprop="dateCreated datePublished" datetime="2026-07-08T18:00:00+08:00">2026-07-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">后端学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>作为前端工程师，我一直想拓展后端能力。PHP 是最容易入门的服务端语言之一，语法和 JavaScript 相似，学习曲线平缓。用一个下午的时间，我从零学完了 PHP 基础，并进阶到前后端分离 API。</p>
+<h2 id="学习路径"><a href="#学习路径" class="headerlink" title="学习路径"></a>学习路径</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PHP 基础语法 → 表单处理 → PDO + MySQL → RESTful API → CORS → Token 认证 → MVC 分层</span><br></pre></td></tr></table></figure>
+
+<h2 id="PHP-基础：和-JavaScript-的对比"><a href="#PHP-基础：和-JavaScript-的对比" class="headerlink" title="PHP 基础：和 JavaScript 的对比"></a>PHP 基础：和 JavaScript 的对比</h2><table>
+<thead>
+<tr>
+<th>JS</th>
+<th>PHP</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>let name = &quot;test&quot;</code></td>
+<td><code>$name = &quot;test&quot;</code></td>
+<td>PHP 变量必须 <code>$</code> 前缀</td>
+</tr>
+<tr>
+<td><code>str + str</code></td>
+<td><code>str . str</code></td>
+<td>PHP 用 <code>.</code> 拼接字符串</td>
+</tr>
+<tr>
+<td><code>===</code></td>
+<td><code>===</code></td>
+<td>PHP 也有严格相等</td>
+</tr>
+<tr>
+<td><code>obj.prop</code></td>
+<td><code>$obj-&gt;prop</code></td>
+<td>PHP 对象用 <code>-&gt;</code></td>
+</tr>
+<tr>
+<td><code>arr.push(x)</code></td>
+<td><code>$arr[] = x</code></td>
+<td>PHP 数组追加语法</td>
+</tr>
+<tr>
+<td><code>foreach</code></td>
+<td><code>foreach ($arr as $item)</code></td>
+<td>类似但需 <code>$</code></td>
+</tr>
+</tbody></table>
+<p><strong>关键认知转变</strong>：PHP 是请求级生命周期——每次请求开始时变量都是空的，请求结束后进程就退出（不像 Node.js 常驻内存）。</p>
+<h2 id="PDO-MySQL：安全的数据库操作"><a href="#PDO-MySQL：安全的数据库操作" class="headerlink" title="PDO + MySQL：安全的数据库操作"></a>PDO + MySQL：安全的数据库操作</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 连接数据库</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">db</span>(<span class="params"></span>): <span class="title">PDO</span> </span>&#123;</span><br><span class="line">    <span class="built_in">static</span> <span class="variable">$pdo</span> = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$pdo</span> === <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="variable">$pdo</span> = <span class="keyword">new</span> <span class="title function_ invoke__">PDO</span>(</span><br><span class="line">            <span class="string">&quot;mysql:host=127.0.0.1;dbname=learnphp;charset=utf8mb4&quot;</span>,</span><br><span class="line">            <span class="string">&quot;root&quot;</span>, <span class="string">&quot;password&quot;</span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$pdo</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 预处理语句防 SQL 注入</span></span><br><span class="line"><span class="variable">$stmt</span> = <span class="title function_ invoke__">db</span>()-&gt;<span class="title function_ invoke__">prepare</span>(<span class="string">&quot;SELECT * FROM messages WHERE name LIKE ?&quot;</span>);</span><br><span class="line"><span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">execute</span>([<span class="string">&quot;%<span class="subst">$search</span>%&quot;</span>]);</span><br><span class="line"><span class="variable">$messages</span> = <span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">fetchAll</span>();</span><br></pre></td></tr></table></figure>
+
+<p><strong>预处理语句</strong>是把 SQL 模板和数据分开发送，数据库先编译模板，再填入参数。参数不会被当作 SQL 执行，彻底杜绝 SQL 注入。</p>
+<h2 id="RESTful-API-设计"><a href="#RESTful-API-设计" class="headerlink" title="RESTful API 设计"></a>RESTful API 设计</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>路径</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td><code>/messages</code></td>
+<td>获取列表</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/messages</code></td>
+<td>创建留言</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/messages?id=1</code></td>
+<td>删除留言（需认证）</td>
+</tr>
+</tbody></table>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 统一 JSON 响应</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jsonOut</span>(<span class="params"><span class="keyword">int</span> <span class="variable">$code</span>, <span class="keyword">string</span> <span class="variable">$message</span>, <span class="variable">$data</span> = <span class="literal">null</span>, <span class="keyword">int</span> <span class="variable">$http</span> = <span class="number">200</span></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    <span class="title function_ invoke__">http_response_code</span>(<span class="variable">$http</span>);</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">json_encode</span>([</span><br><span class="line">        <span class="string">&quot;code&quot;</span> =&gt; <span class="variable">$code</span>,</span><br><span class="line">        <span class="string">&quot;message&quot;</span> =&gt; <span class="variable">$message</span>,</span><br><span class="line">        <span class="string">&quot;data&quot;</span> =&gt; <span class="variable">$data</span></span><br><span class="line">    ]);</span><br><span class="line">    <span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取 JSON 请求体</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inputJson</span>(<span class="params"></span>): <span class="title">array</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">json_decode</span>(<span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;php://input&quot;</span>), <span class="literal">true</span>) ?? [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="CORS：跨域请求处理"><a href="#CORS：跨域请求处理" class="headerlink" title="CORS：跨域请求处理"></a>CORS：跨域请求处理</h2><p>前端和 API 不同域名时，浏览器会发 CORS 预检（OPTIONS 请求）。简单请求（GET&#x2F;POST 无自定义头）直接通过，复杂请求需要预检。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleCORS</span>(<span class="params"></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    <span class="title function_ invoke__">header</span>(<span class="string">&quot;Access-Control-Allow-Origin: *&quot;</span>);</span><br><span class="line">    <span class="title function_ invoke__">header</span>(<span class="string">&quot;Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS&quot;</span>);</span><br><span class="line">    <span class="title function_ invoke__">header</span>(<span class="string">&quot;Access-Control-Allow-Headers: Content-Type, Authorization&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$_SERVER</span>[<span class="string">&quot;REQUEST_METHOD&quot;</span>] === <span class="string">&quot;OPTIONS&quot;</span>) &#123;</span><br><span class="line">        <span class="title function_ invoke__">http_response_code</span>(<span class="number">204</span>);</span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Bearer-Token-认证"><a href="#Bearer-Token-认证" class="headerlink" title="Bearer Token 认证"></a>Bearer Token 认证</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">requireAuth</span>(<span class="params"></span>): <span class="title">array</span> </span>&#123;</span><br><span class="line">    <span class="variable">$header</span> = <span class="variable">$_SERVER</span>[<span class="string">&quot;HTTP_AUTHORIZATION&quot;</span>] ?? <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/^Bearer\s+(.+)$/&quot;</span>, <span class="variable">$header</span>, <span class="variable">$m</span>)) &#123;</span><br><span class="line">        <span class="title function_ invoke__">jsonOut</span>(<span class="number">1</span>, <span class="string">&quot;未登录&quot;</span>, <span class="literal">null</span>, <span class="number">401</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$token</span> = <span class="variable">$m</span>[<span class="number">1</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="variable">$stmt</span> = <span class="title function_ invoke__">db</span>()-&gt;<span class="title function_ invoke__">prepare</span>(</span><br><span class="line">        <span class="string">&quot;SELECT id, username FROM users WHERE token = ? AND token_expires_at &gt; NOW()&quot;</span></span><br><span class="line">    );</span><br><span class="line">    <span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">execute</span>([<span class="variable">$token</span>]);</span><br><span class="line">    <span class="variable">$user</span> = <span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">fetch</span>();</span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable">$user</span>) &#123;</span><br><span class="line">        <span class="title function_ invoke__">jsonOut</span>(<span class="number">2</span>, <span class="string">&quot;token 无效或过期&quot;</span>, <span class="literal">null</span>, <span class="number">401</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$user</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>登录时用 <code>random_bytes(32)</code> 生成 64 字符随机 token，存到 users 表。这种 opaque token 比 JWT 更适合学习场景——简单直观，不引入额外库。</p>
+<p>密码存储用 bcrypt：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hash</span> = <span class="title function_ invoke__">password_hash</span>(<span class="variable">$password</span>, PASSWORD_DEFAULT);  <span class="comment">// 注册时</span></span><br><span class="line"><span class="title function_ invoke__">password_verify</span>(<span class="variable">$password</span>, <span class="variable">$user</span>[<span class="string">&quot;password_hash&quot;</span>]);   <span class="comment">// 登录时验证</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="MVC-分层重构"><a href="#MVC-分层重构" class="headerlink" title="MVC 分层重构"></a>MVC 分层重构</h2><p>从单文件 API 重构到 MVC 分层：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">api/v2/</span><br><span class="line">├── index.php           # 前端控制器 + 路由表</span><br><span class="line">├── models/</span><br><span class="line">│   ├── Message.php     # 数据层（SQL）</span><br><span class="line">│   └── User.php</span><br><span class="line">├── controllers/</span><br><span class="line">│   ├── MessageController.php  # 业务层（HTTP + 规则）</span><br><span class="line">│   └── UserController.php</span><br><span class="line">└── common.php          # 公共工具（DB/CORS/jsonOut）</span><br></pre></td></tr></table></figure>
+
+<p><strong>Model 层</strong>只管 SQL，不碰 HTTP。<strong>Controller 层</strong>处理请求解析、业务校验、响应格式。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 路由表（前端控制器）</span></span><br><span class="line"><span class="variable">$routes</span> = [</span><br><span class="line">    <span class="string">&quot;messages&quot;</span> =&gt; [</span><br><span class="line">        <span class="string">&quot;GET&quot;</span>    =&gt; [<span class="variable">$controller</span>, <span class="string">&quot;index&quot;</span>],</span><br><span class="line">        <span class="string">&quot;POST&quot;</span>   =&gt; [<span class="variable">$controller</span>, <span class="string">&quot;store&quot;</span>],</span><br><span class="line">        <span class="string">&quot;DELETE&quot;</span> =&gt; [<span class="variable">$controller</span>, <span class="string">&quot;destroy&quot;</span>],</span><br><span class="line">    ],</span><br><span class="line">];</span><br><span class="line">(<span class="variable">$routes</span>[<span class="variable">$path</span>][<span class="variable">$method</span>])();  <span class="comment">// 分发</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>依赖注入</strong>：从外层组装对象图，传入内部：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$messageModel</span> = <span class="keyword">new</span> <span class="title class_">Message</span>(<span class="title function_ invoke__">db</span>());</span><br><span class="line"><span class="variable">$controller</span> = <span class="keyword">new</span> <span class="title class_">MessageController</span>(<span class="variable">$messageModel</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这让你理解了 Laravel 的核心概念——Eloquent ORM、路由文件、Controller、中间件、服务容器，都是你手写原型的标准化版本。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>前端工程师学 PHP 的优势：</p>
+<ul>
+<li>语法相似度高（<code>$</code> 前缀、<code>.</code> 拼接是最大差异）</li>
+<li>HTTP 概念相通（请求&#x2F;响应&#x2F;状态码&#x2F;Header）</li>
+<li>MVC 分层思想和其他框架一致</li>
+<li>异步思维转变后，同步阻塞模型反而更简单</li>
+</ul>
+<p>最难的不是语言本身，而是<strong>服务端思维</strong>：请求级生命周期、并发处理、进程管理。但这些理解后，PHP 就是最直观的后端入门选择。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://my-blog.pages.dev/2026/07/08/laravel-api-learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/fluid.png">
+      <meta itemprop="name" content="爪子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="爪子的个人博客">
+      <meta itemprop="description" content="一个关于技术、生活和成长的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 爪子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/07/08/laravel-api-learning/" class="post-title-link" itemprop="url">Laravel API 开发学习笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-07-08 15:00:00 / 修改时间：14:38:48" itemprop="dateCreated datePublished" datetime="2026-07-08T15:00:00+08:00">2026-07-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">技术学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>本文记录 Laravel API 开发的核心知识点，涵盖认证、数据库关系、中间件、API 资源、分页、表单验证、异常处理等模块。</p>
+<h2 id="一、Sanctum-认证系统"><a href="#一、Sanctum-认证系统" class="headerlink" title="一、Sanctum 认证系统"></a>一、Sanctum 认证系统</h2><h3 id="1-1-Token-格式理解"><a href="#1-1-Token-格式理解" class="headerlink" title="1.1 Token 格式理解"></a>1.1 Token 格式理解</h3><p>Token 格式为 <code>1|abc123...</code>：</p>
+<ul>
+<li><code>1</code> &#x3D; <code>personal_access_tokens</code> 表的 ID</li>
+<li><code>abc123...</code> &#x3D; 明文 token（客户端保存）</li>
+<li><strong>数据库只存哈希值</strong> <code>hash(&#39;sha256&#39;, &#39;abc123...&#39;)</code></li>
+</ul>
+<h3 id="1-2-验证流程"><a href="#1-2-验证流程" class="headerlink" title="1.2 验证流程"></a>1.2 验证流程</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">客户端发送：1|abc123...</span><br><span class="line">     ↓</span><br><span class="line">框架解析：id=1, plainText=abc123...</span><br><span class="line">     ↓</span><br><span class="line">查数据库：SELECT * FROM personal_access_tokens WHERE id=1</span><br><span class="line">     ↓</span><br><span class="line">比对哈希：hash(&#x27;sha256&#x27;, &#x27;abc123...&#x27;) === 数据库的 token?</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-核心代码"><a href="#1-3-核心代码" class="headerlink" title="1.3 核心代码"></a>1.3 核心代码</h3><p><strong>注册：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$user</span> = <span class="title class_">User</span>::<span class="title function_ invoke__">create</span>([</span><br><span class="line">    <span class="string">&#x27;username&#x27;</span> =&gt; <span class="variable">$validated</span>[<span class="string">&#x27;username&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;password&#x27;</span> =&gt; <span class="variable">$validated</span>[<span class="string">&#x27;password&#x27;</span>],  // Model 自动哈希</span><br><span class="line">]);</span><br><span class="line"><span class="variable">$token</span> = <span class="variable">$user</span>-&gt;<span class="title function_ invoke__">createToken</span>(<span class="string">&#x27;api&#x27;</span>)-&gt;plainTextToken;</span><br></pre></td></tr></table></figure>
+
+<p><strong>登录：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="title class_">Auth</span>::<span class="title function_ invoke__">attempt</span>(<span class="variable">$credentials</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="string">&#x27;message&#x27;</span> =&gt; <span class="string">&#x27;用户名或密码错误&#x27;</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$token</span> = <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;<span class="title function_ invoke__">createToken</span>(<span class="string">&#x27;api&#x27;</span>)-&gt;plainTextToken;</span><br></pre></td></tr></table></figure>
+
+<p><strong>登出（当前设备）：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;<span class="title function_ invoke__">currentAccessToken</span>()-&gt;<span class="title function_ invoke__">delete</span>();</span><br></pre></td></tr></table></figure>
+
+<p><strong>登出（所有设备）：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;<span class="title function_ invoke__">tokens</span>()-&gt;<span class="title function_ invoke__">delete</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-路由保护"><a href="#1-4-路由保护" class="headerlink" title="1.4 路由保护"></a>1.4 路由保护</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;auth:sanctum&#x27;</span>)-&gt;<span class="title function_ invoke__">group</span>(function () &#123;</span><br><span class="line">    <span class="title class_">Route</span>::<span class="title function_ invoke__">post</span>(<span class="string">&#x27;/messages&#x27;</span>, [<span class="title class_">MessageController</span>::<span class="variable language_">class</span>, <span class="string">&#x27;store&#x27;</span>]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-获取当前用户"><a href="#1-5-获取当前用户" class="headerlink" title="1.5 获取当前用户"></a>1.5 获取当前用户</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;id</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-6-关键点"><a href="#1-6-关键点" class="headerlink" title="1.6 关键点"></a>1.6 关键点</h3><table>
+<thead>
+<tr>
+<th>要点</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>密码哈希</td>
+<td>Model 的 <code>$casts = [&#39;password&#39; =&gt; &#39;hashed&#39;]</code> 自动处理</td>
+</tr>
+<tr>
+<td>Token 返回</td>
+<td><code>$token-&gt;plainTextToken</code>（不是 <code>$token</code>）</td>
+</tr>
+<tr>
+<td>多设备</td>
+<td>每个设备独立 token，登出只删当前设备</td>
+</tr>
+<tr>
+<td>哈希存储</td>
+<td>数据库不存明文，防止泄露后被直接使用</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="二、数据库关系"><a href="#二、数据库关系" class="headerlink" title="二、数据库关系"></a>二、数据库关系</h2><h3 id="2-1-一对多关系"><a href="#2-1-一对多关系" class="headerlink" title="2.1 一对多关系"></a>2.1 一对多关系</h3><p><strong>User Model：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">messages</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">hasMany</span>(<span class="title class_">Message</span>::<span class="variable language_">class</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Message Model：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">user</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">belongsTo</span>(<span class="title class_">User</span>::<span class="variable language_">class</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-预加载（避免-N-1）"><a href="#2-2-预加载（避免-N-1）" class="headerlink" title="2.2 预加载（避免 N+1）"></a>2.2 预加载（避免 N+1）</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不用预加载（N+1 问题）</span></span><br><span class="line"><span class="variable">$messages</span> = <span class="title class_">Message</span>::<span class="title function_ invoke__">all</span>();</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$messages</span> <span class="keyword">as</span> <span class="variable">$message</span>) &#123;</span><br><span class="line">    <span class="variable">$message</span>-&gt;user;  <span class="comment">// 每条留言都查一次用户</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用预加载（只查 2 次）</span></span><br><span class="line"><span class="variable">$messages</span> = <span class="title class_">Message</span>::<span class="title function_ invoke__">with</span>(<span class="string">&#x27;user&#x27;</span>)-&gt;<span class="title function_ invoke__">get</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-关联用户"><a href="#2-3-关联用户" class="headerlink" title="2.3 关联用户"></a>2.3 关联用户</h3><p><strong>数据库添加字段：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER TABLE</span> messages <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> user_id <span class="type">BIGINT</span> UNSIGNED <span class="keyword">NULL</span>;</span><br><span class="line"><span class="keyword">ALTER TABLE</span> messages <span class="keyword">ADD CONSTRAINT</span> fk_user </span><br><span class="line"><span class="keyword">FOREIGN KEY</span> (user_id) <span class="keyword">REFERENCES</span> users(id) <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">SET</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建时自动关联：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$validated</span>[<span class="string">&#x27;user_id&#x27;</span>] = <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;id;</span><br><span class="line"><span class="variable">$message</span> = <span class="title class_">Message</span>::<span class="title function_ invoke__">create</span>(<span class="variable">$validated</span>);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="三、中间件权限控制"><a href="#三、中间件权限控制" class="headerlink" title="三、中间件权限控制"></a>三、中间件权限控制</h2><h3 id="3-1-创建中间件"><a href="#3-1-创建中间件" class="headerlink" title="3.1 创建中间件"></a>3.1 创建中间件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:middleware CheckMessageOwner</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-中间件代码"><a href="#3-2-中间件代码" class="headerlink" title="3.2 中间件代码"></a>3.2 中间件代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span>(<span class="params">Request <span class="variable">$request</span>, <span class="built_in">Closure</span> <span class="variable">$next</span></span>): <span class="title">Response</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$id</span> = <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">query</span>(<span class="string">&#x27;id&#x27;</span>);</span><br><span class="line">    <span class="variable">$message</span> = <span class="title class_">Message</span>::<span class="title function_ invoke__">find</span>(<span class="variable">$id</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable">$message</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([<span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">404</span>, <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;留言不存在&#x27;</span>], <span class="number">404</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$message</span>-&gt;user_id !== <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;id) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([<span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">403</span>, <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;无权删除&#x27;</span>], <span class="number">403</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$next</span>(<span class="variable">$request</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-注册中间件别名（Laravel-11）"><a href="#3-3-注册中间件别名（Laravel-11）" class="headerlink" title="3.3 注册中间件别名（Laravel 11）"></a>3.3 注册中间件别名（Laravel 11）</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bootstrap/app.php</span></span><br><span class="line">-&gt;<span class="title function_ invoke__">withMiddleware</span>(function (Middleware <span class="variable">$middleware</span>): <span class="keyword">void</span> &#123;</span><br><span class="line">    <span class="variable">$middleware</span>-&gt;<span class="title function_ invoke__">alias</span>([</span><br><span class="line">        <span class="string">&#x27;check-message-owner&#x27;</span> =&gt; <span class="title class_">CheckMessageOwner</span>::<span class="variable language_">class</span>,</span><br><span class="line">    ]);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-路由应用中间件"><a href="#3-4-路由应用中间件" class="headerlink" title="3.4 路由应用中间件"></a>3.4 路由应用中间件</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">delete</span>(<span class="string">&#x27;/messages&#x27;</span>, [<span class="title class_">MessageController</span>::<span class="variable language_">class</span>, <span class="string">&#x27;destroy&#x27;</span>])</span><br><span class="line">    -&gt;<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;check-message-owner&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="四、API-资源"><a href="#四、API-资源" class="headerlink" title="四、API 资源"></a>四、API 资源</h2><h3 id="4-1-创建资源类"><a href="#4-1-创建资源类" class="headerlink" title="4.1 创建资源类"></a>4.1 创建资源类</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:resource UserResource</span><br><span class="line">php artisan make:resource MessageResource</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-定义返回字段"><a href="#4-2-定义返回字段" class="headerlink" title="4.2 定义返回字段"></a>4.2 定义返回字段</h3><p><strong>UserResource：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">toArray</span>(<span class="params">Request <span class="variable">$request</span></span>): <span class="title">array</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [</span><br><span class="line">        <span class="string">&#x27;id&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;id,</span><br><span class="line">        <span class="string">&#x27;username&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;username,</span><br><span class="line">        <span class="comment">// 只返回需要的字段，隐藏 email_verified_at、updated_at 等</span></span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>MessageResource（嵌套资源）：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">toArray</span>(<span class="params">Request <span class="variable">$request</span></span>): <span class="title">array</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [</span><br><span class="line">        <span class="string">&#x27;id&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;id,</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;name,</span><br><span class="line">        <span class="string">&#x27;content&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;content,</span><br><span class="line">        <span class="string">&#x27;created_at&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;created_at,</span><br><span class="line">        <span class="string">&#x27;user&#x27;</span> =&gt; <span class="keyword">new</span> <span class="title class_">UserResource</span>(<span class="variable language_">$this</span>-&gt;user),  <span class="comment">// 嵌套</span></span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-使用资源"><a href="#4-3-使用资源" class="headerlink" title="4.3 使用资源"></a>4.3 使用资源</h3><p><strong>单个资源：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MessageResource</span>(<span class="variable">$message</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>资源集合：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="title class_">MessageResource</span>::<span class="title function_ invoke__">collection</span>(<span class="variable">$messages</span>);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="五、分页"><a href="#五、分页" class="headerlink" title="五、分页"></a>五、分页</h2><h3 id="5-1-使用-paginate"><a href="#5-1-使用-paginate" class="headerlink" title="5.1 使用 paginate()"></a>5.1 使用 paginate()</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$messages</span> = <span class="title class_">Message</span>::<span class="title function_ invoke__">latest</span>()-&gt;<span class="title function_ invoke__">with</span>(<span class="string">&#x27;user&#x27;</span>)-&gt;<span class="title function_ invoke__">paginate</span>(<span class="variable">$perPage</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-返回分页数据"><a href="#5-2-返回分页数据" class="headerlink" title="5.2 返回分页数据"></a>5.2 返回分页数据</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="title class_">MessageResource</span>::<span class="title function_ invoke__">collection</span>(<span class="variable">$messages</span>)</span><br><span class="line">    -&gt;<span class="title function_ invoke__">additional</span>([</span><br><span class="line">        <span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>,</span><br><span class="line">        <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;ok&#x27;</span>,</span><br><span class="line">    ]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-返回结构"><a href="#5-3-返回结构" class="headerlink" title="5.3 返回结构"></a>5.3 返回结构</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span>...<span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;links&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;first&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;last&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;prev&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">null</span></span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;next&quot;</span><span class="punctuation">:</span> <span class="string">&quot;...&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;meta&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;current_page&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;last_page&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;per_page&quot;</span><span class="punctuation">:</span> <span class="number">10</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;total&quot;</span><span class="punctuation">:</span> <span class="number">19</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ok&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-4-URL-参数"><a href="#5-4-URL-参数" class="headerlink" title="5.4 URL 参数"></a>5.4 URL 参数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /api/messages?page=2&amp;per_page=10</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="六、表单验证类（Form-Request）"><a href="#六、表单验证类（Form-Request）" class="headerlink" title="六、表单验证类（Form Request）"></a>六、表单验证类（Form Request）</h2><h3 id="6-1-创建-Form-Request"><a href="#6-1-创建-Form-Request" class="headerlink" title="6.1 创建 Form Request"></a>6.1 创建 Form Request</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:request StoreMessageRequest</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-定义验证规则"><a href="#6-2-定义验证规则" class="headerlink" title="6.2 定义验证规则"></a>6.2 定义验证规则</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">authorize</span>(<span class="params"></span>): <span class="title">bool</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;  <span class="comment">// 允许请求</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">rules</span>(<span class="params"></span>): <span class="title">array</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span> =&gt; <span class="string">&#x27;required|max:20&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;email&#x27;</span> =&gt; <span class="string">&#x27;nullable|email&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;content&#x27;</span> =&gt; <span class="string">&#x27;required&#x27;</span>,</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-3-Controller-使用"><a href="#6-3-Controller-使用" class="headerlink" title="6.3 Controller 使用"></a>6.3 Controller 使用</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">store</span>(<span class="params">StoreMessageRequest <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$validated</span> = <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">validated</span>();  <span class="comment">// 获取已验证数据</span></span><br><span class="line">    <span class="variable">$validated</span>[<span class="string">&#x27;user_id&#x27;</span>] = <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;id;</span><br><span class="line">    <span class="variable">$message</span> = <span class="title class_">Message</span>::<span class="title function_ invoke__">create</span>(<span class="variable">$validated</span>);</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-4-对比原生-PHP"><a href="#6-4-对比原生-PHP" class="headerlink" title="6.4 对比原生 PHP"></a>6.4 对比原生 PHP</h3><table>
+<thead>
+<tr>
+<th>原生 PHP</th>
+<th>Laravel Form Request</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Controller 里写验证</td>
+<td>独立 Request 类</td>
+</tr>
+<tr>
+<td><code>$request-&gt;validate([...])</code></td>
+<td><code>$request-&gt;validated()</code></td>
+</tr>
+<tr>
+<td>规则分散</td>
+<td>集中管理</td>
+</tr>
+<tr>
+<td>不可复用</td>
+<td>可复用</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="七、异常处理（统一错误格式）"><a href="#七、异常处理（统一错误格式）" class="headerlink" title="七、异常处理（统一错误格式）"></a>七、异常处理（统一错误格式）</h2><h3 id="7-1-配置位置"><a href="#7-1-配置位置" class="headerlink" title="7.1 配置位置"></a>7.1 配置位置</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bootstrap/app.php</span></span><br><span class="line">-&gt;<span class="title function_ invoke__">withExceptions</span>(function (Exceptions <span class="variable">$exceptions</span>): <span class="keyword">void</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-2-处理验证异常（422）"><a href="#7-2-处理验证异常（422）" class="headerlink" title="7.2 处理验证异常（422）"></a>7.2 处理验证异常（422）</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Validation</span>\<span class="title">ValidationException</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$exceptions</span>-&gt;<span class="title function_ invoke__">render</span>(function (ValidationException <span class="variable">$e</span>, Request <span class="variable">$request</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$request</span>-&gt;<span class="title function_ invoke__">is</span>(<span class="string">&#x27;api/*&#x27;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([</span><br><span class="line">            <span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">422</span>,</span><br><span class="line">            <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="variable">$e</span>-&gt;<span class="title function_ invoke__">getMessage</span>(),</span><br><span class="line">            <span class="string">&#x27;errors&#x27;</span> =&gt; <span class="variable">$e</span>-&gt;<span class="title function_ invoke__">errors</span>(),</span><br><span class="line">        ], <span class="number">422</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-3-处理认证异常（401）"><a href="#7-3-处理认证异常（401）" class="headerlink" title="7.3 处理认证异常（401）"></a>7.3 处理认证异常（401）</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Auth</span>\<span class="title">AuthenticationException</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$exceptions</span>-&gt;<span class="title function_ invoke__">render</span>(function (AuthenticationException <span class="variable">$e</span>, Request <span class="variable">$request</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$request</span>-&gt;<span class="title function_ invoke__">is</span>(<span class="string">&#x27;api/*&#x27;</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([</span><br><span class="line">            <span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">401</span>,</span><br><span class="line">            <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;无权限访问&#x27;</span>,</span><br><span class="line">        ], <span class="number">401</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-4-统一错误格式"><a href="#7-4-统一错误格式" class="headerlink" title="7.4 统一错误格式"></a>7.4 统一错误格式</h3><table>
+<thead>
+<tr>
+<th>错误类型</th>
+<th>返回格式</th>
+<th>HTTP 状态码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>验证失败</td>
+<td><code>&#123;&quot;code&quot;:422,&quot;msg&quot;:&quot;...&quot;,&quot;errors&quot;:&#123;...&#125;&#125;</code></td>
+<td>422</td>
+</tr>
+<tr>
+<td>未登录</td>
+<td><code>&#123;&quot;code&quot;:401,&quot;msg&quot;:&quot;无权限访问&quot;&#125;</code></td>
+<td>401</td>
+</tr>
+<tr>
+<td>无权限</td>
+<td><code>&#123;&quot;code&quot;:403,&quot;msg&quot;:&quot;无权删除&quot;&#125;</code></td>
+<td>403</td>
+</tr>
+<tr>
+<td>资源不存在</td>
+<td><code>&#123;&quot;code&quot;:404,&quot;msg&quot;:&quot;留言不存在&quot;&#125;</code></td>
+<td>404</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="八、常用命令汇总"><a href="#八、常用命令汇总" class="headerlink" title="八、常用命令汇总"></a>八、常用命令汇总</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>php artisan make:request XxxRequest</code></td>
+<td>创建表单验证类</td>
+</tr>
+<tr>
+<td><code>php artisan make:middleware XxxMiddleware</code></td>
+<td>创建中间件</td>
+</tr>
+<tr>
+<td><code>php artisan make:resource XxxResource</code></td>
+<td>创建 API 资源</td>
+</tr>
+<tr>
+<td><code>php artisan test</code></td>
+<td>运行测试</td>
+</tr>
+<tr>
+<td><code>php artisan vendor/bin/pint</code></td>
+<td>修复代码风格</td>
+</tr>
+<tr>
+<td><code>php artisan migrate</code></td>
+<td>执行迁移</td>
+</tr>
+<tr>
+<td><code>php artisan migrate:rollback</code></td>
+<td>回滚迁移</td>
+</tr>
+<tr>
+<td><code>php artisan tinker</code></td>
+<td>REPL 交互环境</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="九、对比原生-PHP"><a href="#九、对比原生-PHP" class="headerlink" title="九、对比原生 PHP"></a>九、对比原生 PHP</h2><table>
+<thead>
+<tr>
+<th>功能</th>
+<th>原生 PHP</th>
+<th>Laravel</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Token 生成</td>
+<td><code>bin2hex(random_bytes(32))</code></td>
+<td><code>$user-&gt;createToken(&#39;api&#39;)</code></td>
+</tr>
+<tr>
+<td>Token 验证</td>
+<td>手写 SQL 查询比对</td>
+<td><code>auth:sanctum</code> 中间件</td>
+</tr>
+<tr>
+<td>关系查询</td>
+<td>手写 JOIN SQL</td>
+<td><code>with(&#39;user&#39;)</code> 预加载</td>
+</tr>
+<tr>
+<td>验证规则</td>
+<td>手写 if 判断</td>
+<td>Form Request 类</td>
+</tr>
+<tr>
+<td>分页</td>
+<td>手写 LIMIT + COUNT</td>
+<td><code>paginate()</code> 自动处理</td>
+</tr>
+<tr>
+<td>错误处理</td>
+<td>各种格式混用</td>
+<td>统一 JSON 格式</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="十、项目文件结构"><a href="#十、项目文件结构" class="headerlink" title="十、项目文件结构"></a>十、项目文件结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">learn-laravel/</span><br><span class="line">├── app/</span><br><span class="line">│   ├── Http/</span><br><span class="line">│   │   ├── Controllers/        # 业务逻辑</span><br><span class="line">│   │   ├── Middleware/         # 中间件</span><br><span class="line">│   │   ├── Requests/           # 表单验证类</span><br><span class="line">│   │   └── Resources/          # API 资源</span><br><span class="line">│   └── Models/                 # Eloquent Model</span><br><span class="line">├── bootstrap/</span><br><span class="line">│   └── app.php                 # 异常处理配置</span><br><span class="line">├── routes/</span><br><span class="line">│   └── api.php                 # API 路由</span><br><span class="line">└── database/</span><br><span class="line">    └── migrations/             # 数据库迁移</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/sanctum">Laravel Sanctum 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/eloquent-relationships">Laravel Eloquent 关系</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/eloquent-resources">Laravel API 资源</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/validation">Laravel 验证</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/errors">Laravel 异常处理</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://my-blog.pages.dev/2026/05/25/hermes-agent-guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/fluid.png">
+      <meta itemprop="name" content="爪子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="爪子的个人博客">
+      <meta itemprop="description" content="一个关于技术、生活和成长的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 爪子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/05/25/hermes-agent-guide/" class="post-title-link" itemprop="url">Hermes Agent 开发指南：构建企业级 AI Agent 平台</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-05-25 15:00:00 / 修改时间：14:34:25" itemprop="dateCreated datePublished" datetime="2026-05-25T15:00:00+08:00">2026-05-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5/" itemprop="url" rel="index"><span itemprop="name">技术实践</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="什么是-Hermes？"><a href="#什么是-Hermes？" class="headerlink" title="什么是 Hermes？"></a>什么是 Hermes？</h2><p>Hermes 是一个强大的 AI Agent 开发框架，专为构建企业级 AI 助手而设计。它提供了：</p>
+<ul>
+<li>🤖 多 Agent 协作能力</li>
+<li>🔧 丰富的工具集成</li>
+<li>💾 持久化记忆系统</li>
+<li>🎯 技能系统（Skills）</li>
+<li>📊 任务管理和调度</li>
+<li>🔌 多平台适配（CLI、Web、IM）</li>
+</ul>
+<h2 id="核心架构"><a href="#核心架构" class="headerlink" title="核心架构"></a>核心架构</h2><h3 id="1-Agent-架构"><a href="#1-Agent-架构" class="headerlink" title="1. Agent 架构"></a>1. Agent 架构</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">Hermes</span> <span class="string">Agent</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Core</span> <span class="string">Engine</span>        <span class="comment"># 核心引擎</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Tool</span> <span class="string">System</span>        <span class="comment"># 工具系统</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Memory</span> <span class="string">System</span>      <span class="comment"># 记忆系统</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Skill</span> <span class="string">System</span>       <span class="comment"># 技能系统</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Session</span> <span class="string">Manager</span>    <span class="comment"># 会话管理</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Platform</span> <span class="string">Adapter</span>   <span class="comment"># 平台适配</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-工具系统"><a href="#2-工具系统" class="headerlink" title="2. 工具系统"></a>2. 工具系统</h3><p>Hermes 提供丰富的内置工具：</p>
+<table>
+<thead>
+<tr>
+<th>工具集</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>browser</strong></td>
+<td>浏览器操作（导航、截图、交互）</td>
+</tr>
+<tr>
+<td><strong>terminal</strong></td>
+<td>命令行执行、脚本运行</td>
+</tr>
+<tr>
+<td><strong>file</strong></td>
+<td>文件读写、搜索、编辑</td>
+</tr>
+<tr>
+<td><strong>web</strong></td>
+<td>网络请求、API 调用</td>
+</tr>
+<tr>
+<td><strong>search</strong></td>
+<td>搜索引擎、信息检索</td>
+</tr>
+<tr>
+<td><strong>vision</strong></td>
+<td>图像识别、视觉理解</td>
+</tr>
+<tr>
+<td><strong>cronjob</strong></td>
+<td>定时任务、调度管理</td>
+</tr>
+</tbody></table>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 克隆项目</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/nousresearch/hermes.git</span><br><span class="line"><span class="built_in">cd</span> hermes</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置</span></span><br><span class="line"><span class="built_in">cp</span> config.example.yaml config.yaml</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># config.yaml</span></span><br><span class="line"><span class="attr">model:</span></span><br><span class="line">  <span class="attr">provider:</span> <span class="string">openrouter</span></span><br><span class="line">  <span class="attr">model:</span> <span class="string">anthropic/claude-sonnet-4</span></span><br><span class="line"></span><br><span class="line"><span class="attr">providers:</span></span><br><span class="line">  <span class="attr">openrouter:</span></span><br><span class="line">    <span class="attr">api_key:</span> <span class="string">$&#123;OPENROUTER_API_KEY&#125;</span></span><br><span class="line">    <span class="attr">base_url:</span> <span class="string">https://openrouter.ai/api/v1</span></span><br><span class="line"></span><br><span class="line"><span class="attr">agents:</span></span><br><span class="line">  <span class="attr">defaults:</span></span><br><span class="line">    <span class="attr">tools:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">browser</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">terminal</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">file</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">web</span></span><br><span class="line">    <span class="attr">max_tokens:</span> <span class="number">4096</span></span><br><span class="line">    <span class="attr">temperature:</span> <span class="number">0.7</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="启动-Agent"><a href="#启动-Agent" class="headerlink" title="启动 Agent"></a>启动 Agent</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># CLI 模式</span></span><br><span class="line">hermes</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定配置</span></span><br><span class="line">hermes --config config.yaml</span><br><span class="line"></span><br><span class="line"><span class="comment"># Web 模式</span></span><br><span class="line">hermes web --port 3000</span><br></pre></td></tr></table></figure>
+
+<h2 id="实战案例"><a href="#实战案例" class="headerlink" title="实战案例"></a>实战案例</h2><h3 id="案例-1：构建开发助手"><a href="#案例-1：构建开发助手" class="headerlink" title="案例 1：构建开发助手"></a>案例 1：构建开发助手</h3><p>创建一个能帮助开发的 Agent：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># skills/dev-assistant/SKILL.md</span></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">name: dev-assistant</span><br><span class="line">description: AI 开发助手，帮助代码开发和调试</span><br><span class="line">triggers:</span><br><span class="line">  - 开发</span><br><span class="line">  - 写代码</span><br><span class="line">  - debug</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开发助手</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 能力</span></span><br><span class="line"><span class="number">1.</span> 代码生成和优化</span><br><span class="line"><span class="number">2.</span> 代码审查</span><br><span class="line"><span class="number">3.</span> Bug 调试</span><br><span class="line"><span class="number">4.</span> 测试生成</span><br><span class="line"><span class="number">5.</span> 文档编写</span><br><span class="line"></span><br><span class="line"><span class="comment">## 工作流程</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 代码生成</span></span><br><span class="line"><span class="number">1.</span> 理解需求</span><br><span class="line"><span class="number">2.</span> 设计方案</span><br><span class="line"><span class="number">3.</span> 生成代码</span><br><span class="line"><span class="number">4.</span> 运行测试</span><br><span class="line"><span class="number">5.</span> 优化改进</span><br><span class="line"></span><br><span class="line"><span class="comment">### Bug 调试</span></span><br><span class="line"><span class="number">1.</span> 分析错误信息</span><br><span class="line"><span class="number">2.</span> 定位问题代码</span><br><span class="line"><span class="number">3.</span> 提出修复方案</span><br><span class="line"><span class="number">4.</span> 实施修复</span><br><span class="line"><span class="number">5.</span> 验证修复</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用户：帮我创建一个用户登录 API</span></span><br><span class="line">hermes&gt; 帮我创建一个用户登录 API</span><br><span class="line"></span><br><span class="line"><span class="comment"># Agent 会自动：</span></span><br><span class="line"><span class="comment"># 1. 创建 API 接口</span></span><br><span class="line"><span class="comment"># 2. 添加参数验证</span></span><br><span class="line"><span class="comment"># 3. 实现认证逻辑</span></span><br><span class="line"><span class="comment"># 4. 生成测试代码</span></span><br><span class="line"><span class="comment"># 5. 编写 API 文档</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="案例-2：多-Agent-协作"><a href="#案例-2：多-Agent-协作" class="headerlink" title="案例 2：多 Agent 协作"></a>案例 2：多 Agent 协作</h3><p>使用 <code>delegate_task</code> 创建多 Agent 协作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 代码审查流程</span></span><br><span class="line"><span class="keyword">from</span> hermes <span class="keyword">import</span> Agent, Task</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建专家 Agent</span></span><br><span class="line">architect = Agent(</span><br><span class="line">    role=<span class="string">&quot;架构师&quot;</span>,</span><br><span class="line">    goal=<span class="string">&quot;审查架构设计&quot;</span>,</span><br><span class="line">    tools=[<span class="string">&quot;file&quot;</span>, <span class="string">&quot;search&quot;</span>]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">reviewer = Agent(</span><br><span class="line">    role=<span class="string">&quot;代码审查员&quot;</span>,</span><br><span class="line">    goal=<span class="string">&quot;检查代码质量&quot;</span>,</span><br><span class="line">    tools=[<span class="string">&quot;file&quot;</span>, <span class="string">&quot;search&quot;</span>]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">tester = Agent(</span><br><span class="line">    role=<span class="string">&quot;测试工程师&quot;</span>,</span><br><span class="line">    goal=<span class="string">&quot;验证测试覆盖&quot;</span>,</span><br><span class="line">    tools=[<span class="string">&quot;terminal&quot;</span>, <span class="string">&quot;file&quot;</span>]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分配任务</span></span><br><span class="line">tasks = [</span><br><span class="line">    Task(</span><br><span class="line">        description=<span class="string">&quot;审查项目架构&quot;</span>,</span><br><span class="line">        agent=architect</span><br><span class="line">    ),</span><br><span class="line">    Task(</span><br><span class="line">        description=<span class="string">&quot;检查代码质量&quot;</span>,</span><br><span class="line">        agent=reviewer</span><br><span class="line">    ),</span><br><span class="line">    Task(</span><br><span class="line">        description=<span class="string">&quot;验证测试覆盖&quot;</span>,</span><br><span class="line">        agent=tester</span><br><span class="line">    )</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行</span></span><br><span class="line">result = delegate_task(tasks=tasks)</span><br></pre></td></tr></table></figure>
+
+<h3 id="案例-3：创建自动化工作流"><a href="#案例-3：创建自动化工作流" class="headerlink" title="案例 3：创建自动化工作流"></a>案例 3：创建自动化工作流</h3><p>使用 Cronjob 创建定时任务：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建日报生成任务</span></span><br><span class="line">cronjob(</span><br><span class="line">    action=<span class="string">&#x27;create&#x27;</span>,</span><br><span class="line">    name=<span class="string">&#x27;daily-report&#x27;</span>,</span><br><span class="line">    schedule=<span class="string">&#x27;0 9 * * *&#x27;</span>,  <span class="comment"># 每天早上 9 点</span></span><br><span class="line">    prompt=<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    生成今日工作日报：</span></span><br><span class="line"><span class="string">    1. 统计 Git 提交记录</span></span><br><span class="line"><span class="string">    2. 分析任务完成情况</span></span><br><span class="line"><span class="string">    3. 生成进度报告</span></span><br><span class="line"><span class="string">    4. 发送到团队群</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span>,</span><br><span class="line">    skills=[<span class="string">&#x27;git-analyzer&#x27;</span>, <span class="string">&#x27;report-generator&#x27;</span>],</span><br><span class="line">    deliver=<span class="string">&#x27;telegram:team_group&#x27;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="技能系统（Skills）"><a href="#技能系统（Skills）" class="headerlink" title="技能系统（Skills）"></a>技能系统（Skills）</h2><h3 id="创建自定义技能"><a href="#创建自定义技能" class="headerlink" title="创建自定义技能"></a>创建自定义技能</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># skills/code-review/SKILL.md</span></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">name: code-review</span><br><span class="line">description: 代码审查技能</span><br><span class="line">triggers:</span><br><span class="line"><span class="bullet">  -</span> 审查代码</span><br><span class="line"><span class="section">  - code review</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 代码审查流程</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 触发条件</span></span><br><span class="line">用户请求审查代码</span><br><span class="line"></span><br><span class="line"><span class="section">## 执行步骤</span></span><br><span class="line"></span><br><span class="line"><span class="section">### 1. 收集代码</span></span><br><span class="line">使用 <span class="code">`search_files`</span> 搜索需要审查的文件</span><br><span class="line"></span><br><span class="line"><span class="section">### 2. 静态分析</span></span><br><span class="line"><span class="bullet">-</span> 检查代码规范</span><br><span class="line"><span class="bullet">-</span> 检查潜在 Bug</span><br><span class="line"><span class="bullet">-</span> 检查安全问题</span><br><span class="line"></span><br><span class="line"><span class="section">### 3. 生成报告</span></span><br><span class="line">输出格式化的审查报告</span><br><span class="line"></span><br><span class="line"><span class="section">## 输出模板</span></span><br><span class="line"></span><br><span class="line"><span class="code">```markdown</span></span><br><span class="line"><span class="code"># 代码审查报告</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">## 概览</span></span><br><span class="line"><span class="code">- 文件数：X</span></span><br><span class="line"><span class="code">- 问题数：Y</span></span><br><span class="line"><span class="code">- 严重程度：高/中/低</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">## 问题列表</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">### 文件：src/api/users.js</span></span><br><span class="line"><span class="code">- ⚠️ Line 45: 潜在的 SQL 注入风险</span></span><br><span class="line"><span class="code">- 💡 Line 78: 建议使用异步方法</span></span><br><span class="line"><span class="code">- ✅ Line 92: 良好的错误处理</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">## 改进建议</span></span><br><span class="line"><span class="code">...</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 使用技能</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line"># 方式一：直接调用</span><br><span class="line">hermes&gt; 使用 code-review 技能审查 src/api 目录</span><br><span class="line"></span><br><span class="line"># 方式二：自动触发</span><br><span class="line">hermes&gt; 审查一下最近的代码改动</span><br><span class="line"># Agent 会自动识别并加载 code-review 技能</span><br></pre></td></tr></table></figure>
+
+<h2 id="记忆系统"><a href="#记忆系统" class="headerlink" title="记忆系统"></a>记忆系统</h2><h3 id="用户记忆（User-Memory）"><a href="#用户记忆（User-Memory）" class="headerlink" title="用户记忆（User Memory）"></a>用户记忆（User Memory）</h3><p>存储用户偏好和习惯：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">memory(</span><br><span class="line">    action=<span class="string">&#x27;add&#x27;</span>,</span><br><span class="line">    target=<span class="string">&#x27;user&#x27;</span>,</span><br><span class="line">    content=<span class="string">&#x27;用户偏好简洁的回复风格&#x27;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="会话记忆（Session-Memory）"><a href="#会话记忆（Session-Memory）" class="headerlink" title="会话记忆（Session Memory）"></a>会话记忆（Session Memory）</h3><p>自动保存会话历史：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 搜索历史会话</span></span><br><span class="line">session_search(</span><br><span class="line">    query=<span class="string">&quot;讨论过的架构方案&quot;</span>,</span><br><span class="line">    limit=<span class="number">3</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="持久化技能（Skill-Memory）"><a href="#持久化技能（Skill-Memory）" class="headerlink" title="持久化技能（Skill Memory）"></a>持久化技能（Skill Memory）</h3><p>保存可复用的程序：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建技能</span></span><br><span class="line">skill_manage(</span><br><span class="line">    action=<span class="string">&#x27;create&#x27;</span>,</span><br><span class="line">    name=<span class="string">&#x27;api-generator&#x27;</span>,</span><br><span class="line">    content=<span class="string">&#x27;快速生成 REST API 的模板&#x27;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="平台适配"><a href="#平台适配" class="headerlink" title="平台适配"></a>平台适配</h2><h3 id="Telegram-Bot"><a href="#Telegram-Bot" class="headerlink" title="Telegram Bot"></a>Telegram Bot</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># config.yaml</span></span><br><span class="line"><span class="attr">platforms:</span></span><br><span class="line">  <span class="attr">telegram:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">bot_token:</span> <span class="string">$&#123;TELEGRAM_BOT_TOKEN&#125;</span></span><br><span class="line">    <span class="attr">allowed_users:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">123456789</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Discord-Bot"><a href="#Discord-Bot" class="headerlink" title="Discord Bot"></a>Discord Bot</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">platforms:</span></span><br><span class="line">  <span class="attr">discord:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">bot_token:</span> <span class="string">$&#123;DISCORD_BOT_TOKEN&#125;</span></span><br><span class="line">    <span class="attr">channels:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;engineering&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;general&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Web-Interface"><a href="#Web-Interface" class="headerlink" title="Web Interface"></a>Web Interface</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动 Web 界面</span></span><br><span class="line">hermes web --port 3000</span><br><span class="line"></span><br><span class="line"><span class="comment"># 访问</span></span><br><span class="line">open http://localhost:3000</span><br></pre></td></tr></table></figure>
+
+<h2 id="高级功能"><a href="#高级功能" class="headerlink" title="高级功能"></a>高级功能</h2><h3 id="1-子任务委托"><a href="#1-子任务委托" class="headerlink" title="1. 子任务委托"></a>1. 子任务委托</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">delegate_task(</span><br><span class="line">    tasks=[</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;goal&quot;</span>: <span class="string">&quot;分析用户需求&quot;</span>,</span><br><span class="line">            <span class="string">&quot;toolsets&quot;</span>: [<span class="string">&quot;web&quot;</span>, <span class="string">&quot;search&quot;</span>]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;goal&quot;</span>: <span class="string">&quot;设计技术方案&quot;</span>,</span><br><span class="line">            <span class="string">&quot;toolsets&quot;</span>: [<span class="string">&quot;file&quot;</span>, <span class="string">&quot;search&quot;</span>]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;goal&quot;</span>: <span class="string">&quot;实现代码&quot;</span>,</span><br><span class="line">            <span class="string">&quot;toolsets&quot;</span>: [<span class="string">&quot;terminal&quot;</span>, <span class="string">&quot;file&quot;</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    role=<span class="string">&quot;orchestrator&quot;</span>  <span class="comment"># 编排者模式</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-流式执行"><a href="#2-流式执行" class="headerlink" title="2. 流式执行"></a>2. 流式执行</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 实时输出执行过程</span></span><br><span class="line">result = agent.run(</span><br><span class="line">    prompt=<span class="string">&quot;重构整个项目&quot;</span>,</span><br><span class="line">    stream=<span class="literal">True</span>,</span><br><span class="line">    on_progress=<span class="keyword">lambda</span> x: <span class="built_in">print</span>(x)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-上下文压缩"><a href="#3-上下文压缩" class="headerlink" title="3. 上下文压缩"></a>3. 上下文压缩</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">agents:</span></span><br><span class="line">  <span class="attr">defaults:</span></span><br><span class="line">    <span class="attr">compaction:</span></span><br><span class="line">      <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">reserveTokensFloor:</span> <span class="number">20000</span></span><br><span class="line">      <span class="attr">strategy:</span> <span class="string">summarize</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><h3 id="1-技能设计原则"><a href="#1-技能设计原则" class="headerlink" title="1. 技能设计原则"></a>1. 技能设计原则</h3><ul>
+<li><strong>单一职责</strong>：每个技能专注一件事</li>
+<li><strong>可复用</strong>：设计通用的技能模板</li>
+<li><strong>可测试</strong>：包含验证步骤</li>
+<li><strong>文档化</strong>：清晰的使用说明</li>
+</ul>
+<h3 id="2-工具使用规范"><a href="#2-工具使用规范" class="headerlink" title="2. 工具使用规范"></a>2. 工具使用规范</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ✅ 好的实践</span></span><br><span class="line"><span class="comment"># 明确指定工具</span></span><br><span class="line">Agent(</span><br><span class="line">    tools=[<span class="string">&quot;file&quot;</span>, <span class="string">&quot;search&quot;</span>],  <span class="comment"># 只启用需要的工具</span></span><br><span class="line">    ...</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ❌ 不好的实践</span></span><br><span class="line"><span class="comment"># 启用所有工具（性能差、成本高）</span></span><br><span class="line">Agent(</span><br><span class="line">    tools=<span class="string">&quot;all&quot;</span>,</span><br><span class="line">    ...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-错误处理"><a href="#3-错误处理" class="headerlink" title="3. 错误处理"></a>3. 错误处理</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    result = agent.run(prompt)</span><br><span class="line"><span class="keyword">except</span> TokenLimitExceeded:</span><br><span class="line">    <span class="comment"># 压缩上下文</span></span><br><span class="line">    agent.compact()</span><br><span class="line">    result = agent.run(prompt)</span><br><span class="line"><span class="keyword">except</span> ToolExecutionError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="comment"># 回退或重试</span></span><br><span class="line">    logger.error(<span class="string">f&quot;Tool error: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><h3 id="1-Token-优化"><a href="#1-Token-优化" class="headerlink" title="1. Token 优化"></a>1. Token 优化</h3><ul>
+<li>使用 <code>reserveTokensFloor</code> 保留缓冲</li>
+<li>定期压缩上下文</li>
+<li>使用 <code>.hermesignore</code> 排除大文件</li>
+</ul>
+<h3 id="2-并发控制"><a href="#2-并发控制" class="headerlink" title="2. 并发控制"></a>2. 并发控制</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">delegation:</span></span><br><span class="line">  <span class="attr">max_concurrent_children:</span> <span class="number">3</span>  <span class="comment"># 最多 3 个并发子任务</span></span><br><span class="line">  <span class="attr">max_spawn_depth:</span> <span class="number">1</span>          <span class="comment"># 限制嵌套深度</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-缓存策略"><a href="#3-缓存策略" class="headerlink" title="3. 缓存策略"></a>3. 缓存策略</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">cache:</span></span><br><span class="line">  <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">ttl:</span> <span class="number">3600</span>  <span class="comment"># 1 小时</span></span><br><span class="line">  <span class="attr">maxSize:</span> <span class="string">100MB</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="与-CrewAI-对比"><a href="#与-CrewAI-对比" class="headerlink" title="与 CrewAI 对比"></a>与 CrewAI 对比</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Hermes</th>
+<th>CrewAI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>企业级</strong></td>
+<td>✅ 完整框架</td>
+<td>⚠️ 需要自己扩展</td>
+</tr>
+<tr>
+<td><strong>记忆系统</strong></td>
+<td>✅ 内置</td>
+<td>⚠️ 需要配置</td>
+</tr>
+<tr>
+<td><strong>技能系统</strong></td>
+<td>✅ 强大</td>
+<td>❌ 无</td>
+</tr>
+<tr>
+<td><strong>多平台</strong></td>
+<td>✅ 支持</td>
+<td>❌ 无</td>
+</tr>
+<tr>
+<td><strong>工具数量</strong></td>
+<td>50+</td>
+<td>20+</td>
+</tr>
+<tr>
+<td><strong>学习曲线</strong></td>
+<td>中等</td>
+<td>简单</td>
+</tr>
+</tbody></table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Hermes 是构建企业级 AI Agent 的最佳选择：</p>
+<ul>
+<li>✅ 开箱即用的完整方案</li>
+<li>✅ 强大的工具和技能系统</li>
+<li>✅ 灵活的多 Agent 协作</li>
+<li>✅ 持久化记忆和会话管理</li>
+<li>✅ 多平台适配</li>
+</ul>
+<h2 id="推荐资源"><a href="#推荐资源" class="headerlink" title="推荐资源"></a>推荐资源</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://hermes-agent.nousresearch.com/docs">Hermes 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nousresearch/hermes">GitHub 仓库</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nousresearch/hermes-examples">示例项目</a></li>
+</ul>
+<hr>
+<p><strong>下一步</strong>：尝试用 Hermes 构建你的第一个 AI Agent！</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://my-blog.pages.dev/2026/05/25/claude-code-practice/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/fluid.png">
+      <meta itemprop="name" content="爪子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="爪子的个人博客">
+      <meta itemprop="description" content="一个关于技术、生活和成长的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 爪子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/05/25/claude-code-practice/" class="post-title-link" itemprop="url">Claude Code 实战指南：AI 驱动的开发新范式</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-05-25 14:30:00 / 修改时间：14:32:42" itemprop="dateCreated datePublished" datetime="2026-05-25T14:30:00+08:00">2026-05-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5/" itemprop="url" rel="index"><span itemprop="name">技术实践</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 AI 辅助开发的时代，Claude Code 正在重新定义我们写代码的方式。作为一个强大的 AI 编程助手，它不仅能生成代码，更能理解上下文、重构项目、甚至完成复杂的开发任务。</p>
+<h2 id="什么是-Claude-Code？"><a href="#什么是-Claude-Code？" class="headerlink" title="什么是 Claude Code？"></a>什么是 Claude Code？</h2><p>Claude Code 是 Anthropic 推出的命令行 AI 编程助手，基于 Claude 模型。它能够：</p>
+<ul>
+<li>✅ 理解整个项目结构</li>
+<li>✅ 生成高质量代码</li>
+<li>✅ 重构和优化代码</li>
+<li>✅ 编写测试用例</li>
+<li>✅ 解释复杂逻辑</li>
+</ul>
+<h2 id="安装与配置"><a href="#安装与配置" class="headerlink" title="安装与配置"></a>安装与配置</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># macOS/Linux</span></span><br><span class="line">curl -fsSL https://claude.ai/install.sh | sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或使用 npm</span></span><br><span class="line">npm install -g @anthropic/claude-code</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置-API-Key"><a href="#配置-API-Key" class="headerlink" title="配置 API Key"></a>配置 API Key</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置环境变量</span></span><br><span class="line"><span class="built_in">export</span> ANTHROPIC_API_KEY=<span class="string">&quot;your-api-key-here&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或在项目根目录创建 .env 文件</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;ANTHROPIC_API_KEY=your-api-key&quot;</span> &gt; .<span class="built_in">env</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="实战案例"><a href="#实战案例" class="headerlink" title="实战案例"></a>实战案例</h2><h3 id="案例-1：快速创建-REST-API"><a href="#案例-1：快速创建-REST-API" class="headerlink" title="案例 1：快速创建 REST API"></a>案例 1：快速创建 REST API</h3><p><strong>场景</strong>：需要创建一个用户管理的 REST API</p>
+<p><strong>Prompt</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">创建一个用户管理 API，包含以下功能：</span><br><span class="line">- GET /users - 获取用户列表</span><br><span class="line">- POST /users - 创建用户</span><br><span class="line">- PUT /users/:id - 更新用户</span><br><span class="line">- DELETE /users/:id - 删除用户</span><br><span class="line"></span><br><span class="line">使用 Express.js，包含参数验证和错误处理</span><br></pre></td></tr></table></figure>
+
+<p><strong>Claude Code 生成</strong>（几秒钟完成）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; body, validationResult &#125; = <span class="built_in">require</span>(<span class="string">&#x27;express-validator&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">json</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用户数据存储</span></span><br><span class="line"><span class="keyword">let</span> users = [];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取用户列表</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/users&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="title function_">json</span>(&#123;</span><br><span class="line">    <span class="attr">success</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">data</span>: users,</span><br><span class="line">    <span class="attr">count</span>: users.<span class="property">length</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建用户</span></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&#x27;/users&#x27;</span>,</span><br><span class="line">  [</span><br><span class="line">    <span class="title function_">body</span>(<span class="string">&#x27;name&#x27;</span>).<span class="title function_">notEmpty</span>().<span class="title function_">withMessage</span>(<span class="string">&#x27;姓名不能为空&#x27;</span>),</span><br><span class="line">    <span class="title function_">body</span>(<span class="string">&#x27;email&#x27;</span>).<span class="title function_">isEmail</span>().<span class="title function_">withMessage</span>(<span class="string">&#x27;邮箱格式不正确&#x27;</span>)</span><br><span class="line">  ],</span><br><span class="line">  <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> errors = <span class="title function_">validationResult</span>(req);</span><br><span class="line">    <span class="keyword">if</span> (!errors.<span class="title function_">isEmpty</span>()) &#123;</span><br><span class="line">      <span class="keyword">return</span> res.<span class="title function_">status</span>(<span class="number">400</span>).<span class="title function_">json</span>(&#123;</span><br><span class="line">        <span class="attr">success</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">errors</span>: errors.<span class="title function_">array</span>()</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> user = &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="title class_">Date</span>.<span class="title function_">now</span>().<span class="title function_">toString</span>(),</span><br><span class="line">      <span class="attr">name</span>: req.<span class="property">body</span>.<span class="property">name</span>,</span><br><span class="line">      <span class="attr">email</span>: req.<span class="property">body</span>.<span class="property">email</span>,</span><br><span class="line">      <span class="attr">createdAt</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    users.<span class="title function_">push</span>(user);</span><br><span class="line">    res.<span class="title function_">status</span>(<span class="number">201</span>).<span class="title function_">json</span>(&#123;</span><br><span class="line">      <span class="attr">success</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">data</span>: user</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更新用户</span></span><br><span class="line">app.<span class="title function_">put</span>(<span class="string">&#x27;/users/:id&#x27;</span>,</span><br><span class="line">  [</span><br><span class="line">    <span class="title function_">body</span>(<span class="string">&#x27;name&#x27;</span>).<span class="title function_">optional</span>().<span class="title function_">notEmpty</span>(),</span><br><span class="line">    <span class="title function_">body</span>(<span class="string">&#x27;email&#x27;</span>).<span class="title function_">optional</span>().<span class="title function_">isEmail</span>()</span><br><span class="line">  ],</span><br><span class="line">  <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> errors = <span class="title function_">validationResult</span>(req);</span><br><span class="line">    <span class="keyword">if</span> (!errors.<span class="title function_">isEmpty</span>()) &#123;</span><br><span class="line">      <span class="keyword">return</span> res.<span class="title function_">status</span>(<span class="number">400</span>).<span class="title function_">json</span>(&#123;</span><br><span class="line">        <span class="attr">success</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">errors</span>: errors.<span class="title function_">array</span>()</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> userIndex = users.<span class="title function_">findIndex</span>(<span class="function"><span class="params">u</span> =&gt;</span> u.<span class="property">id</span> === req.<span class="property">params</span>.<span class="property">id</span>);</span><br><span class="line">    <span class="keyword">if</span> (userIndex === -<span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> res.<span class="title function_">status</span>(<span class="number">404</span>).<span class="title function_">json</span>(&#123;</span><br><span class="line">        <span class="attr">success</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">message</span>: <span class="string">&#x27;用户不存在&#x27;</span></span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    users[userIndex] = &#123;</span><br><span class="line">      ...users[userIndex],</span><br><span class="line">      ...req.<span class="property">body</span>,</span><br><span class="line">      <span class="attr">updatedAt</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    res.<span class="title function_">json</span>(&#123;</span><br><span class="line">      <span class="attr">success</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">data</span>: users[userIndex]</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除用户</span></span><br><span class="line">app.<span class="title function_">delete</span>(<span class="string">&#x27;/users/:id&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> userIndex = users.<span class="title function_">findIndex</span>(<span class="function"><span class="params">u</span> =&gt;</span> u.<span class="property">id</span> === req.<span class="property">params</span>.<span class="property">id</span>);</span><br><span class="line">  <span class="keyword">if</span> (userIndex === -<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> res.<span class="title function_">status</span>(<span class="number">404</span>).<span class="title function_">json</span>(&#123;</span><br><span class="line">      <span class="attr">success</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="attr">message</span>: <span class="string">&#x27;用户不存在&#x27;</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  users.<span class="title function_">splice</span>(userIndex, <span class="number">1</span>);</span><br><span class="line">  res.<span class="title function_">json</span>(&#123;</span><br><span class="line">    <span class="attr">success</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">message</span>: <span class="string">&#x27;删除成功&#x27;</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Server running on port 3000&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="案例-2：重构遗留代码"><a href="#案例-2：重构遗留代码" class="headerlink" title="案例 2：重构遗留代码"></a>案例 2：重构遗留代码</h3><p><strong>场景</strong>：有一段复杂的回调地狱代码</p>
+<p><strong>原始代码</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">getUser</span>(userId, <span class="keyword">function</span>(<span class="params">err, user</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="title function_">handleError</span>(err);</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">getOrders</span>(user.<span class="property">id</span>, <span class="keyword">function</span>(<span class="params">err, orders</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="title function_">handleError</span>(err);</span><br><span class="line">    </span><br><span class="line">    <span class="title function_">processOrders</span>(orders, <span class="keyword">function</span>(<span class="params">err, results</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="title function_">handleError</span>(err);</span><br><span class="line">      </span><br><span class="line">      <span class="title function_">sendEmail</span>(user.<span class="property">email</span>, results, <span class="keyword">function</span>(<span class="params">err</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="title function_">handleError</span>(err);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Done&#x27;</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>Prompt</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">将这段回调地狱代码重构为 Promise 和 async/await</span><br></pre></td></tr></table></figure>
+
+<p><strong>Claude Code 重构</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">processUserOrders</span>(<span class="params">userId</span>) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> user = <span class="keyword">await</span> <span class="title function_">getUser</span>(userId);</span><br><span class="line">    <span class="keyword">const</span> orders = <span class="keyword">await</span> <span class="title function_">getOrders</span>(user.<span class="property">id</span>);</span><br><span class="line">    <span class="keyword">const</span> results = <span class="keyword">await</span> <span class="title function_">processOrders</span>(orders);</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">sendEmail</span>(user.<span class="property">email</span>, results);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Done&#x27;</span>);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="title function_">handleError</span>(err);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="案例-3：自动生成测试"><a href="#案例-3：自动生成测试" class="headerlink" title="案例 3：自动生成测试"></a>案例 3：自动生成测试</h3><p><strong>Prompt</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">为上面的用户 API 生成完整的单元测试</span><br><span class="line">使用 Jest 框架</span><br></pre></td></tr></table></figure>
+
+<p><strong>Claude Code 生成</strong>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> request = <span class="built_in">require</span>(<span class="string">&#x27;supertest&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="built_in">require</span>(<span class="string">&#x27;./app&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="title function_">describe</span>(<span class="string">&#x27;Users API&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">beforeEach</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 重置用户数据</span></span><br><span class="line">    users = [];</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">describe</span>(<span class="string">&#x27;GET /users&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">it</span>(<span class="string">&#x27;should return empty array when no users&#x27;</span>, <span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">request</span>(app).<span class="title function_">get</span>(<span class="string">&#x27;/users&#x27;</span>);</span><br><span class="line">      <span class="title function_">expect</span>(res.<span class="property">status</span>).<span class="title function_">toBe</span>(<span class="number">200</span>);</span><br><span class="line">      <span class="title function_">expect</span>(res.<span class="property">body</span>.<span class="property">success</span>).<span class="title function_">toBe</span>(<span class="literal">true</span>);</span><br><span class="line">      <span class="title function_">expect</span>(res.<span class="property">body</span>.<span class="property">data</span>).<span class="title function_">toEqual</span>([]);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="title function_">it</span>(<span class="string">&#x27;should return users list&#x27;</span>, <span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">      <span class="comment">// 先创建一个用户</span></span><br><span class="line">      <span class="keyword">await</span> <span class="title function_">request</span>(app)</span><br><span class="line">        .<span class="title function_">post</span>(<span class="string">&#x27;/users&#x27;</span>)</span><br><span class="line">        .<span class="title function_">send</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;Test&#x27;</span>, <span class="attr">email</span>: <span class="string">&#x27;test@example.com&#x27;</span> &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">request</span>(app).<span class="title function_">get</span>(<span class="string">&#x27;/users&#x27;</span>);</span><br><span class="line">      <span class="title function_">expect</span>(res.<span class="property">body</span>.<span class="property">count</span>).<span class="title function_">toBe</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">describe</span>(<span class="string">&#x27;POST /users&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">it</span>(<span class="string">&#x27;should create a new user&#x27;</span>, <span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">request</span>(app)</span><br><span class="line">        .<span class="title function_">post</span>(<span class="string">&#x27;/users&#x27;</span>)</span><br><span class="line">        .<span class="title function_">send</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;John&#x27;</span>, <span class="attr">email</span>: <span class="string">&#x27;john@example.com&#x27;</span> &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="title function_">expect</span>(res.<span class="property">status</span>).<span class="title function_">toBe</span>(<span class="number">201</span>);</span><br><span class="line">      <span class="title function_">expect</span>(res.<span class="property">body</span>.<span class="property">success</span>).<span class="title function_">toBe</span>(<span class="literal">true</span>);</span><br><span class="line">      <span class="title function_">expect</span>(res.<span class="property">body</span>.<span class="property">data</span>.<span class="property">name</span>).<span class="title function_">toBe</span>(<span class="string">&#x27;John&#x27;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="title function_">it</span>(<span class="string">&#x27;should validate email format&#x27;</span>, <span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">request</span>(app)</span><br><span class="line">        .<span class="title function_">post</span>(<span class="string">&#x27;/users&#x27;</span>)</span><br><span class="line">        .<span class="title function_">send</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;John&#x27;</span>, <span class="attr">email</span>: <span class="string">&#x27;invalid-email&#x27;</span> &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="title function_">expect</span>(res.<span class="property">status</span>).<span class="title function_">toBe</span>(<span class="number">400</span>);</span><br><span class="line">      <span class="title function_">expect</span>(res.<span class="property">body</span>.<span class="property">success</span>).<span class="title function_">toBe</span>(<span class="literal">false</span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="title function_">it</span>(<span class="string">&#x27;should require name&#x27;</span>, <span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">request</span>(app)</span><br><span class="line">        .<span class="title function_">post</span>(<span class="string">&#x27;/users&#x27;</span>)</span><br><span class="line">        .<span class="title function_">send</span>(&#123; <span class="attr">email</span>: <span class="string">&#x27;john@example.com&#x27;</span> &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="title function_">expect</span>(res.<span class="property">status</span>).<span class="title function_">toBe</span>(<span class="number">400</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">describe</span>(<span class="string">&#x27;PUT /users/:id&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">it</span>(<span class="string">&#x27;should update existing user&#x27;</span>, <span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">      <span class="comment">// 创建用户</span></span><br><span class="line">      <span class="keyword">const</span> createRes = <span class="keyword">await</span> <span class="title function_">request</span>(app)</span><br><span class="line">        .<span class="title function_">post</span>(<span class="string">&#x27;/users&#x27;</span>)</span><br><span class="line">        .<span class="title function_">send</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;John&#x27;</span>, <span class="attr">email</span>: <span class="string">&#x27;john@example.com&#x27;</span> &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> userId = createRes.<span class="property">body</span>.<span class="property">data</span>.<span class="property">id</span>;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 更新用户</span></span><br><span class="line">      <span class="keyword">const</span> updateRes = <span class="keyword">await</span> <span class="title function_">request</span>(app)</span><br><span class="line">        .<span class="title function_">put</span>(<span class="string">`/users/<span class="subst">$&#123;userId&#125;</span>`</span>)</span><br><span class="line">        .<span class="title function_">send</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;John Updated&#x27;</span> &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="title function_">expect</span>(updateRes.<span class="property">status</span>).<span class="title function_">toBe</span>(<span class="number">200</span>);</span><br><span class="line">      <span class="title function_">expect</span>(updateRes.<span class="property">body</span>.<span class="property">data</span>.<span class="property">name</span>).<span class="title function_">toBe</span>(<span class="string">&#x27;John Updated&#x27;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="title function_">it</span>(<span class="string">&#x27;should return 404 for non-existing user&#x27;</span>, <span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">request</span>(app)</span><br><span class="line">        .<span class="title function_">put</span>(<span class="string">&#x27;/users/non-existing-id&#x27;</span>)</span><br><span class="line">        .<span class="title function_">send</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;Updated&#x27;</span> &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="title function_">expect</span>(res.<span class="property">status</span>).<span class="title function_">toBe</span>(<span class="number">404</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">describe</span>(<span class="string">&#x27;DELETE /users/:id&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">it</span>(<span class="string">&#x27;should delete existing user&#x27;</span>, <span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> createRes = <span class="keyword">await</span> <span class="title function_">request</span>(app)</span><br><span class="line">        .<span class="title function_">post</span>(<span class="string">&#x27;/users&#x27;</span>)</span><br><span class="line">        .<span class="title function_">send</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;John&#x27;</span>, <span class="attr">email</span>: <span class="string">&#x27;john@example.com&#x27;</span> &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> userId = createRes.<span class="property">body</span>.<span class="property">data</span>.<span class="property">id</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> deleteRes = <span class="keyword">await</span> <span class="title function_">request</span>(app).<span class="title function_">delete</span>(<span class="string">`/users/<span class="subst">$&#123;userId&#125;</span>`</span>);</span><br><span class="line">      <span class="title function_">expect</span>(deleteRes.<span class="property">status</span>).<span class="title function_">toBe</span>(<span class="number">200</span>);</span><br><span class="line">      <span class="title function_">expect</span>(deleteRes.<span class="property">body</span>.<span class="property">success</span>).<span class="title function_">toBe</span>(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 验证已删除</span></span><br><span class="line">      <span class="keyword">const</span> getRes = <span class="keyword">await</span> <span class="title function_">request</span>(app).<span class="title function_">get</span>(<span class="string">&#x27;/users&#x27;</span>);</span><br><span class="line">      <span class="title function_">expect</span>(getRes.<span class="property">body</span>.<span class="property">count</span>).<span class="title function_">toBe</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><h3 id="1-清晰的-Prompt"><a href="#1-清晰的-Prompt" class="headerlink" title="1. 清晰的 Prompt"></a>1. 清晰的 Prompt</h3><p>❌ <strong>差的 Prompt</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">写个登录功能</span><br></pre></td></tr></table></figure>
+
+<p>✅ <strong>好的 Prompt</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">实现用户登录功能，要求：</span><br><span class="line">1. 使用 JWT 认证</span><br><span class="line">2. 密码使用 bcrypt 加密</span><br><span class="line">3. 包含参数验证（邮箱、密码）</span><br><span class="line">4. 错误处理：用户不存在、密码错误、服务器错误</span><br><span class="line">5. 返回用户信息和 token</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-上下文理解"><a href="#2-上下文理解" class="headerlink" title="2. 上下文理解"></a>2. 上下文理解</h3><p>Claude Code 能理解项目结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">查看 src/auth 目录，理解当前的认证逻辑，</span><br><span class="line">然后添加 &quot;记住我&quot; 功能，保持 7 天登录状态</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-渐进式开发"><a href="#3-渐进式开发" class="headerlink" title="3. 渐进式开发"></a>3. 渐进式开发</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第一步：创建基本功能</span><br><span class="line">第二步：添加参数验证</span><br><span class="line">第三步：添加错误处理</span><br><span class="line">第四步：编写单元测试</span><br><span class="line">第五步：添加文档注释</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-代码审查"><a href="#4-代码审查" class="headerlink" title="4. 代码审查"></a>4. 代码审查</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">审查 src/utils.js 文件：</span><br><span class="line">1. 检查性能问题</span><br><span class="line">2. 检查安全问题</span><br><span class="line">3. 提出优化建议</span><br></pre></td></tr></table></figure>
+
+<h2 id="高级技巧"><a href="#高级技巧" class="headerlink" title="高级技巧"></a>高级技巧</h2><h3 id="1-项目级重构"><a href="#1-项目级重构" class="headerlink" title="1. 项目级重构"></a>1. 项目级重构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">将整个项目从 JavaScript 迁移到 TypeScript</span><br><span class="line">1. 先转换类型定义</span><br><span class="line">2. 然后转换核心模块</span><br><span class="line">3. 最后添加严格模式</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-文档生成"><a href="#2-文档生成" class="headerlink" title="2. 文档生成"></a>2. 文档生成</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">为所有 API 接口生成 OpenAPI 文档</span><br><span class="line">包含请求参数、响应格式、错误码</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-性能优化"><a href="#3-性能优化" class="headerlink" title="3. 性能优化"></a>3. 性能优化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">分析 src/api/users.js 的性能瓶颈</span><br><span class="line">并提出优化方案，包括：</span><br><span class="line">1. 数据库查询优化</span><br><span class="line">2. 缓存策略</span><br><span class="line">3. 并发处理</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="⚠️-安全考虑"><a href="#⚠️-安全考虑" class="headerlink" title="⚠️ 安全考虑"></a>⚠️ 安全考虑</h3><ul>
+<li>不要让 AI 处理敏感数据（密码、密钥等）</li>
+<li>审查生成的代码，特别是安全相关的部分</li>
+<li>使用环境变量存储配置</li>
+</ul>
+<h3 id="⚠️-代码质量"><a href="#⚠️-代码质量" class="headerlink" title="⚠️ 代码质量"></a>⚠️ 代码质量</h3><ul>
+<li>AI 生成的代码需要人工审查</li>
+<li>运行测试确保功能正确</li>
+<li>检查是否符合团队规范</li>
+</ul>
+<h3 id="⚠️-Token-限制"><a href="#⚠️-Token-限制" class="headerlink" title="⚠️ Token 限制"></a>⚠️ Token 限制</h3><ul>
+<li>大文件可能超出 token 限制</li>
+<li>可以分模块处理</li>
+<li>使用 <code>.claudeignore</code> 排除不相关文件</li>
+</ul>
+<h2 id="与其他工具对比"><a href="#与其他工具对比" class="headerlink" title="与其他工具对比"></a>与其他工具对比</h2><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>优势</th>
+<th>劣势</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Claude Code</strong></td>
+<td>理解整个项目、质量高</td>
+<td>需要付费、CLI 操作</td>
+</tr>
+<tr>
+<td>GitHub Copilot</td>
+<td>IDE 集成、实时建议</td>
+<td>上下文有限、代码质量不稳定</td>
+</tr>
+<tr>
+<td>Cursor</td>
+<td>图形界面、易用</td>
+<td>功能相对简单</td>
+</tr>
+<tr>
+<td>ChatGPT</td>
+<td>免费、功能全面</td>
+<td>无法直接操作代码库</td>
+</tr>
+</tbody></table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Claude Code 不是一个替代开发者的工具，而是一个强大的协作伙伴。它能：</p>
+<ul>
+<li>提升开发效率 3-5 倍</li>
+<li>减少重复性工作</li>
+<li>帮助学习和理解新框架</li>
+<li>提供最佳实践建议</li>
+</ul>
+<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.anthropic.com/claude/docs/claude-code">Claude Code 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://example.com/">最佳实践指南</a></li>
+<li><a target="_blank" rel="noopener" href="https://example.com/">常见问题解答</a></li>
+</ul>
+<hr>
+<p><strong>下一步</strong>：尝试用 Claude Code 重构你当前项目的一个模块，体验 AI 辅助开发的魅力！</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2019 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">爪子</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
 </body>
 </html>
