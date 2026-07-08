@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"my-blog.pages.dev","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="记录 Laravel API 开发过程中的关键知识点和常见陷阱，帮助你避免踩坑。  项目背景技术栈：  Laravel 11 Laravel Sanctum（API Token 认证） MySQL 数据库 PHPUnit 测试  项目功能：  用户注册、登录、登出 任务 CRUD（创建、列表、删除） API Token 认证 分页查询  核心知识点Laravel Sanctum 认证机制1. 安">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel API 开发实战：从零到完整任务管理系统">
+<meta property="og:url" content="https://my-blog.pages.dev/2026/07/08/laravel-api-best-practices/index.html">
+<meta property="og:site_name" content="爪子的个人博客">
+<meta property="og:description" content="记录 Laravel API 开发过程中的关键知识点和常见陷阱，帮助你避免踩坑。  项目背景技术栈：  Laravel 11 Laravel Sanctum（API Token 认证） MySQL 数据库 PHPUnit 测试  项目功能：  用户注册、登录、登出 任务 CRUD（创建、列表、删除） API Token 认证 分页查询  核心知识点Laravel Sanctum 认证机制1. 安">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-07-08T07:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-08T08:46:54.969Z">
+<meta property="article:author" content="爪子">
+<meta property="article:tag" content="Laravel">
+<meta property="article:tag" content="PHP">
+<meta property="article:tag" content="API">
+<meta property="article:tag" content="Sanctum">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://my-blog.pages.dev/2026/07/08/laravel-api-best-practices/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://my-blog.pages.dev/2026/07/08/laravel-api-best-practices/","path":"2026/07/08/laravel-api-best-practices/","title":"Laravel API 开发实战：从零到完整任务管理系统"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Laravel API 开发实战：从零到完整任务管理系统 | 爪子的个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">爪子的个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活，分享技术</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">项目背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">核心知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Laravel-Sanctum-%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6"><span class="nav-number">2.1.</span> <span class="nav-text">Laravel Sanctum 认证机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. 安装与配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-User-Model-%E5%BF%85%E9%A1%BB%E5%BC%95%E5%85%A5-HasApiTokens-trait"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. User Model 必须引入 HasApiTokens trait</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Token-%E8%AE%A4%E8%AF%81%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. Token 认证流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Form-Request-%E9%AA%8C%E8%AF%81"><span class="nav-number">2.2.</span> <span class="nav-text">Form Request 验证</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA-Form-Request"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 创建 Form Request</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Controller-%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. Controller 中使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resource-%E8%B5%84%E6%BA%90%E7%B1%BB"><span class="nav-number">2.3.</span> <span class="nav-text">Resource 资源类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.3.1.</span> <span class="nav-text">1. 定义数据格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Controller-%E4%B8%AD%E4%BD%BF%E7%94%A8-1"><span class="nav-number">2.3.2.</span> <span class="nav-text">2. Controller 中使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Eloquent-%E5%85%B3%E7%B3%BB%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.4.</span> <span class="nav-text">Eloquent 关系查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Model-%E5%85%B3%E7%B3%BB%E5%AE%9A%E4%B9%89"><span class="nav-number">2.4.1.</span> <span class="nav-text">1. Model 关系定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8%E5%85%B3%E7%B3%BB%E5%88%9B%E5%BB%BA%E4%BB%BB%E5%8A%A1"><span class="nav-number">2.4.2.</span> <span class="nav-text">2. 使用关系创建任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%9F%A5%E8%AF%A2%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="nav-number">2.4.3.</span> <span class="nav-text">3. 查询当前用户的任务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API-%E5%93%8D%E5%BA%94%E6%A0%BC%E5%BC%8F%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.5.</span> <span class="nav-text">API 响应格式设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%BB%9F%E4%B8%80%E5%93%8D%E5%BA%94%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.5.1.</span> <span class="nav-text">1. 统一响应格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%85%B3%E9%94%AE%E9%97%AE%E9%A2%98%EF%BC%9Acode-%E7%B1%BB%E5%9E%8B%E5%BF%85%E9%A1%BB%E7%BB%9F%E4%B8%80"><span class="nav-number">2.5.2.</span> <span class="nav-text">2. 关键问题：code 类型必须统一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%85%B3%E9%94%AE%E9%97%AE%E9%A2%98%EF%BC%9Akey-%E5%90%8D%E7%A7%B0%E5%BF%85%E9%A1%BB%E7%BB%9F%E4%B8%80"><span class="nav-number">2.5.3.</span> <span class="nav-text">3. 关键问题：key 名称必须统一</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">3.</span> <span class="nav-text">常见错误与解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%99%E8%AF%AF-1%EF%BC%9ACall-to-undefined-method-User-createToken"><span class="nav-number">3.1.</span> <span class="nav-text">错误 1：Call to undefined method User::createToken()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%99%E8%AF%AF-2%EF%BC%9A%E7%94%A8%E6%88%B7-A-%E8%83%BD%E7%9C%8B%E5%88%B0%E7%94%A8%E6%88%B7-B-%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="nav-number">3.2.</span> <span class="nav-text">错误 2：用户 A 能看到用户 B 的任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%99%E8%AF%AF-3%EF%BC%9Awhere-%E6%9D%A1%E4%BB%B6%E8%AF%AF%E7%94%A8-like"><span class="nav-number">3.3.</span> <span class="nav-text">错误 3：where 条件误用 like</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%99%E8%AF%AF-4%EF%BC%9A%E5%88%A0%E9%99%A4%E4%BB%BB%E5%8A%A1%E6%97%B6%E8%AE%BF%E9%97%AE-null-%E5%B1%9E%E6%80%A7%E6%8A%A5%E9%94%99"><span class="nav-number">3.4.</span> <span class="nav-text">错误 4：删除任务时访问 null 属性报错</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">最佳实践总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="爪子"
+      src="/img/fluid.png">
+  <p class="site-author-name" itemprop="name">爪子</p>
+  <div class="site-description" itemprop="description">一个关于技术、生活和成长的个人博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/NiceBeach" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;NiceBeach" rel="noopener me" target="_blank"><i class="fa fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://my-blog.pages.dev/2026/07/08/laravel-api-best-practices/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/fluid.png">
+      <meta itemprop="name" content="爪子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="爪子的个人博客">
+      <meta itemprop="description" content="一个关于技术、生活和成长的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Laravel API 开发实战：从零到完整任务管理系统 | 爪子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Laravel API 开发实战：从零到完整任务管理系统
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-07-08 15:00:00 / 修改时间：16:46:54" itemprop="dateCreated datePublished" datetime="2026-07-08T15:00:00+08:00">2026-07-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>记录 Laravel API 开发过程中的关键知识点和常见陷阱，帮助你避免踩坑。</p>
+</blockquote>
+<h2 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h2><p><strong>技术栈：</strong></p>
+<ul>
+<li>Laravel 11</li>
+<li>Laravel Sanctum（API Token 认证）</li>
+<li>MySQL 数据库</li>
+<li>PHPUnit 测试</li>
+</ul>
+<p><strong>项目功能：</strong></p>
+<ul>
+<li>用户注册、登录、登出</li>
+<li>任务 CRUD（创建、列表、删除）</li>
+<li>API Token 认证</li>
+<li>分页查询</li>
+</ul>
+<h2 id="核心知识点"><a href="#核心知识点" class="headerlink" title="核心知识点"></a>核心知识点</h2><h3 id="Laravel-Sanctum-认证机制"><a href="#Laravel-Sanctum-认证机制" class="headerlink" title="Laravel Sanctum 认证机制"></a>Laravel Sanctum 认证机制</h3><h4 id="1-安装与配置"><a href="#1-安装与配置" class="headerlink" title="1. 安装与配置"></a>1. 安装与配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">composer require laravel/sanctum</span><br><span class="line">php artisan vendor:publish --provider=<span class="string">&quot;Laravel\Sanctum\SanctumServiceProvider&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-User-Model-必须引入-HasApiTokens-trait"><a href="#2-User-Model-必须引入-HasApiTokens-trait" class="headerlink" title="2. User Model 必须引入 HasApiTokens trait"></a>2. User Model 必须引入 HasApiTokens trait</h4><p><strong>❌ 错误示例：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Authenticatable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">HasFactory</span>, <span class="title">Notifiable</span>;</span><br><span class="line">    <span class="comment">// 缺少 HasApiTokens</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用 <code>createToken()</code> 时会报错：<code>Call to undefined method App\Models\User::createToken()</code></p>
+<p><strong>✅ 正确写法：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Laravel</span>\<span class="title">Sanctum</span>\<span class="title">HasApiTokens</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Authenticatable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">HasApiTokens</span>, <span class="title">HasFactory</span>, <span class="title">Notifiable</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>原因：</strong> <code>createToken()</code> 方法定义在 <code>HasApiTokens</code> trait 中，必须显式引入。</p>
+<h4 id="3-Token-认证流程"><a href="#3-Token-认证流程" class="headerlink" title="3. Token 认证流程"></a>3. Token 认证流程</h4><p><strong>注册时创建 Token：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">register</span>(<span class="params">UserRequest <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$user</span> = <span class="title class_">User</span>::<span class="title function_ invoke__">create</span>(<span class="variable">$validated</span>);</span><br><span class="line">    <span class="variable">$token</span> = <span class="variable">$user</span>-&gt;<span class="title function_ invoke__">createToken</span>(<span class="string">&#x27;api-token&#x27;</span>)-&gt;plainTextToken;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([</span><br><span class="line">        <span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>,</span><br><span class="line">        <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;注册成功&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;data&#x27;</span> =&gt; [</span><br><span class="line">            <span class="string">&#x27;user&#x27;</span> =&gt; <span class="keyword">new</span> <span class="title class_">UserResource</span>(<span class="variable">$user</span>),</span><br><span class="line">            <span class="string">&#x27;token&#x27;</span> =&gt; <span class="variable">$token</span>,</span><br><span class="line">        ],</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>登出时删除 Token：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">logout</span>(<span class="params">Request <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;<span class="title function_ invoke__">currentAccessToken</span>()-&gt;<span class="title function_ invoke__">delete</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([</span><br><span class="line">        <span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>,</span><br><span class="line">        <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;登出成功&#x27;</span>,</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Form-Request-验证"><a href="#Form-Request-验证" class="headerlink" title="Form Request 验证"></a>Form Request 验证</h3><h4 id="1-创建-Form-Request"><a href="#1-创建-Form-Request" class="headerlink" title="1. 创建 Form Request"></a>1. 创建 Form Request</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:request UserRequest</span><br><span class="line">php artisan make:request LoginRequest</span><br><span class="line">php artisan make:request TaskRequest</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-Controller-中使用"><a href="#2-Controller-中使用" class="headerlink" title="2. Controller 中使用"></a>2. Controller 中使用</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">store</span>(<span class="params">TaskRequest <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 验证通过后，通过 $request-&gt;validated() 获取验证后的数据</span></span><br><span class="line">    <span class="variable">$task</span> = <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;<span class="title function_ invoke__">tasks</span>()-&gt;<span class="title function_ invoke__">create</span>(<span class="variable">$request</span>-&gt;<span class="title function_ invoke__">validated</span>());</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([</span><br><span class="line">        <span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>,</span><br><span class="line">        <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;创建成功&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;data&#x27;</span> =&gt; <span class="keyword">new</span> <span class="title class_">TaskResource</span>(<span class="variable">$task</span>),</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好处：</strong></p>
+<ul>
+<li>验证逻辑与 Controller 分离</li>
+<li>自动返回 422 错误响应</li>
+<li>代码更清晰、易维护</li>
+</ul>
+<h3 id="Resource-资源类"><a href="#Resource-资源类" class="headerlink" title="Resource 资源类"></a>Resource 资源类</h3><h4 id="1-定义数据格式"><a href="#1-定义数据格式" class="headerlink" title="1. 定义数据格式"></a>1. 定义数据格式</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TaskResource</span> <span class="keyword">extends</span> <span class="title">JsonResource</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">toArray</span>(<span class="params"><span class="variable">$request</span></span>): <span class="title">array</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            <span class="string">&#x27;id&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;id,</span><br><span class="line">            <span class="string">&#x27;title&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;title,</span><br><span class="line">            <span class="string">&#x27;description&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;description,</span><br><span class="line">            <span class="string">&#x27;completed&#x27;</span> =&gt; (<span class="keyword">bool</span>) <span class="variable language_">$this</span>-&gt;completed,  <span class="comment">// 强制转换布尔值</span></span><br><span class="line">            <span class="string">&#x27;created_at&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;created_at-&gt;<span class="title function_ invoke__">toIso8601String</span>(),  <span class="comment">// 统一时间格式</span></span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-Controller-中使用-1"><a href="#2-Controller-中使用-1" class="headerlink" title="2. Controller 中使用"></a>2. Controller 中使用</h4><p><strong>单个资源：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([</span><br><span class="line">    <span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>,</span><br><span class="line">    <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;创建成功&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;data&#x27;</span> =&gt; <span class="keyword">new</span> <span class="title class_">TaskResource</span>(<span class="variable">$task</span>),</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+
+<p><strong>资源集合（列表）：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$tasks</span> = <span class="title function_ invoke__">auth</span>()-&gt;<span class="title function_ invoke__">user</span>()-&gt;<span class="title function_ invoke__">tasks</span>()-&gt;<span class="title function_ invoke__">paginate</span>(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="title class_">TaskResource</span>::<span class="title function_ invoke__">collection</span>(<span class="variable">$tasks</span>)</span><br><span class="line">    -&gt;<span class="title function_ invoke__">additional</span>([</span><br><span class="line">        <span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>,</span><br><span class="line">        <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;获取任务列表成功&#x27;</span>,</span><br><span class="line">    ]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Eloquent-关系查询"><a href="#Eloquent-关系查询" class="headerlink" title="Eloquent 关系查询"></a>Eloquent 关系查询</h3><h4 id="1-Model-关系定义"><a href="#1-Model-关系定义" class="headerlink" title="1. Model 关系定义"></a>1. Model 关系定义</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// User.php</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">tasks</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">hasMany</span>(<span class="title class_">Task</span>::<span class="variable language_">class</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Task.php</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">user</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">belongsTo</span>(<span class="title class_">User</span>::<span class="variable language_">class</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-使用关系创建任务"><a href="#2-使用关系创建任务" class="headerlink" title="2. 使用关系创建任务"></a>2. 使用关系创建任务</h4><p><strong>✅ 推荐写法：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">store</span>(<span class="params">TaskRequest <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$task</span> = <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;<span class="title function_ invoke__">tasks</span>()-&gt;<span class="title function_ invoke__">create</span>(<span class="variable">$request</span>-&gt;<span class="title function_ invoke__">validated</span>());</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([</span><br><span class="line">        <span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>,</span><br><span class="line">        <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;创建成功&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;data&#x27;</span> =&gt; <span class="keyword">new</span> <span class="title class_">TaskResource</span>(<span class="variable">$task</span>),</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好处：</strong></p>
+<ul>
+<li>自动设置 <code>user_id</code></li>
+<li>代码更简洁</li>
+<li>符合 Laravel 最佳实践</li>
+</ul>
+<h4 id="3-查询当前用户的任务"><a href="#3-查询当前用户的任务" class="headerlink" title="3. 查询当前用户的任务"></a>3. 查询当前用户的任务</h4><p><strong>✅ 正确写法：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span>(<span class="params">Request <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$perPage</span> = <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">query</span>(<span class="string">&#x27;per_page&#x27;</span>, <span class="number">5</span>);</span><br><span class="line">    <span class="variable">$tasks</span> = <span class="title class_">Task</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;user_id&#x27;</span>, <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;id)</span><br><span class="line">        -&gt;<span class="title function_ invoke__">latest</span>()</span><br><span class="line">        -&gt;<span class="title function_ invoke__">paginate</span>(<span class="variable">$perPage</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">TaskResource</span>::<span class="title function_ invoke__">collection</span>(<span class="variable">$tasks</span>)</span><br><span class="line">        -&gt;<span class="title function_ invoke__">additional</span>([<span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>, <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;获取任务列表成功&#x27;</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者使用关系查询：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$tasks</span> = <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;<span class="title function_ invoke__">tasks</span>()-&gt;<span class="title function_ invoke__">latest</span>()-&gt;<span class="title function_ invoke__">paginate</span>(<span class="variable">$perPage</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="API-响应格式设计"><a href="#API-响应格式设计" class="headerlink" title="API 响应格式设计"></a>API 响应格式设计</h3><h4 id="1-统一响应格式"><a href="#1-统一响应格式" class="headerlink" title="1. 统一响应格式"></a>1. 统一响应格式</h4><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>响应格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>成功（无数据）</td>
+<td><code>&#123;&quot;code&quot;: 0, &quot;msg&quot;: &quot;操作成功&quot;&#125;</code></td>
+</tr>
+<tr>
+<td>成功（有数据）</td>
+<td><code>&#123;&quot;code&quot;: 0, &quot;msg&quot;: &quot;获取成功&quot;, &quot;data&quot;: &#123;...&#125;&#125;</code></td>
+</tr>
+<tr>
+<td>成功（列表）</td>
+<td><code>&#123;&quot;data&quot;: [...], &quot;meta&quot;: &#123;...&#125;, &quot;code&quot;: 0, &quot;msg&quot;: &quot;获取成功&quot;&#125;</code></td>
+</tr>
+<tr>
+<td>验证错误</td>
+<td><code>&#123;&quot;code&quot;: 422, &quot;msg&quot;: &quot;错误信息&quot;, &quot;errors&quot;: &#123;...&#125;&#125;</code></td>
+</tr>
+<tr>
+<td>认证失败</td>
+<td><code>&#123;&quot;code&quot;: 401, &quot;msg&quot;: &quot;未认证&quot;&#125;</code></td>
+</tr>
+</tbody></table>
+<h4 id="2-关键问题：code-类型必须统一"><a href="#2-关键问题：code-类型必须统一" class="headerlink" title="2. 关键问题：code 类型必须统一"></a>2. 关键问题：code 类型必须统一</h4><p>前端判断：<code>if (data.code === 0)</code> 使用严格相等</p>
+<p><strong>❌ 错误：</strong> 返回字符串 <code>&quot;0&quot;</code> —— <code>&quot;0&quot; === 0</code> 返回 <code>false</code></p>
+<p><strong>✅ 正确：</strong> 返回数字 <code>0</code></p>
+<h4 id="3-关键问题：key-名称必须统一"><a href="#3-关键问题：key-名称必须统一" class="headerlink" title="3. 关键问题：key 名称必须统一"></a>3. 关键问题：key 名称必须统一</h4><p><strong>❌ 错误：</strong> 后端返回 <code>message</code>，前端期望 <code>msg</code></p>
+<p><strong>✅ 正确：</strong> 统一使用 <code>msg</code></p>
+<h2 id="常见错误与解决方案"><a href="#常见错误与解决方案" class="headerlink" title="常见错误与解决方案"></a>常见错误与解决方案</h2><h3 id="错误-1：Call-to-undefined-method-User-createToken"><a href="#错误-1：Call-to-undefined-method-User-createToken" class="headerlink" title="错误 1：Call to undefined method User::createToken()"></a>错误 1：Call to undefined method User::createToken()</h3><p><strong>原因：</strong> User Model 缺少 <code>HasApiTokens</code> trait。</p>
+<p><strong>解决方案：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Laravel</span>\<span class="title">Sanctum</span>\<span class="title">HasApiTokens</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Authenticatable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">HasApiTokens</span>, <span class="title">HasFactory</span>, <span class="title">Notifiable</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="错误-2：用户-A-能看到用户-B-的任务"><a href="#错误-2：用户-A-能看到用户-B-的任务" class="headerlink" title="错误 2：用户 A 能看到用户 B 的任务"></a>错误 2：用户 A 能看到用户 B 的任务</h3><p><strong>原因：</strong> 查询时未过滤 <code>user_id</code>。</p>
+<p><strong>解决方案：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$tasks</span> = <span class="title class_">Task</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;user_id&#x27;</span>, <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;id)-&gt;<span class="title function_ invoke__">paginate</span>(<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="错误-3：where-条件误用-like"><a href="#错误-3：where-条件误用-like" class="headerlink" title="错误 3：where 条件误用 like"></a>错误 3：where 条件误用 like</h3><p><strong>❌ 错误：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Task</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;user_id&#x27;</span>, <span class="string">&#x27;like&#x27;</span>, <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;id)</span><br></pre></td></tr></table></figure>
+
+<p><strong>原因：</strong> <code>like</code> 用于字符串模糊匹配，<code>user_id</code> 是整数。</p>
+<p><strong>✅ 正确：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Task</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;user_id&#x27;</span>, <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;id)</span><br></pre></td></tr></table></figure>
+
+<h3 id="错误-4：删除任务时访问-null-属性报错"><a href="#错误-4：删除任务时访问-null-属性报错" class="headerlink" title="错误 4：删除任务时访问 null 属性报错"></a>错误 4：删除任务时访问 null 属性报错</h3><p><strong>✅ 正确顺序：</strong> 先检查是否存在，再检查权限</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">destroy</span>(<span class="params">Request <span class="variable">$request</span>, <span class="keyword">string</span> <span class="variable">$id</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$task</span> = <span class="title class_">Task</span>::<span class="title function_ invoke__">find</span>(<span class="variable">$id</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 先检查是否存在</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable">$task</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([<span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">404</span>, <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;任务不存在&#x27;</span>], <span class="number">404</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 再检查权限</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$task</span>-&gt;user_id != <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;id) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([<span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">403</span>, <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;无权操作&#x27;</span>], <span class="number">403</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="variable">$task</span>-&gt;<span class="title function_ invoke__">delete</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([<span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>, <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;删除成功&#x27;</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="最佳实践总结"><a href="#最佳实践总结" class="headerlink" title="最佳实践总结"></a>最佳实践总结</h2><p>Laravel API 开发的关键在于：</p>
+<ol>
+<li><strong>认证机制</strong>：理解 Sanctum 的工作原理，正确配置 <code>HasApiTokens</code> trait</li>
+<li><strong>响应格式</strong>：统一 <code>code</code> 类型和 <code>key</code> 名称，避免前端判断失败</li>
+<li><strong>数据查询</strong>：正确使用 Eloquent 关系，确保只查询当前用户的数据</li>
+<li><strong>异常处理</strong>：配置 API 异常处理，返回规范的 JSON 响应</li>
+<li><strong>代码规范</strong>：方法命名统一、引入必要依赖、逻辑顺序正确</li>
+</ol>
+<p>遵循这些最佳实践，可以避免 90% 的常见错误，写出高质量的 Laravel API。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/11.x/sanctum">Laravel Sanctum 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/11.x/eloquent">Laravel Eloquent ORM</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/11.x/eloquent-resources">Laravel Resource 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/11.x/validation#form-request-validation">Laravel Form Request 验证</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Laravel/" rel="tag"># Laravel</a>
+              <a href="/tags/PHP/" rel="tag"># PHP</a>
+              <a href="/tags/API/" rel="tag"># API</a>
+              <a href="/tags/Sanctum/" rel="tag"># Sanctum</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/05/25/hermes-agent-guide/" rel="prev" title="Hermes Agent 开发指南：构建企业级 AI Agent 平台">
+                  <i class="fa fa-angle-left"></i> Hermes Agent 开发指南：构建企业级 AI Agent 平台
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/07/08/laravel-api-learning/" rel="next" title="Laravel API 开发学习笔记">
+                  Laravel API 开发学习笔记 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2019 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">爪子</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

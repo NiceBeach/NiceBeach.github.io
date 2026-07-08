@@ -142,16 +142,16 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -670,6 +670,218 @@
 <li><a target="_blank" rel="noopener" href="https://laravel.com/docs/eloquent-resources">Laravel API 资源</a></li>
 <li><a target="_blank" rel="noopener" href="https://laravel.com/docs/validation">Laravel 验证</a></li>
 <li><a target="_blank" rel="noopener" href="https://laravel.com/docs/errors">Laravel 异常处理</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://my-blog.pages.dev/2026/07/08/laravel-api-best-practices/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/fluid.png">
+      <meta itemprop="name" content="爪子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="爪子的个人博客">
+      <meta itemprop="description" content="一个关于技术、生活和成长的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 爪子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/07/08/laravel-api-best-practices/" class="post-title-link" itemprop="url">Laravel API 开发实战：从零到完整任务管理系统</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-07-08 15:00:00 / 修改时间：16:46:54" itemprop="dateCreated datePublished" datetime="2026-07-08T15:00:00+08:00">2026-07-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>记录 Laravel API 开发过程中的关键知识点和常见陷阱，帮助你避免踩坑。</p>
+</blockquote>
+<h2 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h2><p><strong>技术栈：</strong></p>
+<ul>
+<li>Laravel 11</li>
+<li>Laravel Sanctum（API Token 认证）</li>
+<li>MySQL 数据库</li>
+<li>PHPUnit 测试</li>
+</ul>
+<p><strong>项目功能：</strong></p>
+<ul>
+<li>用户注册、登录、登出</li>
+<li>任务 CRUD（创建、列表、删除）</li>
+<li>API Token 认证</li>
+<li>分页查询</li>
+</ul>
+<h2 id="核心知识点"><a href="#核心知识点" class="headerlink" title="核心知识点"></a>核心知识点</h2><h3 id="Laravel-Sanctum-认证机制"><a href="#Laravel-Sanctum-认证机制" class="headerlink" title="Laravel Sanctum 认证机制"></a>Laravel Sanctum 认证机制</h3><h4 id="1-安装与配置"><a href="#1-安装与配置" class="headerlink" title="1. 安装与配置"></a>1. 安装与配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">composer require laravel/sanctum</span><br><span class="line">php artisan vendor:publish --provider=<span class="string">&quot;Laravel\Sanctum\SanctumServiceProvider&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-User-Model-必须引入-HasApiTokens-trait"><a href="#2-User-Model-必须引入-HasApiTokens-trait" class="headerlink" title="2. User Model 必须引入 HasApiTokens trait"></a>2. User Model 必须引入 HasApiTokens trait</h4><p><strong>❌ 错误示例：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Authenticatable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">HasFactory</span>, <span class="title">Notifiable</span>;</span><br><span class="line">    <span class="comment">// 缺少 HasApiTokens</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用 <code>createToken()</code> 时会报错：<code>Call to undefined method App\Models\User::createToken()</code></p>
+<p><strong>✅ 正确写法：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Laravel</span>\<span class="title">Sanctum</span>\<span class="title">HasApiTokens</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Authenticatable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">HasApiTokens</span>, <span class="title">HasFactory</span>, <span class="title">Notifiable</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>原因：</strong> <code>createToken()</code> 方法定义在 <code>HasApiTokens</code> trait 中，必须显式引入。</p>
+<h4 id="3-Token-认证流程"><a href="#3-Token-认证流程" class="headerlink" title="3. Token 认证流程"></a>3. Token 认证流程</h4><p><strong>注册时创建 Token：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">register</span>(<span class="params">UserRequest <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$user</span> = <span class="title class_">User</span>::<span class="title function_ invoke__">create</span>(<span class="variable">$validated</span>);</span><br><span class="line">    <span class="variable">$token</span> = <span class="variable">$user</span>-&gt;<span class="title function_ invoke__">createToken</span>(<span class="string">&#x27;api-token&#x27;</span>)-&gt;plainTextToken;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([</span><br><span class="line">        <span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>,</span><br><span class="line">        <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;注册成功&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;data&#x27;</span> =&gt; [</span><br><span class="line">            <span class="string">&#x27;user&#x27;</span> =&gt; <span class="keyword">new</span> <span class="title class_">UserResource</span>(<span class="variable">$user</span>),</span><br><span class="line">            <span class="string">&#x27;token&#x27;</span> =&gt; <span class="variable">$token</span>,</span><br><span class="line">        ],</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>登出时删除 Token：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">logout</span>(<span class="params">Request <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;<span class="title function_ invoke__">currentAccessToken</span>()-&gt;<span class="title function_ invoke__">delete</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([</span><br><span class="line">        <span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>,</span><br><span class="line">        <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;登出成功&#x27;</span>,</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Form-Request-验证"><a href="#Form-Request-验证" class="headerlink" title="Form Request 验证"></a>Form Request 验证</h3><h4 id="1-创建-Form-Request"><a href="#1-创建-Form-Request" class="headerlink" title="1. 创建 Form Request"></a>1. 创建 Form Request</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:request UserRequest</span><br><span class="line">php artisan make:request LoginRequest</span><br><span class="line">php artisan make:request TaskRequest</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-Controller-中使用"><a href="#2-Controller-中使用" class="headerlink" title="2. Controller 中使用"></a>2. Controller 中使用</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">store</span>(<span class="params">TaskRequest <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 验证通过后，通过 $request-&gt;validated() 获取验证后的数据</span></span><br><span class="line">    <span class="variable">$task</span> = <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;<span class="title function_ invoke__">tasks</span>()-&gt;<span class="title function_ invoke__">create</span>(<span class="variable">$request</span>-&gt;<span class="title function_ invoke__">validated</span>());</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([</span><br><span class="line">        <span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>,</span><br><span class="line">        <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;创建成功&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;data&#x27;</span> =&gt; <span class="keyword">new</span> <span class="title class_">TaskResource</span>(<span class="variable">$task</span>),</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好处：</strong></p>
+<ul>
+<li>验证逻辑与 Controller 分离</li>
+<li>自动返回 422 错误响应</li>
+<li>代码更清晰、易维护</li>
+</ul>
+<h3 id="Resource-资源类"><a href="#Resource-资源类" class="headerlink" title="Resource 资源类"></a>Resource 资源类</h3><h4 id="1-定义数据格式"><a href="#1-定义数据格式" class="headerlink" title="1. 定义数据格式"></a>1. 定义数据格式</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TaskResource</span> <span class="keyword">extends</span> <span class="title">JsonResource</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">toArray</span>(<span class="params"><span class="variable">$request</span></span>): <span class="title">array</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            <span class="string">&#x27;id&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;id,</span><br><span class="line">            <span class="string">&#x27;title&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;title,</span><br><span class="line">            <span class="string">&#x27;description&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;description,</span><br><span class="line">            <span class="string">&#x27;completed&#x27;</span> =&gt; (<span class="keyword">bool</span>) <span class="variable language_">$this</span>-&gt;completed,  <span class="comment">// 强制转换布尔值</span></span><br><span class="line">            <span class="string">&#x27;created_at&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;created_at-&gt;<span class="title function_ invoke__">toIso8601String</span>(),  <span class="comment">// 统一时间格式</span></span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-Controller-中使用-1"><a href="#2-Controller-中使用-1" class="headerlink" title="2. Controller 中使用"></a>2. Controller 中使用</h4><p><strong>单个资源：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([</span><br><span class="line">    <span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>,</span><br><span class="line">    <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;创建成功&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;data&#x27;</span> =&gt; <span class="keyword">new</span> <span class="title class_">TaskResource</span>(<span class="variable">$task</span>),</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+
+<p><strong>资源集合（列表）：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$tasks</span> = <span class="title function_ invoke__">auth</span>()-&gt;<span class="title function_ invoke__">user</span>()-&gt;<span class="title function_ invoke__">tasks</span>()-&gt;<span class="title function_ invoke__">paginate</span>(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="title class_">TaskResource</span>::<span class="title function_ invoke__">collection</span>(<span class="variable">$tasks</span>)</span><br><span class="line">    -&gt;<span class="title function_ invoke__">additional</span>([</span><br><span class="line">        <span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>,</span><br><span class="line">        <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;获取任务列表成功&#x27;</span>,</span><br><span class="line">    ]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Eloquent-关系查询"><a href="#Eloquent-关系查询" class="headerlink" title="Eloquent 关系查询"></a>Eloquent 关系查询</h3><h4 id="1-Model-关系定义"><a href="#1-Model-关系定义" class="headerlink" title="1. Model 关系定义"></a>1. Model 关系定义</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// User.php</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">tasks</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">hasMany</span>(<span class="title class_">Task</span>::<span class="variable language_">class</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Task.php</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">user</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">belongsTo</span>(<span class="title class_">User</span>::<span class="variable language_">class</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-使用关系创建任务"><a href="#2-使用关系创建任务" class="headerlink" title="2. 使用关系创建任务"></a>2. 使用关系创建任务</h4><p><strong>✅ 推荐写法：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">store</span>(<span class="params">TaskRequest <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$task</span> = <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;<span class="title function_ invoke__">tasks</span>()-&gt;<span class="title function_ invoke__">create</span>(<span class="variable">$request</span>-&gt;<span class="title function_ invoke__">validated</span>());</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([</span><br><span class="line">        <span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>,</span><br><span class="line">        <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;创建成功&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;data&#x27;</span> =&gt; <span class="keyword">new</span> <span class="title class_">TaskResource</span>(<span class="variable">$task</span>),</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>好处：</strong></p>
+<ul>
+<li>自动设置 <code>user_id</code></li>
+<li>代码更简洁</li>
+<li>符合 Laravel 最佳实践</li>
+</ul>
+<h4 id="3-查询当前用户的任务"><a href="#3-查询当前用户的任务" class="headerlink" title="3. 查询当前用户的任务"></a>3. 查询当前用户的任务</h4><p><strong>✅ 正确写法：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span>(<span class="params">Request <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$perPage</span> = <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">query</span>(<span class="string">&#x27;per_page&#x27;</span>, <span class="number">5</span>);</span><br><span class="line">    <span class="variable">$tasks</span> = <span class="title class_">Task</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;user_id&#x27;</span>, <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;id)</span><br><span class="line">        -&gt;<span class="title function_ invoke__">latest</span>()</span><br><span class="line">        -&gt;<span class="title function_ invoke__">paginate</span>(<span class="variable">$perPage</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">TaskResource</span>::<span class="title function_ invoke__">collection</span>(<span class="variable">$tasks</span>)</span><br><span class="line">        -&gt;<span class="title function_ invoke__">additional</span>([<span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>, <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;获取任务列表成功&#x27;</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者使用关系查询：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$tasks</span> = <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;<span class="title function_ invoke__">tasks</span>()-&gt;<span class="title function_ invoke__">latest</span>()-&gt;<span class="title function_ invoke__">paginate</span>(<span class="variable">$perPage</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="API-响应格式设计"><a href="#API-响应格式设计" class="headerlink" title="API 响应格式设计"></a>API 响应格式设计</h3><h4 id="1-统一响应格式"><a href="#1-统一响应格式" class="headerlink" title="1. 统一响应格式"></a>1. 统一响应格式</h4><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>响应格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>成功（无数据）</td>
+<td><code>&#123;&quot;code&quot;: 0, &quot;msg&quot;: &quot;操作成功&quot;&#125;</code></td>
+</tr>
+<tr>
+<td>成功（有数据）</td>
+<td><code>&#123;&quot;code&quot;: 0, &quot;msg&quot;: &quot;获取成功&quot;, &quot;data&quot;: &#123;...&#125;&#125;</code></td>
+</tr>
+<tr>
+<td>成功（列表）</td>
+<td><code>&#123;&quot;data&quot;: [...], &quot;meta&quot;: &#123;...&#125;, &quot;code&quot;: 0, &quot;msg&quot;: &quot;获取成功&quot;&#125;</code></td>
+</tr>
+<tr>
+<td>验证错误</td>
+<td><code>&#123;&quot;code&quot;: 422, &quot;msg&quot;: &quot;错误信息&quot;, &quot;errors&quot;: &#123;...&#125;&#125;</code></td>
+</tr>
+<tr>
+<td>认证失败</td>
+<td><code>&#123;&quot;code&quot;: 401, &quot;msg&quot;: &quot;未认证&quot;&#125;</code></td>
+</tr>
+</tbody></table>
+<h4 id="2-关键问题：code-类型必须统一"><a href="#2-关键问题：code-类型必须统一" class="headerlink" title="2. 关键问题：code 类型必须统一"></a>2. 关键问题：code 类型必须统一</h4><p>前端判断：<code>if (data.code === 0)</code> 使用严格相等</p>
+<p><strong>❌ 错误：</strong> 返回字符串 <code>&quot;0&quot;</code> —— <code>&quot;0&quot; === 0</code> 返回 <code>false</code></p>
+<p><strong>✅ 正确：</strong> 返回数字 <code>0</code></p>
+<h4 id="3-关键问题：key-名称必须统一"><a href="#3-关键问题：key-名称必须统一" class="headerlink" title="3. 关键问题：key 名称必须统一"></a>3. 关键问题：key 名称必须统一</h4><p><strong>❌ 错误：</strong> 后端返回 <code>message</code>，前端期望 <code>msg</code></p>
+<p><strong>✅ 正确：</strong> 统一使用 <code>msg</code></p>
+<h2 id="常见错误与解决方案"><a href="#常见错误与解决方案" class="headerlink" title="常见错误与解决方案"></a>常见错误与解决方案</h2><h3 id="错误-1：Call-to-undefined-method-User-createToken"><a href="#错误-1：Call-to-undefined-method-User-createToken" class="headerlink" title="错误 1：Call to undefined method User::createToken()"></a>错误 1：Call to undefined method User::createToken()</h3><p><strong>原因：</strong> User Model 缺少 <code>HasApiTokens</code> trait。</p>
+<p><strong>解决方案：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Laravel</span>\<span class="title">Sanctum</span>\<span class="title">HasApiTokens</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Authenticatable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">HasApiTokens</span>, <span class="title">HasFactory</span>, <span class="title">Notifiable</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="错误-2：用户-A-能看到用户-B-的任务"><a href="#错误-2：用户-A-能看到用户-B-的任务" class="headerlink" title="错误 2：用户 A 能看到用户 B 的任务"></a>错误 2：用户 A 能看到用户 B 的任务</h3><p><strong>原因：</strong> 查询时未过滤 <code>user_id</code>。</p>
+<p><strong>解决方案：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$tasks</span> = <span class="title class_">Task</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;user_id&#x27;</span>, <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;id)-&gt;<span class="title function_ invoke__">paginate</span>(<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="错误-3：where-条件误用-like"><a href="#错误-3：where-条件误用-like" class="headerlink" title="错误 3：where 条件误用 like"></a>错误 3：where 条件误用 like</h3><p><strong>❌ 错误：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Task</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;user_id&#x27;</span>, <span class="string">&#x27;like&#x27;</span>, <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;id)</span><br></pre></td></tr></table></figure>
+
+<p><strong>原因：</strong> <code>like</code> 用于字符串模糊匹配，<code>user_id</code> 是整数。</p>
+<p><strong>✅ 正确：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Task</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;user_id&#x27;</span>, <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;id)</span><br></pre></td></tr></table></figure>
+
+<h3 id="错误-4：删除任务时访问-null-属性报错"><a href="#错误-4：删除任务时访问-null-属性报错" class="headerlink" title="错误 4：删除任务时访问 null 属性报错"></a>错误 4：删除任务时访问 null 属性报错</h3><p><strong>✅ 正确顺序：</strong> 先检查是否存在，再检查权限</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">destroy</span>(<span class="params">Request <span class="variable">$request</span>, <span class="keyword">string</span> <span class="variable">$id</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$task</span> = <span class="title class_">Task</span>::<span class="title function_ invoke__">find</span>(<span class="variable">$id</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 先检查是否存在</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable">$task</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([<span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">404</span>, <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;任务不存在&#x27;</span>], <span class="number">404</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 再检查权限</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$task</span>-&gt;user_id != <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;id) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([<span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">403</span>, <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;无权操作&#x27;</span>], <span class="number">403</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="variable">$task</span>-&gt;<span class="title function_ invoke__">delete</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([<span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>, <span class="string">&#x27;msg&#x27;</span> =&gt; <span class="string">&#x27;删除成功&#x27;</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="最佳实践总结"><a href="#最佳实践总结" class="headerlink" title="最佳实践总结"></a>最佳实践总结</h2><p>Laravel API 开发的关键在于：</p>
+<ol>
+<li><strong>认证机制</strong>：理解 Sanctum 的工作原理，正确配置 <code>HasApiTokens</code> trait</li>
+<li><strong>响应格式</strong>：统一 <code>code</code> 类型和 <code>key</code> 名称，避免前端判断失败</li>
+<li><strong>数据查询</strong>：正确使用 Eloquent 关系，确保只查询当前用户的数据</li>
+<li><strong>异常处理</strong>：配置 API 异常处理，返回规范的 JSON 响应</li>
+<li><strong>代码规范</strong>：方法命名统一、引入必要依赖、逻辑顺序正确</li>
+</ol>
+<p>遵循这些最佳实践，可以避免 90% 的常见错误，写出高质量的 Laravel API。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/11.x/sanctum">Laravel Sanctum 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/11.x/eloquent">Laravel Eloquent ORM</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/11.x/eloquent-resources">Laravel Resource 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/11.x/validation#form-request-validation">Laravel Form Request 验证</a></li>
 </ul>
 
       
