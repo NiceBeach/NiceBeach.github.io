@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"my-blog.pages.dev","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="学习日期：2026-07-09项目：task-api（任务管理 API）技术栈：Laravel 11 + Sanctum + SQLite  学习目标完成情况原定学习目标：  Eloquent 高级查询 API 文档工具  完成进度：100% ✅ Eloquent 高级查询详解1. 预加载（解决 N+1 查询问题）N+1 问题示例12345678910&#x2F;&#x2F; ❌ 错误：N+1 问题（11 次查询）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel API 开发学习总结">
+<meta property="og:url" content="https://my-blog.pages.dev/2026/07/09/laravel-api-learning-summary/index.html">
+<meta property="og:site_name" content="爪子的个人博客">
+<meta property="og:description" content="学习日期：2026-07-09项目：task-api（任务管理 API）技术栈：Laravel 11 + Sanctum + SQLite  学习目标完成情况原定学习目标：  Eloquent 高级查询 API 文档工具  完成进度：100% ✅ Eloquent 高级查询详解1. 预加载（解决 N+1 查询问题）N+1 问题示例12345678910&#x2F;&#x2F; ❌ 错误：N+1 问题（11 次查询）">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-07-09T10:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-09T06:51:44.153Z">
+<meta property="article:author" content="爪子">
+<meta property="article:tag" content="Laravel">
+<meta property="article:tag" content="API">
+<meta property="article:tag" content="Eloquent">
+<meta property="article:tag" content="Scribe">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://my-blog.pages.dev/2026/07/09/laravel-api-learning-summary/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://my-blog.pages.dev/2026/07/09/laravel-api-learning-summary/","path":"2026/07/09/laravel-api-learning-summary/","title":"Laravel API 开发学习总结"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Laravel API 开发学习总结 | 爪子的个人博客</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">爪子的个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活，分享技术</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87%E5%AE%8C%E6%88%90%E6%83%85%E5%86%B5"><span class="nav-number">1.</span> <span class="nav-text">学习目标完成情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Eloquent-%E9%AB%98%E7%BA%A7%E6%9F%A5%E8%AF%A2%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">Eloquent 高级查询详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%A2%84%E5%8A%A0%E8%BD%BD%EF%BC%88%E8%A7%A3%E5%86%B3-N-1-%E6%9F%A5%E8%AF%A2%E9%97%AE%E9%A2%98%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">1. 预加载（解决 N+1 查询问题）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#N-1-%E9%97%AE%E9%A2%98%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.1.1.</span> <span class="nav-text">N+1 问题示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96"><span class="nav-number">2.1.2.</span> <span class="nav-text">预加载优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93%EF%BC%88%E9%81%BF%E5%85%8D%E9%A2%9D%E5%A4%96%E6%9F%A5%E8%AF%A2%EF%BC%89"><span class="nav-number">2.1.3.</span> <span class="nav-text">条件渲染（避免额外查询）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%85%B3%E8%81%94%E7%BB%9F%E8%AE%A1%EF%BC%88withCount%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">2. 关联统计（withCount）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95"><span class="nav-number">2.2.1.</span> <span class="nav-text">基础用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E6%AE%B5%E5%90%8D-%E7%AD%9B%E9%80%89%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.2.2.</span> <span class="nav-text">自定义字段名 + 筛选条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#withCount-vs-count-%E5%AF%B9%E6%AF%94"><span class="nav-number">2.2.3.</span> <span class="nav-text">withCount vs count() 对比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0"><span class="nav-number">2.3.</span> <span class="nav-text">3. 聚合函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7%EF%BC%88Scribe%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">API 文档工具（Scribe）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85-Scribe"><span class="nav-number">3.1.</span> <span class="nav-text">1. 安装 Scribe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%85%8D%E7%BD%AE%E8%AE%A4%E8%AF%81"><span class="nav-number">3.2.</span> <span class="nav-text">2. 配置认证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%B7%BB%E5%8A%A0%E6%96%87%E6%A1%A3%E6%B3%A8%E8%A7%A3"><span class="nav-number">3.3.</span> <span class="nav-text">3. 添加文档注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%A0%87%E7%AD%BE"><span class="nav-number">3.4.</span> <span class="nav-text">4. 常用注解标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%94%9F%E6%88%90%E6%96%87%E6%A1%A3"><span class="nav-number">3.5.</span> <span class="nav-text">5. 生成文档</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%88%90%E6%9E%9C%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">项目成果总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%BF%A1%E6%81%AF"><span class="nav-number">4.1.</span> <span class="nav-text">项目信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8A%9F%E8%83%BD"><span class="nav-number">4.2.</span> <span class="nav-text">实现功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E8%83%BD%E6%8E%8C%E6%8F%A1%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">技能掌握总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%B2%E6%8E%8C%E6%8F%A1%E7%9A%84-Laravel-API-%E6%8A%80%E8%83%BD"><span class="nav-number">5.1.</span> <span class="nav-text">已掌握的 Laravel API 技能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E4%BD%93%E6%8E%8C%E6%8F%A1%E6%B0%B4%E5%B9%B3"><span class="nav-number">5.2.</span> <span class="nav-text">总体掌握水平</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">核心知识点总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96"><span class="nav-number">6.1.</span> <span class="nav-text">1. 预加载优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-withCount-%E7%9A%84%E5%B7%A7%E5%A6%99%E7%94%A8%E6%B3%95"><span class="nav-number">6.2.</span> <span class="nav-text">2. withCount 的巧妙用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-API-%E6%96%87%E6%A1%A3%E8%87%AA%E5%8A%A8%E5%8C%96"><span class="nav-number">6.3.</span> <span class="nav-text">3. API 文档自动化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%BA%90"><span class="nav-number">7.</span> <span class="nav-text">参考资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="爪子"
+      src="/img/fluid.png">
+  <p class="site-author-name" itemprop="name">爪子</p>
+  <div class="site-description" itemprop="description">一个关于技术、生活和成长的个人博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/NiceBeach" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;NiceBeach" rel="noopener me" target="_blank"><i class="fa fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://my-blog.pages.dev/2026/07/09/laravel-api-learning-summary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/fluid.png">
+      <meta itemprop="name" content="爪子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="爪子的个人博客">
+      <meta itemprop="description" content="一个关于技术、生活和成长的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Laravel API 开发学习总结 | 爪子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Laravel API 开发学习总结
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-07-09 18:00:00 / 修改时间：14:51:44" itemprop="dateCreated datePublished" datetime="2026-07-09T18:00:00+08:00">2026-07-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">后端学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>学习日期：2026-07-09<br>项目：task-api（任务管理 API）<br>技术栈：Laravel 11 + Sanctum + SQLite</p>
+</blockquote>
+<h2 id="学习目标完成情况"><a href="#学习目标完成情况" class="headerlink" title="学习目标完成情况"></a>学习目标完成情况</h2><p><strong>原定学习目标：</strong></p>
+<ul>
+<li>Eloquent 高级查询</li>
+<li>API 文档工具</li>
+</ul>
+<p><strong>完成进度：100% ✅</strong></p>
+<h2 id="Eloquent-高级查询详解"><a href="#Eloquent-高级查询详解" class="headerlink" title="Eloquent 高级查询详解"></a>Eloquent 高级查询详解</h2><h3 id="1-预加载（解决-N-1-查询问题）"><a href="#1-预加载（解决-N-1-查询问题）" class="headerlink" title="1. 预加载（解决 N+1 查询问题）"></a>1. 预加载（解决 N+1 查询问题）</h3><h4 id="N-1-问题示例"><a href="#N-1-问题示例" class="headerlink" title="N+1 问题示例"></a>N+1 问题示例</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ❌ 错误：N+1 问题（11 次查询）</span></span><br><span class="line"><span class="variable">$tasks</span> = <span class="title class_">Task</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;user_id&#x27;</span>, <span class="variable">$userId</span>)-&gt;<span class="title function_ invoke__">get</span>();</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$tasks</span> <span class="keyword">as</span> <span class="variable">$task</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$task</span>-&gt;user-&gt;name;  <span class="comment">// 每次循环都查询数据库</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ✅ 正确：预加载（只有 2 次查询）</span></span><br><span class="line"><span class="variable">$tasks</span> = <span class="title class_">Task</span>::<span class="title function_ invoke__">with</span>(<span class="string">&#x27;user:id,name,email&#x27;</span>)</span><br><span class="line">    -&gt;<span class="title function_ invoke__">where</span>(<span class="string">&#x27;user_id&#x27;</span>, <span class="variable">$userId</span>)</span><br><span class="line">    -&gt;<span class="title function_ invoke__">get</span>();</span><br></pre></td></tr></table></figure>
+
+<h4 id="预加载优化"><a href="#预加载优化" class="headerlink" title="预加载优化"></a>预加载优化</h4><ul>
+<li><code>with(&#39;user&#39;)</code> - 预加载关联数据</li>
+<li><code>user:id,name,email</code> - 只选择需要的字段</li>
+<li>查询次数从 <code>1+N</code> 降低到 <code>2</code></li>
+</ul>
+<h4 id="条件渲染（避免额外查询）"><a href="#条件渲染（避免额外查询）" class="headerlink" title="条件渲染（避免额外查询）"></a>条件渲染（避免额外查询）</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// TaskResource.php</span></span><br><span class="line"><span class="string">&#x27;user&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">when</span>(<span class="variable">$this</span>-&gt;<span class="title function_ invoke__">relationLoaded</span>(<span class="string">&#x27;user&#x27;</span>), function () &#123;</span><br><span class="line">    <span class="keyword">return</span> [</span><br><span class="line">        <span class="string">&#x27;id&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;user-&gt;id,</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;user-&gt;name,</span><br><span class="line">        <span class="string">&#x27;email&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;user-&gt;email,</span><br><span class="line">    ];</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-关联统计（withCount）"><a href="#2-关联统计（withCount）" class="headerlink" title="2. 关联统计（withCount）"></a>2. 关联统计（withCount）</h3><h4 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 统计每个用户的任务数量</span></span><br><span class="line"><span class="variable">$users</span> = <span class="title class_">User</span>::<span class="title function_ invoke__">withCount</span>(<span class="string">&#x27;tasks&#x27;</span>)-&gt;<span class="title function_ invoke__">get</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回结果</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;id&quot;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;用户A&quot;</span>,</span><br><span class="line">    <span class="string">&quot;tasks_count&quot;</span>: <span class="number">5</span>  <span class="comment">// 自动添加统计字段</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="自定义字段名-筛选条件"><a href="#自定义字段名-筛选条件" class="headerlink" title="自定义字段名 + 筛选条件"></a>自定义字段名 + 筛选条件</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$users</span> = <span class="title class_">User</span>::<span class="title function_ invoke__">withCount</span>(<span class="string">&#x27;tasks&#x27;</span>)  <span class="comment">// 总任务数</span></span><br><span class="line">    -&gt;<span class="title function_ invoke__">withCount</span>([<span class="string">&#x27;tasks as completed_tasks&#x27;</span> =&gt; function (<span class="variable">$query</span>) &#123;</span><br><span class="line">        <span class="variable">$query</span>-&gt;<span class="title function_ invoke__">where</span>(<span class="string">&#x27;status&#x27;</span>, <span class="string">&#x27;completed&#x27;</span>);  <span class="comment">// 已完成任务数</span></span><br><span class="line">    &#125;])</span><br><span class="line">    -&gt;<span class="title function_ invoke__">withCount</span>([<span class="string">&#x27;tasks as pending_tasks&#x27;</span> =&gt; function (<span class="variable">$query</span>) &#123;</span><br><span class="line">        <span class="variable">$query</span>-&gt;<span class="title function_ invoke__">where</span>(<span class="string">&#x27;status&#x27;</span>, <span class="string">&#x27;pending&#x27;</span>);  <span class="comment">// 未完成任务数</span></span><br><span class="line">    &#125;])</span><br><span class="line">    -&gt;<span class="title function_ invoke__">get</span>([<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;email&#x27;</span>]);</span><br></pre></td></tr></table></figure>
+
+<h4 id="withCount-vs-count-对比"><a href="#withCount-vs-count-对比" class="headerlink" title="withCount vs count() 对比"></a>withCount vs count() 对比</h4><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>返回类型</th>
+<th>适用场景</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>withCount</strong></td>
+<td>模型列表</td>
+<td>查询父模型 + 统计子模型</td>
+<td>用户列表 + 每个用户的任务数</td>
+</tr>
+<tr>
+<td><strong>count()</strong></td>
+<td>数字</td>
+<td>直接统计数量</td>
+<td>总任务数、已完成数</td>
+</tr>
+</tbody></table>
+<h3 id="3-聚合函数"><a href="#3-聚合函数" class="headerlink" title="3. 聚合函数"></a>3. 聚合函数</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$stats</span> = [</span><br><span class="line">    <span class="string">&#x27;total_tasks&#x27;</span> =&gt; <span class="title class_">Task</span>::<span class="title function_ invoke__">count</span>(),  <span class="comment">// 总任务数</span></span><br><span class="line">    <span class="string">&#x27;completed_tasks&#x27;</span> =&gt; <span class="title class_">Task</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;status&#x27;</span>, <span class="string">&#x27;completed&#x27;</span>)-&gt;<span class="title function_ invoke__">count</span>(),  <span class="comment">// 已完成</span></span><br><span class="line">    <span class="string">&#x27;pending_tasks&#x27;</span> =&gt; <span class="title class_">Task</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;status&#x27;</span>, <span class="string">&#x27;pending&#x27;</span>)-&gt;<span class="title function_ invoke__">count</span>(),  <span class="comment">// 未完成</span></span><br><span class="line">    <span class="string">&#x27;avg_completion_rate&#x27;</span> =&gt; <span class="title function_ invoke__">round</span>(</span><br><span class="line">        <span class="title class_">Task</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;status&#x27;</span>, <span class="string">&#x27;completed&#x27;</span>)-&gt;<span class="title function_ invoke__">count</span>() / <span class="title function_ invoke__">max</span>(<span class="title class_">Task</span>::<span class="title function_ invoke__">count</span>(), <span class="number">1</span>) * <span class="number">100</span>, </span><br><span class="line">        <span class="number">2</span></span><br><span class="line">    ),  <span class="comment">// 完成率（保留2位小数）</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<h2 id="API-文档工具（Scribe）"><a href="#API-文档工具（Scribe）" class="headerlink" title="API 文档工具（Scribe）"></a>API 文档工具（Scribe）</h2><h3 id="1-安装-Scribe"><a href="#1-安装-Scribe" class="headerlink" title="1. 安装 Scribe"></a>1. 安装 Scribe</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Herd/task-api</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">composer require knuckleswtf/scribe</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发布配置文件</span></span><br><span class="line">php artisan vendor:publish --tag=scribe-config</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-配置认证"><a href="#2-配置认证" class="headerlink" title="2. 配置认证"></a>2. 配置认证</h3><p>修改 <code>config/scribe.php</code>：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;auth&#x27;</span> =&gt; [</span><br><span class="line">    <span class="string">&#x27;enabled&#x27;</span> =&gt; <span class="literal">true</span>,  <span class="comment">// 启用认证</span></span><br><span class="line">    <span class="string">&#x27;default&#x27;</span> =&gt; <span class="literal">false</span>,</span><br><span class="line">    <span class="string">&#x27;in&#x27;</span> =&gt; <span class="title class_">AuthIn</span>::<span class="variable constant_">BEARER</span>-&gt;value,  <span class="comment">// Bearer Token 认证</span></span><br><span class="line">    <span class="string">&#x27;name&#x27;</span> =&gt; <span class="string">&#x27;Authorization&#x27;</span>,  <span class="comment">// 认证头名称</span></span><br><span class="line">    <span class="string">&#x27;use_value&#x27;</span> =&gt; <span class="title function_ invoke__">env</span>(<span class="string">&#x27;SCRIBE_AUTH_KEY&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;placeholder&#x27;</span> =&gt; <span class="string">&#x27;&#123;YOUR_TOKEN&#125;&#x27;</span>,  <span class="comment">// 占位符</span></span><br><span class="line">    <span class="string">&#x27;extra_info&#x27;</span> =&gt; <span class="string">&#x27;使用 Sanctum Token 认证，格式：Bearer YOUR_TOKEN&#x27;</span>,</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-添加文档注解"><a href="#3-添加文档注解" class="headerlink" title="3. 添加文档注解"></a>3. 添加文档注解</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取任务列表</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@group</span> 任务管理</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@title</span> 获取任务列表</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 获取当前用户的任务列表，支持按状态筛选、标题搜索、多字段排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@authenticated</span></span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@queryParam</span> status string optional 筛选状态（pending/completed）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@queryParam</span> search string optional 搜索标题（模糊匹配）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@queryParam</span> sort string optional 排序字段（created_at/title/status）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@queryParam</span> order string optional 排序顺序（asc/desc）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@queryParam</span> per_page integer optional 每页数量（默认5）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span>(<span class="params">Request <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-常用注解标签"><a href="#4-常用注解标签" class="headerlink" title="4. 常用注解标签"></a>4. 常用注解标签</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@group</code></td>
+<td>分组名称</td>
+</tr>
+<tr>
+<td><code>@title</code></td>
+<td>接口标题</td>
+</tr>
+<tr>
+<td><code>@description</code></td>
+<td>接口描述</td>
+</tr>
+<tr>
+<td><code>@authenticated</code></td>
+<td>需要认证</td>
+</tr>
+<tr>
+<td><code>@queryParam</code></td>
+<td>查询参数说明</td>
+</tr>
+<tr>
+<td><code>@bodyParam</code></td>
+<td>请求体参数说明</td>
+</tr>
+<tr>
+<td><code>@response</code></td>
+<td>响应示例</td>
+</tr>
+</tbody></table>
+<h3 id="5-生成文档"><a href="#5-生成文档" class="headerlink" title="5. 生成文档"></a>5. 生成文档</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan scribe:generate</span><br></pre></td></tr></table></figure>
+
+<p><strong>文档地址：</strong> <a target="_blank" rel="noopener" href="http://task-api.test/docs">http://task-api.test/docs</a></p>
+<h2 id="项目成果总结"><a href="#项目成果总结" class="headerlink" title="项目成果总结"></a>项目成果总结</h2><h3 id="项目信息"><a href="#项目信息" class="headerlink" title="项目信息"></a>项目信息</h3><ul>
+<li><strong>项目名称：</strong> task-api</li>
+<li><strong>技术栈：</strong> Laravel 11 + Sanctum + SQLite</li>
+<li><strong>API 数量：</strong> 9 个接口</li>
+<li><strong>测试数量：</strong> 11 个测试（32 个断言）</li>
+</ul>
+<h3 id="实现功能"><a href="#实现功能" class="headerlink" title="实现功能"></a>实现功能</h3><ul>
+<li>✅ 用户认证（注册&#x2F;登录&#x2F;登出）</li>
+<li>✅ 任务 CRUD（创建&#x2F;列表&#x2F;删除）</li>
+<li>✅ 任务状态</li>
+<li>✅ 标题搜索（模糊匹配）</li>
+<li>✅ 多字段排序（created_at&#x2F;title&#x2F;status）</li>
+<li>✅ 分页查询（per_page 参数）</li>
+<li>✅ 预加载优化（避免 N+1 问题）</li>
+<li>✅ 管理员权限（中间件验证）</li>
+<li>✅ 全局统计（聚合函数）</li>
+<li>✅ 用户统计（关联统计）</li>
+<li>✅ API 文档（Scribe 自动生成）</li>
+</ul>
+<h2 id="技能掌握总结"><a href="#技能掌握总结" class="headerlink" title="技能掌握总结"></a>技能掌握总结</h2><h3 id="已掌握的-Laravel-API-技能"><a href="#已掌握的-Laravel-API-技能" class="headerlink" title="已掌握的 Laravel API 技能"></a>已掌握的 Laravel API 技能</h3><table>
+<thead>
+<tr>
+<th>模块</th>
+<th>掌握程度</th>
+<th>核心知识点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>✅ Sanctum 认证</td>
+<td>★★★★☆</td>
+<td>Token 认证、注册&#x2F;登录&#x2F;登出</td>
+</tr>
+<tr>
+<td>✅ Model 关系</td>
+<td>★★★★☆</td>
+<td>一对多关系、预加载优化</td>
+</tr>
+<tr>
+<td>✅ Form Request</td>
+<td>★★★☆☆</td>
+<td>验证规则、自定义错误消息</td>
+</tr>
+<tr>
+<td>✅ API Resource</td>
+<td>★★★☆☆</td>
+<td>数据格式化、条件渲染</td>
+</tr>
+<tr>
+<td>✅ 分页查询</td>
+<td>★★★★☆</td>
+<td>paginate、per_page 参数</td>
+</tr>
+<tr>
+<td>✅ Feature Tests</td>
+<td>★★★☆☆</td>
+<td>自动化测试、断言验证</td>
+</tr>
+<tr>
+<td>✅ 异常处理</td>
+<td>★★★☆☆</td>
+<td>统一异常处理机制</td>
+</tr>
+<tr>
+<td>✅ 中间件权限</td>
+<td>★★★☆☆</td>
+<td>自定义中间件、权限控制</td>
+</tr>
+<tr>
+<td>✅ 复杂查询</td>
+<td>★★★☆☆</td>
+<td>筛选&#x2F;搜索&#x2F;排序&#x2F;组合查询</td>
+</tr>
+<tr>
+<td>✅ Eloquent 高级查询</td>
+<td>★★★☆☆</td>
+<td>预加载、关联统计、聚合函数</td>
+</tr>
+<tr>
+<td>✅ API 文档工具</td>
+<td>★★★☆☆</td>
+<td>Scribe 安装、配置、注解</td>
+</tr>
+</tbody></table>
+<h3 id="总体掌握水平"><a href="#总体掌握水平" class="headerlink" title="总体掌握水平"></a>总体掌握水平</h3><p><strong>当前水平：中级 Laravel API 开发者</strong></p>
+<p>可以独立完成：</p>
+<ul>
+<li>✅ 从零开始搭建 Laravel API 项目</li>
+<li>✅ 实现用户认证和权限控制</li>
+<li>✅ 设计 RESTful API 接口</li>
+<li>✅ 处理复杂的数据库查询</li>
+<li>✅ 编写自动化测试</li>
+<li>✅ 生成专业的 API 文档</li>
+</ul>
+<h2 id="核心知识点总结"><a href="#核心知识点总结" class="headerlink" title="核心知识点总结"></a>核心知识点总结</h2><h3 id="1-预加载优化"><a href="#1-预加载优化" class="headerlink" title="1. 预加载优化"></a>1. 预加载优化</h3><p><strong>N+1 问题：</strong></p>
+<ul>
+<li>查询主模型 + 循环访问关联模型</li>
+<li>导致 <code>1 + N</code> 次数据库查询</li>
+</ul>
+<p><strong>解决方案：</strong></p>
+<ul>
+<li>使用 <code>with()</code> 预加载关联数据</li>
+<li>查询次数降低到 <code>2</code> 次</li>
+<li>指定字段：<code>with(&#39;user:id,name,email&#39;)</code></li>
+</ul>
+<h3 id="2-withCount-的巧妙用法"><a href="#2-withCount-的巧妙用法" class="headerlink" title="2. withCount 的巧妙用法"></a>2. withCount 的巧妙用法</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;tasks as completed_tasks&#x27;</span> =&gt; <span class="function"><span class="keyword">function</span> (<span class="params"><span class="variable">$query</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable">$query</span>-&gt;<span class="title function_ invoke__">where</span>(<span class="string">&#x27;status&#x27;</span>, <span class="string">&#x27;completed&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分解：</strong></p>
+<ul>
+<li><code>tasks</code> - 关联关系名</li>
+<li><code>as completed_tasks</code> - 自定义字段名</li>
+<li><code>=&gt; function ($query)</code> - 添加筛选条件</li>
+</ul>
+<p><strong>作用：</strong></p>
+<ul>
+<li>一个查询完成多个统计</li>
+<li>避免循环查询</li>
+<li>性能优化</li>
+</ul>
+<h3 id="3-API-文档自动化"><a href="#3-API-文档自动化" class="headerlink" title="3. API 文档自动化"></a>3. API 文档自动化</h3><p><strong>Scribe 优势：</strong></p>
+<ul>
+<li>自动分析代码生成文档</li>
+<li>支持 PHPDoc 注解增强说明</li>
+<li>界面美观、易于测试</li>
+<li>导出 Postman 集合和 OpenAPI 规范</li>
+</ul>
+<h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs">Laravel 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/sanctum">Sanctum 认证文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/eloquent">Eloquent ORM 文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://scribe.knuckles.wtf/laravel">Scribe 文档</a></li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本次学习完成了 <strong>Eloquent 高级查询</strong> 和 <strong>API 文档工具</strong> 两个核心模块，从基础 CRUD 操作提升到了中级 API 开发水平。</p>
+<p><strong>关键收获：</strong></p>
+<ol>
+<li>✅ 理解了 N+1 查询问题及其解决方案</li>
+<li>✅ 掌握了预加载和关联统计的用法</li>
+<li>✅ 学会了聚合函数的实际应用</li>
+<li>✅ 实现了 API 文档自动化生成</li>
+<li>✅ 完成了完整的 Laravel API 项目开发</li>
+</ol>
+<hr>
+<blockquote>
+<p><strong>学习完成日期：</strong> 2026-07-09<br><strong>项目地址：</strong> ~&#x2F;Herd&#x2F;task-api&#x2F;</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Laravel/" rel="tag"># Laravel</a>
+              <a href="/tags/API/" rel="tag"># API</a>
+              <a href="/tags/Eloquent/" rel="tag"># Eloquent</a>
+              <a href="/tags/Scribe/" rel="tag"># Scribe</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/07/08/php-learning-journey/" rel="prev" title="前端工程师学 PHP：从零到 RESTful API + MVC 分层">
+                  <i class="fa fa-angle-left"></i> 前端工程师学 PHP：从零到 RESTful API + MVC 分层
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2019 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">爪子</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

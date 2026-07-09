@@ -142,7 +142,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -151,7 +151,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -177,6 +177,320 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://my-blog.pages.dev/2026/07/09/laravel-api-learning-summary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/fluid.png">
+      <meta itemprop="name" content="爪子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="爪子的个人博客">
+      <meta itemprop="description" content="一个关于技术、生活和成长的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 爪子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/07/09/laravel-api-learning-summary/" class="post-title-link" itemprop="url">Laravel API 开发学习总结</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-07-09 18:00:00 / 修改时间：14:51:44" itemprop="dateCreated datePublished" datetime="2026-07-09T18:00:00+08:00">2026-07-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">后端学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>学习日期：2026-07-09<br>项目：task-api（任务管理 API）<br>技术栈：Laravel 11 + Sanctum + SQLite</p>
+</blockquote>
+<h2 id="学习目标完成情况"><a href="#学习目标完成情况" class="headerlink" title="学习目标完成情况"></a>学习目标完成情况</h2><p><strong>原定学习目标：</strong></p>
+<ul>
+<li>Eloquent 高级查询</li>
+<li>API 文档工具</li>
+</ul>
+<p><strong>完成进度：100% ✅</strong></p>
+<h2 id="Eloquent-高级查询详解"><a href="#Eloquent-高级查询详解" class="headerlink" title="Eloquent 高级查询详解"></a>Eloquent 高级查询详解</h2><h3 id="1-预加载（解决-N-1-查询问题）"><a href="#1-预加载（解决-N-1-查询问题）" class="headerlink" title="1. 预加载（解决 N+1 查询问题）"></a>1. 预加载（解决 N+1 查询问题）</h3><h4 id="N-1-问题示例"><a href="#N-1-问题示例" class="headerlink" title="N+1 问题示例"></a>N+1 问题示例</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ❌ 错误：N+1 问题（11 次查询）</span></span><br><span class="line"><span class="variable">$tasks</span> = <span class="title class_">Task</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;user_id&#x27;</span>, <span class="variable">$userId</span>)-&gt;<span class="title function_ invoke__">get</span>();</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$tasks</span> <span class="keyword">as</span> <span class="variable">$task</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$task</span>-&gt;user-&gt;name;  <span class="comment">// 每次循环都查询数据库</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ✅ 正确：预加载（只有 2 次查询）</span></span><br><span class="line"><span class="variable">$tasks</span> = <span class="title class_">Task</span>::<span class="title function_ invoke__">with</span>(<span class="string">&#x27;user:id,name,email&#x27;</span>)</span><br><span class="line">    -&gt;<span class="title function_ invoke__">where</span>(<span class="string">&#x27;user_id&#x27;</span>, <span class="variable">$userId</span>)</span><br><span class="line">    -&gt;<span class="title function_ invoke__">get</span>();</span><br></pre></td></tr></table></figure>
+
+<h4 id="预加载优化"><a href="#预加载优化" class="headerlink" title="预加载优化"></a>预加载优化</h4><ul>
+<li><code>with(&#39;user&#39;)</code> - 预加载关联数据</li>
+<li><code>user:id,name,email</code> - 只选择需要的字段</li>
+<li>查询次数从 <code>1+N</code> 降低到 <code>2</code></li>
+</ul>
+<h4 id="条件渲染（避免额外查询）"><a href="#条件渲染（避免额外查询）" class="headerlink" title="条件渲染（避免额外查询）"></a>条件渲染（避免额外查询）</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// TaskResource.php</span></span><br><span class="line"><span class="string">&#x27;user&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">when</span>(<span class="variable">$this</span>-&gt;<span class="title function_ invoke__">relationLoaded</span>(<span class="string">&#x27;user&#x27;</span>), function () &#123;</span><br><span class="line">    <span class="keyword">return</span> [</span><br><span class="line">        <span class="string">&#x27;id&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;user-&gt;id,</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;user-&gt;name,</span><br><span class="line">        <span class="string">&#x27;email&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;user-&gt;email,</span><br><span class="line">    ];</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-关联统计（withCount）"><a href="#2-关联统计（withCount）" class="headerlink" title="2. 关联统计（withCount）"></a>2. 关联统计（withCount）</h3><h4 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 统计每个用户的任务数量</span></span><br><span class="line"><span class="variable">$users</span> = <span class="title class_">User</span>::<span class="title function_ invoke__">withCount</span>(<span class="string">&#x27;tasks&#x27;</span>)-&gt;<span class="title function_ invoke__">get</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回结果</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;id&quot;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;用户A&quot;</span>,</span><br><span class="line">    <span class="string">&quot;tasks_count&quot;</span>: <span class="number">5</span>  <span class="comment">// 自动添加统计字段</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="自定义字段名-筛选条件"><a href="#自定义字段名-筛选条件" class="headerlink" title="自定义字段名 + 筛选条件"></a>自定义字段名 + 筛选条件</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$users</span> = <span class="title class_">User</span>::<span class="title function_ invoke__">withCount</span>(<span class="string">&#x27;tasks&#x27;</span>)  <span class="comment">// 总任务数</span></span><br><span class="line">    -&gt;<span class="title function_ invoke__">withCount</span>([<span class="string">&#x27;tasks as completed_tasks&#x27;</span> =&gt; function (<span class="variable">$query</span>) &#123;</span><br><span class="line">        <span class="variable">$query</span>-&gt;<span class="title function_ invoke__">where</span>(<span class="string">&#x27;status&#x27;</span>, <span class="string">&#x27;completed&#x27;</span>);  <span class="comment">// 已完成任务数</span></span><br><span class="line">    &#125;])</span><br><span class="line">    -&gt;<span class="title function_ invoke__">withCount</span>([<span class="string">&#x27;tasks as pending_tasks&#x27;</span> =&gt; function (<span class="variable">$query</span>) &#123;</span><br><span class="line">        <span class="variable">$query</span>-&gt;<span class="title function_ invoke__">where</span>(<span class="string">&#x27;status&#x27;</span>, <span class="string">&#x27;pending&#x27;</span>);  <span class="comment">// 未完成任务数</span></span><br><span class="line">    &#125;])</span><br><span class="line">    -&gt;<span class="title function_ invoke__">get</span>([<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;email&#x27;</span>]);</span><br></pre></td></tr></table></figure>
+
+<h4 id="withCount-vs-count-对比"><a href="#withCount-vs-count-对比" class="headerlink" title="withCount vs count() 对比"></a>withCount vs count() 对比</h4><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>返回类型</th>
+<th>适用场景</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>withCount</strong></td>
+<td>模型列表</td>
+<td>查询父模型 + 统计子模型</td>
+<td>用户列表 + 每个用户的任务数</td>
+</tr>
+<tr>
+<td><strong>count()</strong></td>
+<td>数字</td>
+<td>直接统计数量</td>
+<td>总任务数、已完成数</td>
+</tr>
+</tbody></table>
+<h3 id="3-聚合函数"><a href="#3-聚合函数" class="headerlink" title="3. 聚合函数"></a>3. 聚合函数</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$stats</span> = [</span><br><span class="line">    <span class="string">&#x27;total_tasks&#x27;</span> =&gt; <span class="title class_">Task</span>::<span class="title function_ invoke__">count</span>(),  <span class="comment">// 总任务数</span></span><br><span class="line">    <span class="string">&#x27;completed_tasks&#x27;</span> =&gt; <span class="title class_">Task</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;status&#x27;</span>, <span class="string">&#x27;completed&#x27;</span>)-&gt;<span class="title function_ invoke__">count</span>(),  <span class="comment">// 已完成</span></span><br><span class="line">    <span class="string">&#x27;pending_tasks&#x27;</span> =&gt; <span class="title class_">Task</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;status&#x27;</span>, <span class="string">&#x27;pending&#x27;</span>)-&gt;<span class="title function_ invoke__">count</span>(),  <span class="comment">// 未完成</span></span><br><span class="line">    <span class="string">&#x27;avg_completion_rate&#x27;</span> =&gt; <span class="title function_ invoke__">round</span>(</span><br><span class="line">        <span class="title class_">Task</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;status&#x27;</span>, <span class="string">&#x27;completed&#x27;</span>)-&gt;<span class="title function_ invoke__">count</span>() / <span class="title function_ invoke__">max</span>(<span class="title class_">Task</span>::<span class="title function_ invoke__">count</span>(), <span class="number">1</span>) * <span class="number">100</span>, </span><br><span class="line">        <span class="number">2</span></span><br><span class="line">    ),  <span class="comment">// 完成率（保留2位小数）</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<h2 id="API-文档工具（Scribe）"><a href="#API-文档工具（Scribe）" class="headerlink" title="API 文档工具（Scribe）"></a>API 文档工具（Scribe）</h2><h3 id="1-安装-Scribe"><a href="#1-安装-Scribe" class="headerlink" title="1. 安装 Scribe"></a>1. 安装 Scribe</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Herd/task-api</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">composer require knuckleswtf/scribe</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发布配置文件</span></span><br><span class="line">php artisan vendor:publish --tag=scribe-config</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-配置认证"><a href="#2-配置认证" class="headerlink" title="2. 配置认证"></a>2. 配置认证</h3><p>修改 <code>config/scribe.php</code>：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;auth&#x27;</span> =&gt; [</span><br><span class="line">    <span class="string">&#x27;enabled&#x27;</span> =&gt; <span class="literal">true</span>,  <span class="comment">// 启用认证</span></span><br><span class="line">    <span class="string">&#x27;default&#x27;</span> =&gt; <span class="literal">false</span>,</span><br><span class="line">    <span class="string">&#x27;in&#x27;</span> =&gt; <span class="title class_">AuthIn</span>::<span class="variable constant_">BEARER</span>-&gt;value,  <span class="comment">// Bearer Token 认证</span></span><br><span class="line">    <span class="string">&#x27;name&#x27;</span> =&gt; <span class="string">&#x27;Authorization&#x27;</span>,  <span class="comment">// 认证头名称</span></span><br><span class="line">    <span class="string">&#x27;use_value&#x27;</span> =&gt; <span class="title function_ invoke__">env</span>(<span class="string">&#x27;SCRIBE_AUTH_KEY&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;placeholder&#x27;</span> =&gt; <span class="string">&#x27;&#123;YOUR_TOKEN&#125;&#x27;</span>,  <span class="comment">// 占位符</span></span><br><span class="line">    <span class="string">&#x27;extra_info&#x27;</span> =&gt; <span class="string">&#x27;使用 Sanctum Token 认证，格式：Bearer YOUR_TOKEN&#x27;</span>,</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-添加文档注解"><a href="#3-添加文档注解" class="headerlink" title="3. 添加文档注解"></a>3. 添加文档注解</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取任务列表</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@group</span> 任务管理</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@title</span> 获取任务列表</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 获取当前用户的任务列表，支持按状态筛选、标题搜索、多字段排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@authenticated</span></span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@queryParam</span> status string optional 筛选状态（pending/completed）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@queryParam</span> search string optional 搜索标题（模糊匹配）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@queryParam</span> sort string optional 排序字段（created_at/title/status）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@queryParam</span> order string optional 排序顺序（asc/desc）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@queryParam</span> per_page integer optional 每页数量（默认5）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span>(<span class="params">Request <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-常用注解标签"><a href="#4-常用注解标签" class="headerlink" title="4. 常用注解标签"></a>4. 常用注解标签</h3><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@group</code></td>
+<td>分组名称</td>
+</tr>
+<tr>
+<td><code>@title</code></td>
+<td>接口标题</td>
+</tr>
+<tr>
+<td><code>@description</code></td>
+<td>接口描述</td>
+</tr>
+<tr>
+<td><code>@authenticated</code></td>
+<td>需要认证</td>
+</tr>
+<tr>
+<td><code>@queryParam</code></td>
+<td>查询参数说明</td>
+</tr>
+<tr>
+<td><code>@bodyParam</code></td>
+<td>请求体参数说明</td>
+</tr>
+<tr>
+<td><code>@response</code></td>
+<td>响应示例</td>
+</tr>
+</tbody></table>
+<h3 id="5-生成文档"><a href="#5-生成文档" class="headerlink" title="5. 生成文档"></a>5. 生成文档</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan scribe:generate</span><br></pre></td></tr></table></figure>
+
+<p><strong>文档地址：</strong> <a target="_blank" rel="noopener" href="http://task-api.test/docs">http://task-api.test/docs</a></p>
+<h2 id="项目成果总结"><a href="#项目成果总结" class="headerlink" title="项目成果总结"></a>项目成果总结</h2><h3 id="项目信息"><a href="#项目信息" class="headerlink" title="项目信息"></a>项目信息</h3><ul>
+<li><strong>项目名称：</strong> task-api</li>
+<li><strong>技术栈：</strong> Laravel 11 + Sanctum + SQLite</li>
+<li><strong>API 数量：</strong> 9 个接口</li>
+<li><strong>测试数量：</strong> 11 个测试（32 个断言）</li>
+</ul>
+<h3 id="实现功能"><a href="#实现功能" class="headerlink" title="实现功能"></a>实现功能</h3><ul>
+<li>✅ 用户认证（注册&#x2F;登录&#x2F;登出）</li>
+<li>✅ 任务 CRUD（创建&#x2F;列表&#x2F;删除）</li>
+<li>✅ 任务状态</li>
+<li>✅ 标题搜索（模糊匹配）</li>
+<li>✅ 多字段排序（created_at&#x2F;title&#x2F;status）</li>
+<li>✅ 分页查询（per_page 参数）</li>
+<li>✅ 预加载优化（避免 N+1 问题）</li>
+<li>✅ 管理员权限（中间件验证）</li>
+<li>✅ 全局统计（聚合函数）</li>
+<li>✅ 用户统计（关联统计）</li>
+<li>✅ API 文档（Scribe 自动生成）</li>
+</ul>
+<h2 id="技能掌握总结"><a href="#技能掌握总结" class="headerlink" title="技能掌握总结"></a>技能掌握总结</h2><h3 id="已掌握的-Laravel-API-技能"><a href="#已掌握的-Laravel-API-技能" class="headerlink" title="已掌握的 Laravel API 技能"></a>已掌握的 Laravel API 技能</h3><table>
+<thead>
+<tr>
+<th>模块</th>
+<th>掌握程度</th>
+<th>核心知识点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>✅ Sanctum 认证</td>
+<td>★★★★☆</td>
+<td>Token 认证、注册&#x2F;登录&#x2F;登出</td>
+</tr>
+<tr>
+<td>✅ Model 关系</td>
+<td>★★★★☆</td>
+<td>一对多关系、预加载优化</td>
+</tr>
+<tr>
+<td>✅ Form Request</td>
+<td>★★★☆☆</td>
+<td>验证规则、自定义错误消息</td>
+</tr>
+<tr>
+<td>✅ API Resource</td>
+<td>★★★☆☆</td>
+<td>数据格式化、条件渲染</td>
+</tr>
+<tr>
+<td>✅ 分页查询</td>
+<td>★★★★☆</td>
+<td>paginate、per_page 参数</td>
+</tr>
+<tr>
+<td>✅ Feature Tests</td>
+<td>★★★☆☆</td>
+<td>自动化测试、断言验证</td>
+</tr>
+<tr>
+<td>✅ 异常处理</td>
+<td>★★★☆☆</td>
+<td>统一异常处理机制</td>
+</tr>
+<tr>
+<td>✅ 中间件权限</td>
+<td>★★★☆☆</td>
+<td>自定义中间件、权限控制</td>
+</tr>
+<tr>
+<td>✅ 复杂查询</td>
+<td>★★★☆☆</td>
+<td>筛选&#x2F;搜索&#x2F;排序&#x2F;组合查询</td>
+</tr>
+<tr>
+<td>✅ Eloquent 高级查询</td>
+<td>★★★☆☆</td>
+<td>预加载、关联统计、聚合函数</td>
+</tr>
+<tr>
+<td>✅ API 文档工具</td>
+<td>★★★☆☆</td>
+<td>Scribe 安装、配置、注解</td>
+</tr>
+</tbody></table>
+<h3 id="总体掌握水平"><a href="#总体掌握水平" class="headerlink" title="总体掌握水平"></a>总体掌握水平</h3><p><strong>当前水平：中级 Laravel API 开发者</strong></p>
+<p>可以独立完成：</p>
+<ul>
+<li>✅ 从零开始搭建 Laravel API 项目</li>
+<li>✅ 实现用户认证和权限控制</li>
+<li>✅ 设计 RESTful API 接口</li>
+<li>✅ 处理复杂的数据库查询</li>
+<li>✅ 编写自动化测试</li>
+<li>✅ 生成专业的 API 文档</li>
+</ul>
+<h2 id="核心知识点总结"><a href="#核心知识点总结" class="headerlink" title="核心知识点总结"></a>核心知识点总结</h2><h3 id="1-预加载优化"><a href="#1-预加载优化" class="headerlink" title="1. 预加载优化"></a>1. 预加载优化</h3><p><strong>N+1 问题：</strong></p>
+<ul>
+<li>查询主模型 + 循环访问关联模型</li>
+<li>导致 <code>1 + N</code> 次数据库查询</li>
+</ul>
+<p><strong>解决方案：</strong></p>
+<ul>
+<li>使用 <code>with()</code> 预加载关联数据</li>
+<li>查询次数降低到 <code>2</code> 次</li>
+<li>指定字段：<code>with(&#39;user:id,name,email&#39;)</code></li>
+</ul>
+<h3 id="2-withCount-的巧妙用法"><a href="#2-withCount-的巧妙用法" class="headerlink" title="2. withCount 的巧妙用法"></a>2. withCount 的巧妙用法</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;tasks as completed_tasks&#x27;</span> =&gt; <span class="function"><span class="keyword">function</span> (<span class="params"><span class="variable">$query</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable">$query</span>-&gt;<span class="title function_ invoke__">where</span>(<span class="string">&#x27;status&#x27;</span>, <span class="string">&#x27;completed&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分解：</strong></p>
+<ul>
+<li><code>tasks</code> - 关联关系名</li>
+<li><code>as completed_tasks</code> - 自定义字段名</li>
+<li><code>=&gt; function ($query)</code> - 添加筛选条件</li>
+</ul>
+<p><strong>作用：</strong></p>
+<ul>
+<li>一个查询完成多个统计</li>
+<li>避免循环查询</li>
+<li>性能优化</li>
+</ul>
+<h3 id="3-API-文档自动化"><a href="#3-API-文档自动化" class="headerlink" title="3. API 文档自动化"></a>3. API 文档自动化</h3><p><strong>Scribe 优势：</strong></p>
+<ul>
+<li>自动分析代码生成文档</li>
+<li>支持 PHPDoc 注解增强说明</li>
+<li>界面美观、易于测试</li>
+<li>导出 Postman 集合和 OpenAPI 规范</li>
+</ul>
+<h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs">Laravel 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/sanctum">Sanctum 认证文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/eloquent">Eloquent ORM 文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://scribe.knuckles.wtf/laravel">Scribe 文档</a></li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本次学习完成了 <strong>Eloquent 高级查询</strong> 和 <strong>API 文档工具</strong> 两个核心模块，从基础 CRUD 操作提升到了中级 API 开发水平。</p>
+<p><strong>关键收获：</strong></p>
+<ol>
+<li>✅ 理解了 N+1 查询问题及其解决方案</li>
+<li>✅ 掌握了预加载和关联统计的用法</li>
+<li>✅ 学会了聚合函数的实际应用</li>
+<li>✅ 实现了 API 文档自动化生成</li>
+<li>✅ 完成了完整的 Laravel API 项目开发</li>
+</ol>
+<hr>
+<blockquote>
+<p><strong>学习完成日期：</strong> 2026-07-09<br><strong>项目地址：</strong> ~&#x2F;Herd&#x2F;task-api&#x2F;</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
