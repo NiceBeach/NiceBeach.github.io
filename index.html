@@ -142,7 +142,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -151,7 +151,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -177,6 +177,344 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://my-blog.pages.dev/2026/07/10/laravel-blog-api-summary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/fluid.png">
+      <meta itemprop="name" content="爪子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="爪子的个人博客">
+      <meta itemprop="description" content="一个关于技术、生活和成长的个人博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 爪子的个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/07/10/laravel-blog-api-summary/" class="post-title-link" itemprop="url">Laravel Blog API 项目总结</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-07-10 18:00:00 / 修改时间：14:50:43" itemprop="dateCreated datePublished" datetime="2026-07-10T18:00:00+08:00">2026-07-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>项目完成时间：2026-07-10<br>技术栈：Laravel 11 + MySQL 8.0 + Laravel Sanctum</p>
+</blockquote>
+<h2 id="项目架构"><a href="#项目架构" class="headerlink" title="项目架构"></a>项目架构</h2><h3 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">blog/</span><br><span class="line">├── app/</span><br><span class="line">│   ├── Http/</span><br><span class="line">│   │   ├── Controllers/        # 控制器</span><br><span class="line">│   │   ├── Middleware/         # 中间件</span><br><span class="line">│   │   ├── Requests/           # 表单验证</span><br><span class="line">│   │   └── Resources/          # API 资源格式化</span><br><span class="line">│   └── Models/                 # 数据模型</span><br><span class="line">├── routes/api.php              # API 路由</span><br><span class="line">└── database/migrations/        # 数据库迁移文件</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h3><table>
+<thead>
+<tr>
+<th>表名</th>
+<th>说明</th>
+<th>关键字段</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>users</td>
+<td>用户表</td>
+<td>id, name, email, password, is_admin</td>
+</tr>
+<tr>
+<td>articles</td>
+<td>文章表</td>
+<td>id, user_id, category_id, title, content, status, views</td>
+</tr>
+<tr>
+<td>categories</td>
+<td>分类表</td>
+<td>id, name, slug</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>标签表</td>
+<td>id, name, slug</td>
+</tr>
+<tr>
+<td>article_tag</td>
+<td>文章标签关联表</td>
+<td>article_id, tag_id</td>
+</tr>
+<tr>
+<td>comments</td>
+<td>评论表</td>
+<td>id, article_id, user_id, content, status</td>
+</tr>
+</tbody></table>
+<h3 id="关系图"><a href="#关系图" class="headerlink" title="关系图"></a>关系图</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">User (用户)</span><br><span class="line">  ↓ hasMany</span><br><span class="line">Article (文章)</span><br><span class="line">  ↓ belongsTo         ↓ belongsToMany</span><br><span class="line">Category (分类)     Tag (标签)</span><br><span class="line">  ↓ hasMany</span><br><span class="line">Comment (评论)</span><br></pre></td></tr></table></figure>
+
+<h2 id="核心技术点"><a href="#核心技术点" class="headerlink" title="核心技术点"></a>核心技术点</h2><h3 id="1-Laravel-Sanctum-认证"><a href="#1-Laravel-Sanctum-认证" class="headerlink" title="1. Laravel Sanctum 认证"></a>1. Laravel Sanctum 认证</h3><h4 id="User-Model-配置"><a href="#User-Model-配置" class="headerlink" title="User Model 配置"></a>User Model 配置</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Laravel</span>\<span class="title">Sanctum</span>\<span class="title">HasApiTokens</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Authenticatable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">HasApiTokens</span>;  <span class="comment">// ✅ 必须添加这个 trait</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建-Token"><a href="#创建-Token" class="headerlink" title="创建 Token"></a>创建 Token</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注册/登录时创建 Token</span></span><br><span class="line"><span class="variable">$token</span> = <span class="variable">$user</span>-&gt;<span class="title function_ invoke__">createToken</span>(<span class="string">&#x27;api&#x27;</span>)-&gt;plainTextToken;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回给前端</span></span><br><span class="line"><span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([</span><br><span class="line">    <span class="string">&#x27;token&#x27;</span> =&gt; <span class="variable">$token</span>  // 格式：<span class="number">1</span>|abcd1234...</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用-Token-认证"><a href="#使用-Token-认证" class="headerlink" title="使用 Token 认证"></a>使用 Token 认证</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 路由中使用 auth:sanctum 中间件</span></span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;auth:sanctum&#x27;</span>)-&gt;<span class="title function_ invoke__">group</span>(function () &#123;</span><br><span class="line">    <span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;/user&#x27;</span>, [<span class="title class_">LoginController</span>::<span class="variable language_">class</span>, <span class="string">&#x27;user&#x27;</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 前端请求时带上 Token</span></span><br><span class="line">curl -H <span class="string">&quot;Authorization: Bearer 1|abcd1234...&quot;</span> http:<span class="comment">//blog.test/api/user</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Model-关系定义"><a href="#2-Model-关系定义" class="headerlink" title="2. Model 关系定义"></a>2. Model 关系定义</h3><h4 id="一对多（hasMany-belongsTo）"><a href="#一对多（hasMany-belongsTo）" class="headerlink" title="一对多（hasMany &#x2F; belongsTo）"></a>一对多（hasMany &#x2F; belongsTo）</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// User 有多篇文章</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">articles</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">hasMany</span>(<span class="title class_">Article</span>::<span class="variable language_">class</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Article 属于一个 User</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">user</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">belongsTo</span>(<span class="title class_">User</span>::<span class="variable language_">class</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="多对多（belongsToMany）"><a href="#多对多（belongsToMany）" class="headerlink" title="多对多（belongsToMany）"></a>多对多（belongsToMany）</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Article 有多个标签</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">tags</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">belongsToMany</span>(<span class="title class_">Tag</span>::<span class="variable language_">class</span>, <span class="string">&#x27;article_tag&#x27;</span>, <span class="string">&#x27;article_id&#x27;</span>, <span class="string">&#x27;tag_id&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关联标签</span></span><br><span class="line"><span class="variable">$article</span>-&gt;<span class="title function_ invoke__">tags</span>()-&gt;<span class="title function_ invoke__">attach</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);    <span class="comment">// 添加多个标签</span></span><br><span class="line"><span class="variable">$article</span>-&gt;<span class="title function_ invoke__">tags</span>()-&gt;<span class="title function_ invoke__">sync</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);      <span class="comment">// 同步（替换）标签</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="关系返回类型（重要！）"><a href="#关系返回类型（重要！）" class="headerlink" title="关系返回类型（重要！）"></a>关系返回类型（重要！）</h4><table>
+<thead>
+<tr>
+<th>关系方法</th>
+<th>返回类型</th>
+<th>访问方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>belongsTo()</code></td>
+<td>单个对象</td>
+<td><code>$this-&gt;relation-&gt;field</code> ✅</td>
+</tr>
+<tr>
+<td><code>hasOne()</code></td>
+<td>单个对象</td>
+<td><code>$this-&gt;relation-&gt;field</code> ✅</td>
+</tr>
+<tr>
+<td><code>hasMany()</code></td>
+<td>Collection</td>
+<td>遍历或 <code>map()</code> ✅</td>
+</tr>
+<tr>
+<td><code>belongsToMany()</code></td>
+<td>Collection</td>
+<td>遍历或 <code>map()</code> ✅</td>
+</tr>
+</tbody></table>
+<h3 id="3-FormRequest-表单验证"><a href="#3-FormRequest-表单验证" class="headerlink" title="3. FormRequest 表单验证"></a>3. FormRequest 表单验证</h3><h4 id="定义验证规则"><a href="#定义验证规则" class="headerlink" title="定义验证规则"></a>定义验证规则</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ArticlesRequest</span> <span class="keyword">extends</span> <span class="title">FormRequest</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">rules</span>(<span class="params"></span>): <span class="title">array</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            <span class="string">&#x27;title&#x27;</span> =&gt; <span class="string">&#x27;required|string|max:255&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;content&#x27;</span> =&gt; <span class="string">&#x27;required|string&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;category_id&#x27;</span> =&gt; <span class="string">&#x27;required|integer|exists:categories,id&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;tag_ids&#x27;</span> =&gt; <span class="string">&#x27;nullable|array|exists:tags,id&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;status&#x27;</span> =&gt; <span class="string">&#x27;nullable|string|in:draft,published,archived&#x27;</span></span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Controller-中使用"><a href="#Controller-中使用" class="headerlink" title="Controller 中使用"></a>Controller 中使用</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">store</span>(<span class="params">ArticlesRequest <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$params</span> = <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">validated</span>();  <span class="comment">// ✅ 获取验证后的数据</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-API-Resource-格式化"><a href="#4-API-Resource-格式化" class="headerlink" title="4. API Resource 格式化"></a>4. API Resource 格式化</h3><h4 id="一对一关系格式化"><a href="#一对一关系格式化" class="headerlink" title="一对一关系格式化"></a>一对一关系格式化</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ArticlesResource</span> <span class="keyword">extends</span> <span class="title">JsonResource</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">toArray</span>(<span class="params">Request <span class="variable">$request</span></span>): <span class="title">array</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            <span class="string">&#x27;id&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;id,</span><br><span class="line">            <span class="string">&#x27;title&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;title,</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// ✅ belongsTo/hasOne - 单个对象</span></span><br><span class="line">            <span class="string">&#x27;user&#x27;</span> =&gt; [</span><br><span class="line">                <span class="string">&#x27;id&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;user-&gt;id,</span><br><span class="line">                <span class="string">&#x27;name&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;user-&gt;name,</span><br><span class="line">            ],</span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="一对多-多对多关系格式化"><a href="#一对多-多对多关系格式化" class="headerlink" title="一对多&#x2F;多对多关系格式化"></a>一对多&#x2F;多对多关系格式化</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ✅ hasMany/belongsToMany - Collection，需要遍历</span></span><br><span class="line"><span class="string">&#x27;tags&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;tags-&gt;<span class="title function_ invoke__">map</span>(function (<span class="variable">$tag</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="string">&#x27;id&#x27;</span> =&gt; <span class="variable">$tag</span>-&gt;id, <span class="string">&#x27;name&#x27;</span> =&gt; <span class="variable">$tag</span>-&gt;name];</span><br><span class="line">&#125;),</span><br><span class="line"></span><br><span class="line"><span class="comment">// ✅ 或使用 Resource::collection</span></span><br><span class="line"><span class="string">&#x27;tags&#x27;</span> =&gt; <span class="title class_">TagResource</span>::<span class="title function_ invoke__">collection</span>(<span class="variable">$this</span>-&gt;tags),</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-预加载（解决-N-1-问题）"><a href="#5-预加载（解决-N-1-问题）" class="headerlink" title="5. 预加载（解决 N+1 问题）"></a>5. 预加载（解决 N+1 问题）</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ❌ 没有 with，产生 N+1 问题</span></span><br><span class="line"><span class="variable">$articles</span> = <span class="title class_">Article</span>::<span class="title function_ invoke__">all</span>();  <span class="comment">// 1 次查询</span></span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$articles</span> <span class="keyword">as</span> <span class="variable">$article</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$article</span>-&gt;user-&gt;name;   <span class="comment">// 每次循环都查询</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ✅ 使用 with 预加载</span></span><br><span class="line"><span class="variable">$articles</span> = <span class="title class_">Article</span>::<span class="title function_ invoke__">with</span>(<span class="string">&#x27;user&#x27;</span>, <span class="string">&#x27;category&#x27;</span>, <span class="string">&#x27;tags&#x27;</span>)-&gt;<span class="title function_ invoke__">get</span>();  <span class="comment">// 4 次查询</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-权限检查"><a href="#6-权限检查" class="headerlink" title="6. 权限检查"></a>6. 权限检查</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">destroy</span>(<span class="params">Request <span class="variable">$request</span>, <span class="variable">$id</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$article</span> = <span class="title class_">Article</span>::<span class="title function_ invoke__">find</span>(<span class="variable">$id</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable">$article</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([<span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">404</span>, <span class="string">&#x27;message&#x27;</span> =&gt; <span class="string">&#x27;文章不存在&#x27;</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ✅ 检查权限</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$article</span>-&gt;user_id !== <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;id) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([<span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">403</span>, <span class="string">&#x27;message&#x27;</span> =&gt; <span class="string">&#x27;无权删除&#x27;</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="variable">$article</span>-&gt;<span class="title function_ invoke__">delete</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-数据库原子操作"><a href="#7-数据库原子操作" class="headerlink" title="7. 数据库原子操作"></a>7. 数据库原子操作</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ✅ 推荐用法</span></span><br><span class="line"><span class="variable">$article</span>-&gt;<span class="title function_ invoke__">increment</span>(<span class="string">&#x27;views&#x27;</span>);  <span class="comment">// 浏览量 +1，并发安全</span></span><br><span class="line"><span class="variable">$article</span>-&gt;<span class="title function_ invoke__">increment</span>(<span class="string">&#x27;views&#x27;</span>, <span class="number">5</span>);  <span class="comment">// +5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ⚠️ 不要和 save 同时使用</span></span><br><span class="line"><span class="comment">// ❌ $article-&gt;increment(&#x27;views&#x27;); $article-&gt;views++; $article-&gt;save();</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="API-接口文档"><a href="#API-接口文档" class="headerlink" title="API 接口文档"></a>API 接口文档</h2><h3 id="认证接口"><a href="#认证接口" class="headerlink" title="认证接口"></a>认证接口</h3><table>
+<thead>
+<tr>
+<th>接口</th>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/api/register</code></td>
+<td>POST</td>
+<td>用户注册</td>
+</tr>
+<tr>
+<td><code>/api/login</code></td>
+<td>POST</td>
+<td>用户登录</td>
+</tr>
+<tr>
+<td><code>/api/user</code></td>
+<td>GET</td>
+<td>获取用户信息</td>
+</tr>
+<tr>
+<td><code>/api/logout</code></td>
+<td>POST</td>
+<td>用户登出</td>
+</tr>
+</tbody></table>
+<h3 id="文章接口"><a href="#文章接口" class="headerlink" title="文章接口"></a>文章接口</h3><table>
+<thead>
+<tr>
+<th>接口</th>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/api/articles</code></td>
+<td>GET</td>
+<td>获取文章列表</td>
+</tr>
+<tr>
+<td><code>/api/articles</code></td>
+<td>POST</td>
+<td>创建文章</td>
+</tr>
+<tr>
+<td><code>/api/articles/&#123;id&#125;</code></td>
+<td>GET</td>
+<td>获取文章详情</td>
+</tr>
+<tr>
+<td><code>/api/articles/&#123;id&#125;/view</code></td>
+<td>POST</td>
+<td>更新浏览量</td>
+</tr>
+<tr>
+<td><code>/api/my/articles</code></td>
+<td>GET</td>
+<td>获取我的文章</td>
+</tr>
+</tbody></table>
+<h3 id="评论接口"><a href="#评论接口" class="headerlink" title="评论接口"></a>评论接口</h3><table>
+<thead>
+<tr>
+<th>接口</th>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/api/articles/&#123;article_id&#125;/comments</code></td>
+<td>GET</td>
+<td>获取文章评论</td>
+</tr>
+<tr>
+<td><code>/api/articles/&#123;article_id&#125;/comments</code></td>
+<td>POST</td>
+<td>创建评论</td>
+</tr>
+<tr>
+<td><code>/api/comments/&#123;id&#125;</code></td>
+<td>DELETE</td>
+<td>删除评论</td>
+</tr>
+</tbody></table>
+<h3 id="分类和标签接口"><a href="#分类和标签接口" class="headerlink" title="分类和标签接口"></a>分类和标签接口</h3><table>
+<thead>
+<tr>
+<th>接口</th>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/api/categories</code></td>
+<td>GET</td>
+<td>获取分类列表</td>
+</tr>
+<tr>
+<td><code>/api/categories</code></td>
+<td>POST</td>
+<td>创建分类（管理员）</td>
+</tr>
+<tr>
+<td><code>/api/tags</code></td>
+<td>GET</td>
+<td>获取标签列表</td>
+</tr>
+<tr>
+<td><code>/api/tags</code></td>
+<td>POST</td>
+<td>创建标签（管理员）</td>
+</tr>
+</tbody></table>
+<h3 id="管理员接口"><a href="#管理员接口" class="headerlink" title="管理员接口"></a>管理员接口</h3><table>
+<thead>
+<tr>
+<th>接口</th>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/api/admin/stats</code></td>
+<td>GET</td>
+<td>获取统计数据</td>
+</tr>
+</tbody></table>
+<h2 id="常见问题解决方案"><a href="#常见问题解决方案" class="headerlink" title="常见问题解决方案"></a>常见问题解决方案</h2><h3 id="问题-1：Trait-“HasApiTokens”-not-found"><a href="#问题-1：Trait-“HasApiTokens”-not-found" class="headerlink" title="问题 1：Trait “HasApiTokens” not found"></a>问题 1：Trait “HasApiTokens” not found</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">composer require laravel/sanctum</span><br><span class="line">php artisan vendor:publish --provider=<span class="string">&quot;Laravel\Sanctum\SanctumServiceProvider&quot;</span></span><br><span class="line">php artisan migrate</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题-2：Field-‘user-id’-doesn’t-have-a-default-value"><a href="#问题-2：Field-‘user-id’-doesn’t-have-a-default-value" class="headerlink" title="问题 2：Field ‘user_id’ doesn’t have a default value"></a>问题 2：Field ‘user_id’ doesn’t have a default value</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Article</span> <span class="keyword">extends</span> <span class="title">Model</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$fillable</span> = [</span><br><span class="line">        <span class="string">&#x27;user_id&#x27;</span>,      <span class="comment">// ✅ 必须包含</span></span><br><span class="line">        <span class="string">&#x27;category_id&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;title&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;content&#x27;</span>,</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题-3：Resource-中访问-tags-属性报错"><a href="#问题-3：Resource-中访问-tags-属性报错" class="headerlink" title="问题 3：Resource 中访问 tags 属性报错"></a>问题 3：Resource 中访问 tags 属性报错</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ❌ 错误（tags 是 Collection）</span></span><br><span class="line"><span class="string">&#x27;tags&#x27;</span> =&gt; [<span class="string">&#x27;id&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;tags-&gt;id]</span><br><span class="line"></span><br><span class="line"><span class="comment">// ✅ 正确写法</span></span><br><span class="line"><span class="string">&#x27;tags&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;tags-&gt;<span class="title function_ invoke__">map</span>(fn(<span class="variable">$tag</span>) =&gt; [<span class="string">&#x27;id&#x27;</span> =&gt; <span class="variable">$tag</span>-&gt;id, <span class="string">&#x27;name&#x27;</span> =&gt; <span class="variable">$tag</span>-&gt;name])</span><br></pre></td></tr></table></figure>
+
+<h3 id="问题-4：浏览量增加不准确"><a href="#问题-4：浏览量增加不准确" class="headerlink" title="问题 4：浏览量增加不准确"></a>问题 4：浏览量增加不准确</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ✅ 正确（二选一）</span></span><br><span class="line"><span class="variable">$article</span>-&gt;<span class="title function_ invoke__">increment</span>(<span class="string">&#x27;views&#x27;</span>);  <span class="comment">// 推荐用法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line"><span class="variable">$article</span>-&gt;views++;</span><br><span class="line"><span class="variable">$article</span>-&gt;<span class="title function_ invoke__">save</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="开发经验总结"><a href="#开发经验总结" class="headerlink" title="开发经验总结"></a>开发经验总结</h2><h3 id="Model-开发规范"><a href="#Model-开发规范" class="headerlink" title="Model 开发规范"></a>Model 开发规范</h3><ul>
+<li>✅ 必须定义 <code>$fillable</code></li>
+<li>✅ 定义关系方法</li>
+<li>✅ 文件名和类名保持单数</li>
+</ul>
+<h3 id="Controller-开发规范"><a href="#Controller-开发规范" class="headerlink" title="Controller 开发规范"></a>Controller 开发规范</h3><ul>
+<li>✅ 使用 FormRequest 验证</li>
+<li>✅ 添加权限检查</li>
+<li>✅ 使用预加载</li>
+<li>✅ 使用原子操作</li>
+</ul>
+<h3 id="响应格式统一"><a href="#响应格式统一" class="headerlink" title="响应格式统一"></a>响应格式统一</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ✅ 成功响应</span></span><br><span class="line"><span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([</span><br><span class="line">    <span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">0</span>,</span><br><span class="line">    <span class="string">&#x27;message&#x27;</span> =&gt; <span class="string">&#x27;操作成功&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;data&#x27;</span> =&gt; <span class="variable">$data</span>,</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ✅ 错误响应</span></span><br><span class="line"><span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([</span><br><span class="line">    <span class="string">&#x27;code&#x27;</span> =&gt; <span class="number">404</span>,</span><br><span class="line">    <span class="string">&#x27;message&#x27;</span> =&gt; <span class="string">&#x27;资源不存在&#x27;</span>,</span><br><span class="line">], <span class="number">404</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs">Laravel 文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/eloquent-relationships">Eloquent 关系</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/sanctum">Sanctum 认证</a></li>
+<li><a target="_blank" rel="noopener" href="https://laravel.com/docs/eloquent-resources">API Resource</a></li>
+</ul>
+<hr>
+<blockquote>
+<p>项目完成！🎉<br>最后更新：2026-07-10</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
